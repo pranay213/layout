@@ -5,13 +5,13 @@ import { useState } from "react";
 function ThirdPart(props) {
   let [treeColor, setTreeColor] = useState("#00ff00");
   useEffect(() => {
-    setInterval(() => {
+    setTimeout(() => {
       if (treeColor === "#00ff00") {
         setTreeColor("#00ff");
       } else {
         setTreeColor("#00ff00");
       }
-    }, 2000);
+    }, 1000);
   }, [treeColor]);
   return (
     <svg
