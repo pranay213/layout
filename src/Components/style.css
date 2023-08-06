@@ -112,6 +112,11 @@
     height: 1.2%;
     width: 1.2%;
   }
+  .circle-icon
+  {
+    height: 1px;
+    width: 1px;
+  }
 }
 
 .display-message {
