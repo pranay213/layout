@@ -107,6 +107,11 @@ const Layout = () => {
           }}
         >
           <div className="arrow-left"></div>
+          <p style={{ transform: "rotate(180deg)" }}>Valve Number :5</p>
+          <p style={{ transform: "rotate(180deg)" }}>
+            {"Status"}
+            {valve1 ? "ON" : "OFF"}
+          </p>
         </div>
       )}
 
