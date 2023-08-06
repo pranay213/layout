@@ -24,10 +24,9 @@ export const Layout = () => {
           src={layout}
           style={{ width: "100%", height: "100%" }}
           alt="layout"
-          children={<Valve className="valve-container" fill="red" />}
         />
       </div>
-      {/* <Valve /> */}
+      <Valve className="valve-container" />
       <Circile />
     </div>
   );

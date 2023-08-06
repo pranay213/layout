@@ -3,8 +3,7 @@
   width: 10px;
   background: red;
   position: absolute;
-  /* border-radius: 50%; */
-  border-top-left-radius: 120%;
+  border-radius: 50%;
   left: 61.2%;
   bottom: 57.3%;
   /* margin: auto; */
@@ -18,9 +17,18 @@
 }
 
 .valve-container {
-  position: relative;
-  /* top: 54%; */
+  height: 1.45%;
+  width: 1.45%;
+  position: absolute;
+  top: 54.1%;
   right: 41.2%;
-  bottom: 50%;
   transform: rotate(-180deg);
+  fill: red;
+}
+
+@media screen and (max-width: 320px) {
+  .valve-container {
+    height: 1.2%;
+    width: 1.2%;
+  }
 }
