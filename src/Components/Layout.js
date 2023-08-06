@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import layout from "../images/layout2.jpg";
 import Circile from "./Circile";
 import "./style.css";
 import Valve from "../svg/Valve";
 
 export const Layout = () => {
+  const [valve1, setValve1] = useState(true);
+  const [waterCol, setWaterCol] = useState("#416BDF");
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (waterCol === "#416BDF") setWaterCol("#99C0E3");
+      else {
+        setWaterCol("#416BDF");
+      }
+    }, 500);
+  }, [waterCol, valve1]);
+
+  const Valve1Click = () => {
+    setValve1(!valve1);
+  };
   return (
     <div className="layout-container">
       <div
@@ -25,7 +40,11 @@ export const Layout = () => {
           alt="layout"
         />
       </div>
-      <Valve className="valve-container" />
+      <Valve
+        className="valve-container"
+        fill={valve1 ? waterCol : "#ff0000"}
+        onClick={Valve1Click}
+      />
       <Valve className="valve-container2" />
       <Valve className="valve-container3" />
       <Valve className="valve-container4" />
