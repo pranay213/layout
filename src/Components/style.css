@@ -1,0 +1,19 @@
+.circle-icon {
+  height: 4px;
+  width: 4px;
+  background: red;
+  position: absolute;
+  /* border-radius: 50%; */
+  border-top-left-radius: 80%;
+  border-top-right-radius: 80%;
+  left: 61.2%;
+  bottom: 57.3%;
+  margin: auto;
+}
+
+.layout-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

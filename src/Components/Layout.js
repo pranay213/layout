@@ -2,11 +2,11 @@ import React from "react";
 import layout from "../images/layout2.jpg";
 import Pump from "./Pump";
 import Circile from "./Circile";
+import "./style.css";
 
 export const Layout = () => {
   return (
-    <>
-      <Circile />
+    <div className="layout-container">
       <div
         style={{
           width: "90%",
@@ -19,8 +19,13 @@ export const Layout = () => {
           marginTop: "33%",
         }}
       >
-        <img src={layout} style={{ width: "100%", height: "100%" }} />
+        <img
+          src={layout}
+          style={{ width: "100%", height: "100%" }}
+          alt="layout"
+        />
       </div>
-    </>
+      <Circile />
+    </div>
   );
 };
