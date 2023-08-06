@@ -4,13 +4,14 @@ function Circile() {
   return <div style={circleStyle}></div>;
 }
 const circleStyle = {
-  width: 10,
-  height: 10,
+  width: 2,
+  height: 2,
   backgroundColor: "#ff0000",
-  borderRadius: "50%",
+  border: "1px solid red",
+  borderRadius: 2,
   position: "absolute",
-  top: "10%",
-  left: "50%",
+  top: "32.2%",
+  left: "61%",
 };
 
 export default Circile;
