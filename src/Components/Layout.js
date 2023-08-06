@@ -3,6 +3,7 @@ import layout from "../images/layout2.jpg";
 import Pump from "./Pump";
 import Circile from "./Circile";
 import "./style.css";
+import Valve from "../svg/Valve";
 
 export const Layout = () => {
   return (
@@ -23,8 +24,10 @@ export const Layout = () => {
           src={layout}
           style={{ width: "100%", height: "100%" }}
           alt="layout"
+          children={<Valve className="valve-container" fill="red" />}
         />
       </div>
+      {/* <Valve /> */}
       <Circile />
     </div>
   );
