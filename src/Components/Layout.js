@@ -19,7 +19,7 @@ const Layout = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (waterCol === "#416BDF") setWaterCol("#99C0E3");
+      if (waterCol === "#89DB02") setWaterCol("#99C0E3");
       else {
         setWaterCol("#89DB02");
       }
@@ -88,6 +88,7 @@ const Layout = () => {
         fill={valve1 ? waterCol : "#ff0000"}
         onClick={Valve1Click}
       />
+      <div className="valve-container" style={{ height: 30, width: 30 }}></div>
 
       <Valve
         className="valve-container2"
