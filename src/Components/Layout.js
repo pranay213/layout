@@ -1,6 +1,5 @@
 import React from "react";
 import layout from "../images/layout2.jpg";
-import Pump from "./Pump";
 import Circile from "./Circile";
 import "./style.css";
 import Valve from "../svg/Valve";
@@ -27,6 +26,15 @@ export const Layout = () => {
         />
       </div>
       <Valve className="valve-container" />
+      <Valve className="valve-container2" />
+      <Valve className="valve-container3" />
+      <Valve className="valve-container4" />
+      <Valve className="valve-container5" />
+      <Valve className="valve-container6" />
+      <Valve className="valve-container7" />
+      <Valve className="valve-container8" />
+      <Valve className="valve-container9" />
+
       <Circile />
     </div>
   );
