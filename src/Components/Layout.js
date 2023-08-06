@@ -4,7 +4,7 @@ import Circile from "./Circile";
 import "./style.css";
 import Valve from "../svg/Valve";
 
-export const Layout = () => {
+const Layout = () => {
   const [valve1, setValve1] = useState(true);
   const [waterCol, setWaterCol] = useState("#416BDF");
 
@@ -19,6 +19,7 @@ export const Layout = () => {
 
   const Valve1Click = () => {
     setValve1(!valve1);
+    window.scroll({ top: 0, behavior: "smooth" });
   };
   return (
     <div className="layout-container">
@@ -40,11 +41,21 @@ export const Layout = () => {
           alt="layout"
         />
       </div>
-      <Valve
-        className="valve-container"
-        fill={valve1 ? waterCol : "#ff0000"}
-        onClick={Valve1Click}
-      />
+      {valve1 ? (
+        <Valve
+          className="valve-container"
+          fill={valve1 ? waterCol : "#ff0000"}
+          onClick={Valve1Click}
+        />
+      ) : (
+        <div className="display-message">
+          <button className="close-button" onClick={Valve1Click}>
+            close
+          </button>
+          This is Conditional render
+        </div>
+      )}
+
       <Valve className="valve-container2" />
       <Valve className="valve-container3" />
       <Valve className="valve-container4" />
@@ -58,3 +69,5 @@ export const Layout = () => {
     </div>
   );
 };
+
+export default Layout;

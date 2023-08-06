@@ -24,13 +24,27 @@
 
 // export default App;
 
-import React from "react";
-import { Layout } from "./Components/Layout";
+import React, { Suspense, lazy, useEffect, useState } from "react";
+import Loader from "./Components/Loader";
+// import Layout from "./Components/Layout";
+const Layout = lazy(() => import("./Components/Layout"));
 
 const App = () => {
+  const [layoutView, setLayoutView] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setLayoutView(true);
+    }, 5000);
+  }, []);
   return (
     <div style={{ flex: 1 }}>
-      <Layout />
+      {layoutView ? (
+        <Suspense>
+          <Layout />
+        </Suspense>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

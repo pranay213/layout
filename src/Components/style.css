@@ -52,16 +52,16 @@
   top: 75.5%;
   right: 30.9%;
   transform: rotate(-60deg);
-  fill: #35df22
+  fill: #35df22;
 }
 .valve-container5 {
   height: 1.45%;
-    width: 1.45%;
-    position: absolute;
-    top: 71.8%;
-    right: 40.4%;
-    transform: rotate(-27deg);
-    fill: red;
+  width: 1.45%;
+  position: absolute;
+  top: 71.8%;
+  right: 40.4%;
+  transform: rotate(-27deg);
+  fill: red;
 }
 .valve-container6 {
   height: 1.45%;
@@ -71,7 +71,6 @@
   right: 25.65%;
   transform: rotate(-27deg);
   fill: #35df22;
-
 }
 .valve-container7 {
   height: 1.45%;
@@ -81,7 +80,6 @@
   right: 21.12%;
   transform: rotate();
   fill: red;
-
 }
 .valve-container8 {
   height: 1.45%;
@@ -91,7 +89,6 @@
   right: 54.12%;
   transform: rotate();
   fill: #35df22;
-
 }
 .valve-container9 {
   height: 1.45%;
@@ -101,11 +98,34 @@
   right: 55.12%;
   transform: rotate(-40deg);
   fill: red;
-
 }
 @media screen and (max-width: 320px) {
-  .valve-container,.valve-container2,.valve-container3,.valve-container4,.valve-container5,.valve-container6 ,.valve-container7,.valve-container8,.valve-container9{
+  .valve-container,
+  .valve-container2,
+  .valve-container3,
+  .valve-container4,
+  .valve-container5,
+  .valve-container6,
+  .valve-container7,
+  .valve-container8,
+  .valve-container9 {
     height: 1.2%;
     width: 1.2%;
   }
+}
+
+.display-message {
+  background-image: url("https://static.vecteezy.com/system/resources/previews/009/664/288/original/speech-bubble-talk-bubble-chat-bubble-icon-transparent-free-png.png");
+  background-size: cover;
+  /* background-position: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+}
+
+.close-button {
+  align-self: flex-end;
 }
