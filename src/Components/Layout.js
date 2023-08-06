@@ -14,6 +14,7 @@ const Layout = () => {
   const [valve7, setValve7] = useState(true);
   const [valve8, setValve8] = useState(true);
   const [valve9, setValve9] = useState(true);
+  const [msgDisp, setMsgDisp] = useState(false);
 
   const [waterCol, setWaterCol] = useState("#416BDF");
 
@@ -62,6 +63,9 @@ const Layout = () => {
     setValve9(!valve9);
     // window.scroll({ top: 0, behavior: "smooth" });
   };
+  const displayMsg = () => {
+    setMsgDisp(!msgDisp);
+  };
   return (
     <div className="layout-container">
       <div
@@ -87,8 +91,24 @@ const Layout = () => {
         className="valve-container"
         fill={valve1 ? waterCol : "#ff0000"}
         onClick={Valve1Click}
+        onDoubleClick={displayMsg}
       />
-      <div className="valve-container" style={{ height: 30, width: 30 }}></div>
+      {msgDisp && (
+        <div
+          className="valve-container "
+          style={{
+            height: 80,
+            width: "20%",
+            backgroundColor: "#FFFEE0",
+            left: "60%",
+            borderRadius: "5px 5px 0px 5px",
+            zIndex: 10,
+            border: "1px solid black",
+          }}
+        >
+          <div className="arrow-left"></div>
+        </div>
+      )}
 
       <Valve
         className="valve-container2"
