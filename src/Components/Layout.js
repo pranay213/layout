@@ -21,7 +21,7 @@ const Layout = () => {
     setTimeout(() => {
       if (waterCol === "#416BDF") setWaterCol("#99C0E3");
       else {
-        setWaterCol("#416BDF");
+        setWaterCol("#89DB02");
       }
     }, 500);
   }, [waterCol, valve1]);
