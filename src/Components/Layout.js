@@ -96,7 +96,7 @@ const Layout = () => {
     }, 1000);
     if (tapsState) {
       setTimeout(() => {
-        if (tapColor === "#7FCDFF") setTapColor("#0000ff");
+        if (tapColor === "#7FCDFF") setTapColor("#A82B02");
         else {
           setTapColor((prev) => "#7FCDFF");
         }
