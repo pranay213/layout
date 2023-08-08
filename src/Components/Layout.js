@@ -90,8 +90,8 @@ const Layout = () => {
   };
 
   const [dimentions, setDimentions] = useState({
-    height: 5,
-    width: 5,
+    height: 4,
+    width: 4,
     fill: "#A82904",
   });
 
