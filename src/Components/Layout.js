@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import layout from "../images/layout2.jpg";
-import Circile from "./Circile";
 import "./style.css";
 import Valve from "../svg/Valve";
-
+import Taps from "./Taps";
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
 const Layout = () => {
   const [valve1, setValve1] = useState(true);
   const [valve2, setValve2] = useState(true);
@@ -15,16 +16,94 @@ const Layout = () => {
   const [valve8, setValve8] = useState(true);
   const [valve9, setValve9] = useState(true);
   const [msgDisp, setMsgDisp] = useState(false);
+  const [tapsData, setTapData] = useState([
+    {
+      id: 1,
+      left: "61.0%",
+      bottom: "56.9%",
+      fill: "red",
+    },
+    {
+      id: 2,
+      left: "62%",
+      bottom: "53%",
+      fill: "red",
+    },
+    {
+      id: 3,
+      left: "62.44%",
+      bottom: "49.5%",
+      fill: "red",
+    },
+    {
+      id: 4,
+      left: "62.64%",
+      bottom: "45.6%",
+      fill: "red",
+    },
+    {
+      id: 5,
+      left: "62.5%",
+      bottom: "41.9%",
+      fill: "red",
+    },
+    {
+      id: 6,
+      left: "69.2%",
+      bottom: "40.9%",
+      fill: "red",
+    },
+    {
+      id: 7,
+      left: "68.5%",
+      bottom: "44.5%",
+      fill: "red",
+    },
+    {
+      id: 8,
+      left: "67.5%",
+      bottom: "48.4%",
+      fill: "red",
+    },
+    {
+      id: 9,
+      left: "67.1%",
+      bottom: "52.1%",
+      fill: "red",
+    },
+    {
+      id: 10,
+      left: "66.1%",
+      bottom: "55.95%",
+      fill: "red",
+    },
+    {
+      id: 11,
+      left: "65.5%",
+      bottom: "59.7%",
+      fill: "red",
+    },
+  ]);
+  const commonStyles = {
+    position: "absolute",
+    borderRadius: "50%",
+  };
+
+  const [dimentions, setDimentions] = useState({
+    height: 5,
+    width: 5,
+    fill: "#A82904",
+  });
 
   const [waterCol, setWaterCol] = useState("#416BDF");
 
   useEffect(() => {
     setTimeout(() => {
-      if (waterCol === "#89DB02") setWaterCol("#99C0E3");
+      if (waterCol === "#006100") setWaterCol("#99C0E3");
       else {
-        setWaterCol("#89DB02");
+        setWaterCol((prev) => "#006100");
       }
-    }, 500);
+    }, 1000);
   }, [waterCol, valve1]);
 
   const Valve1Click = () => {
@@ -66,6 +145,13 @@ const Layout = () => {
   const displayMsg = () => {
     setMsgDisp(!msgDisp);
   };
+
+  useEffect(() => {
+    console.log({
+      windowWidth,
+      windowHeight,
+    });
+  }, []);
   return (
     <div className="layout-container">
       <div
@@ -156,7 +242,18 @@ const Layout = () => {
         onClick={Valve9Click}
       />
 
-      <Circile />
+      {tapsData &&
+        tapsData.map((item) => {
+          return (
+            <Taps
+              style={{
+                ...commonStyles,
+                ...item,
+                ...dimentions,
+              }}
+            />
+          );
+        })}
     </div>
   );
 };

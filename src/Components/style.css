@@ -1,12 +1,11 @@
 .circle-icon {
-  height: 10px;
-  width: 10px;
-  background: red;
+ height: 1.1%;
+ width: 1.1%;
   position: absolute;
-  border-radius: 50%;
-  left: 61.2%;
-  bottom: 57.3%;
-  /* margin: auto; */
+  border-radius: 50%; 
+   left: 61.0%;
+  bottom: 56.9%; 
+  margin: auto;
 }
 
 .layout-container {
@@ -112,10 +111,20 @@
     height: 1.2%;
     width: 1.2%;
   }
-  .circle-icon
+  
+}
+.circle-icon2
+{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+@media screen and (max-width: 420) {
+  .circle-icon2
   {
-    height: 1px;
-    width: 1px;
+    height: 2px !important;
+    width: 2px !important;
+      border-radius: 50%;
   }
 }
 
