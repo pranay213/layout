@@ -16,83 +16,73 @@ const Layout = () => {
   const [valve8, setValve8] = useState(true);
   const [valve9, setValve9] = useState(true);
   const [msgDisp, setMsgDisp] = useState(false);
+
+  const commonStyles = {
+    position: "absolute",
+    borderRadius: "50%",
+  };
+  const [tapsState, setTapState] = useState(true);
+  const [tapColor, setTapColor] = useState("#7FCDFF");
   const [tapsData, setTapData] = useState([
     {
       id: 1,
       left: "61.0%",
       bottom: "56.9%",
-      fill: "red",
     },
     {
       id: 2,
       left: "62%",
       bottom: "53%",
-      fill: "red",
     },
     {
       id: 3,
       left: "62.44%",
       bottom: "49.5%",
-      fill: "red",
     },
     {
       id: 4,
       left: "62.64%",
       bottom: "45.6%",
-      fill: "red",
     },
     {
       id: 5,
       left: "62.5%",
       bottom: "41.9%",
-      fill: "red",
     },
     {
       id: 6,
       left: "69.2%",
       bottom: "40.9%",
-      fill: "red",
     },
     {
       id: 7,
       left: "68.5%",
       bottom: "44.5%",
-      fill: "red",
     },
     {
       id: 8,
       left: "67.5%",
       bottom: "48.4%",
-      fill: "red",
     },
     {
       id: 9,
       left: "67.1%",
       bottom: "52.1%",
-      fill: "red",
     },
     {
       id: 10,
       left: "66.1%",
       bottom: "55.95%",
-      fill: "red",
     },
     {
       id: 11,
       left: "65.5%",
       bottom: "59.7%",
-      fill: "red",
     },
   ]);
-  const commonStyles = {
-    position: "absolute",
-    borderRadius: "50%",
-  };
-
   const [dimentions, setDimentions] = useState({
     height: 4,
     width: 4,
-    fill: "#A82904",
   });
 
   const [waterCol, setWaterCol] = useState("#416BDF");
@@ -104,14 +94,22 @@ const Layout = () => {
         setWaterCol((prev) => "#006100");
       }
     }, 1000);
-  }, [waterCol, valve1]);
+    if (tapsState) {
+      setTimeout(() => {
+        if (tapColor === "#7FCDFF") setTapColor("#0000ff");
+        else {
+          setTapColor((prev) => "#7FCDFF");
+        }
+      }, 500);
+    }
+  }, [waterCol, valve1, tapsState, tapColor]);
 
   const Valve1Click = () => {
     setValve1(!valve1);
-    // window.scroll({ top: 0, behavior: "smooth" });
   };
   const Valve2Click = () => {
     setValve2(!valve2);
+    setTapState(!tapsState);
     // window.scroll({ top: 0, behavior: "smooth" });
   };
   const Valve3Click = () => {
@@ -140,6 +138,8 @@ const Layout = () => {
   };
   const Valve9Click = () => {
     setValve9(!valve9);
+    // window.scroll({ top: 0, behavior: "smooth" });
+
     // window.scroll({ top: 0, behavior: "smooth" });
   };
   const displayMsg = () => {
@@ -251,6 +251,7 @@ const Layout = () => {
                 ...item,
                 ...dimentions,
               }}
+              fill={tapsState ? tapColor : "#B62511"}
             />
           );
         })}
