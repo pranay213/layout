@@ -3,23 +3,18 @@ import layout from "../images/layout2.jpg";
 import "./style.css";
 import Valve from "../svg/Valve";
 import Taps from "./Taps";
+import Motor from "./Motor";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = () => {
-  const [valve1, setValve1] = useState(true);
-  const [valve2, setValve2] = useState(true);
-  const [valve3, setValve3] = useState(true);
-  const [valve4, setValve4] = useState(true);
-  const [valve5, setValve5] = useState(true);
-  const [valve6, setValve6] = useState(true);
-  const [valve7, setValve7] = useState(true);
-  const [valve8, setValve8] = useState(true);
-  const [valve9, setValve9] = useState(true);
-  const [msgDisp, setMsgDisp] = useState(false);
-
   const commonStyles = {
     position: "absolute",
     borderRadius: "50%",
+  };
+  let valveCommonStyles = {
+    height: "1.35%",
+    width: "1.35%",
+    position: "absolute",
   };
   const [tapsState, setTapState] = useState(true);
   const [tapColor, setTapColor] = useState("#7FCDFF");
@@ -80,9 +75,112 @@ const Layout = () => {
       bottom: "59.7%",
     },
   ]);
+
+  const [valvesData, setValvesData] = useState([
+    {
+      id: 1,
+      top: " 54.1%",
+      right: "41.2%",
+      transform: "rotate(-180deg)",
+      state: false,
+    },
+    {
+      id: 2,
+      top: "52.1%",
+      right: "29.5%",
+      transform: "rotate(-180deg)",
+      state: false,
+    },
+    {
+      id: 3,
+      top: "60.5%",
+      right: "28.9%",
+      transform: "rotate(-180deg)",
+      state: false,
+    },
+    {
+      id: 4,
+      top: "75.5%",
+      right: "30.9%",
+      transform: "rotate(-60deg)",
+      state: false,
+    },
+    {
+      id: 5,
+      top: "71.8%",
+      right: "40.4%",
+      transform: "rotate(-27deg)",
+      state: false,
+    },
+    {
+      id: 6,
+      top: "81.6%",
+      right: "25.65%",
+      transform: "rotate(-27deg)",
+      state: false,
+    },
+    {
+      id: 7,
+      top: "86%",
+      right: "21.12%",
+      transform: "rotate()",
+      state: false,
+    },
+    {
+      id: 8,
+      top: "52%",
+      right: "54.12%",
+      transform: "rotate()",
+      state: false,
+    },
+    {
+      id: 9,
+      top: "54.8%",
+      right: "55.12%",
+      transform: "rotate(-40deg)",
+      state: true,
+    },
+  ]);
   const [dimentions, setDimentions] = useState({
     height: 4,
     width: 4,
+  });
+
+  const [motorsData, setMotorsData] = useState([
+    {
+      id: 1,
+      left: "61.6%",
+      bottom: "35.9%",
+    },
+    {
+      id: 2,
+      left: "70.6%",
+      bottom: "35.2%",
+    },
+    {
+      id: 3,
+      left: "61.9%",
+      bottom: "30.1%",
+    },
+    {
+      id: 4,
+      left: "71.9%",
+      bottom: "28.6%",
+    },
+    {
+      id: 5,
+      left: "66.9%",
+      bottom: "24.8%",
+    },
+    {
+      id: 6,
+      left: "73.9%",
+      bottom: "21.6%",
+    },
+  ]);
+  const [motorDimentions, setMotorDimentions] = useState({
+    height: 5,
+    width: 5,
   });
 
   const [waterCol, setWaterCol] = useState("#416BDF");
@@ -102,56 +200,17 @@ const Layout = () => {
         }
       }, 500);
     }
-  }, [waterCol, valve1, tapsState, tapColor]);
+  }, [waterCol, valvesData, tapsState, tapColor]);
 
-  const Valve1Click = () => {
-    setValve1(!valve1);
-  };
-  const Valve2Click = () => {
-    setValve2(!valve2);
-    setTapState(!tapsState);
-    // window.scroll({ top: 0, behavior: "smooth" });
-  };
-  const Valve3Click = () => {
-    setValve3(!valve3);
-    // window.scroll({ top: 0, behavior: "smooth" });
-  };
-  const Valve4Click = () => {
-    setValve4(!valve4);
-    // window.scroll({ top: 0, behavior: "smooth" });
-  };
-  const Valve5Click = () => {
-    setValve5(!valve5);
-    // window.scroll({ top: 0, behavior: "smooth" });
-  };
-  const Valve6Click = () => {
-    setValve6(!valve6);
-    // window.scroll({ top: 0, behavior: "smooth" });
-  };
-  const Valve7Click = () => {
-    setValve7(!valve7);
-    // window.scroll({ top: 0, behavior: "smooth" });
-  };
-  const Valve8Click = () => {
-    setValve8(!valve8);
-    // window.scroll({ top: 0, behavior: "smooth" });
-  };
-  const Valve9Click = () => {
-    setValve9(!valve9);
-    // window.scroll({ top: 0, behavior: "smooth" });
-
-    // window.scroll({ top: 0, behavior: "smooth" });
-  };
-  const displayMsg = () => {
-    setMsgDisp(!msgDisp);
-  };
-
-  useEffect(() => {
-    console.log({
-      windowWidth,
-      windowHeight,
+  const toggleValve = (id) => {
+    valvesData.map((item) => {
+      if (item.id === id) {
+        item.state = !item.state;
+      }
     });
-  }, []);
+    // setValvesData((prev) => [...newValveData]);
+  };
+
   return (
     <div className="layout-container">
       <div
@@ -173,13 +232,24 @@ const Layout = () => {
         />
       </div>
 
-      <Valve
-        className="valve-container"
-        fill={valve1 ? waterCol : "#ff0000"}
-        onClick={Valve1Click}
-        onDoubleClick={displayMsg}
-      />
-      {msgDisp && (
+      {valvesData &&
+        valvesData.map((item) => {
+          return (
+            <Valve
+              style={{
+                ...valveCommonStyles,
+                ...item,
+                // ...dimentions,
+              }}
+              fill={item.state ? waterCol : "#ff0000"}
+              onClick={() => {
+                toggleValve(item.id);
+              }}
+            />
+          );
+        })}
+
+      {/* {msgDisp && (
         <div
           className="valve-container "
           style={{
@@ -199,48 +269,7 @@ const Layout = () => {
             {valve1 ? "ON" : "OFF"}
           </p>
         </div>
-      )}
-
-      <Valve
-        className="valve-container2"
-        fill={valve2 ? waterCol : "#ff0000"}
-        onClick={Valve2Click}
-      />
-      <Valve
-        className="valve-container3"
-        fill={valve3 ? waterCol : "#ff0000"}
-        onClick={Valve3Click}
-      />
-      <Valve
-        className="valve-container4"
-        fill={valve4 ? waterCol : "#ff0000"}
-        onClick={Valve4Click}
-      />
-      <Valve
-        className="valve-container5"
-        fill={valve5 ? waterCol : "#ff0000"}
-        onClick={Valve5Click}
-      />
-      <Valve
-        className="valve-container6"
-        fill={valve6 ? waterCol : "#ff0000"}
-        onClick={Valve6Click}
-      />
-      <Valve
-        className="valve-container7"
-        fill={valve7 ? waterCol : "#ff0000"}
-        onClick={Valve7Click}
-      />
-      <Valve
-        className="valve-container8"
-        fill={valve8 ? waterCol : "#ff0000"}
-        onClick={Valve8Click}
-      />
-      <Valve
-        className="valve-container9"
-        fill={valve9 ? waterCol : "#ff0000"}
-        onClick={Valve9Click}
-      />
+      )} */}
 
       {tapsData &&
         tapsData.map((item) => {
@@ -252,6 +281,21 @@ const Layout = () => {
                 ...dimentions,
               }}
               fill={tapsState ? tapColor : "#B62511"}
+            />
+          );
+        })}
+
+      {motorsData &&
+        motorsData.map((item) => {
+          return (
+            <Motor
+              style={{
+                ...commonStyles,
+                ...item,
+                ...motorDimentions,
+              }}
+              fill={"#00f"}
+              // fill={tapsState ? tapColor : "#B62511"}
             />
           );
         })}
