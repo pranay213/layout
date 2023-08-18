@@ -5,7 +5,7 @@ const SVGComponent = (props) => {
   React.useEffect(() => {
     setTimeout(() => {
       setTransfromDeg((prev) => prev + 1);
-    }, 10);
+    }, 1);
   }, [transformDeg]);
 
   return (
