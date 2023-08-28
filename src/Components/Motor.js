@@ -3,11 +3,11 @@ const SVGComponent = (props) => {
   const { fill, fill2, fill3 } = props;
   const [transformDeg, setTransfromDeg] = React.useState(0);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setTransfromDeg((prev) => prev + 1);
-    }, 1);
-  }, [transformDeg]);
+  // React.useEffect(() => {
+  //   setTimeout(() => {
+  //     setTransfromDeg((prev) => prev + 1);
+  //   }, 1);
+  // }, [transformDeg]);
 
   return (
     <svg

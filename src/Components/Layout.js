@@ -4,6 +4,7 @@ import "./style.css";
 import Valve from "../svg/Valve";
 import Taps from "./Taps";
 import Motor from "./Motor";
+import "../Anim.css";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = () => {
@@ -346,6 +347,7 @@ const Layout = () => {
               fill={"#B62511"}
               fill2={"#B62511"}
               fill3={"#ddd"}
+              className="rotate"
             />
           );
         })}
@@ -362,6 +364,7 @@ const Layout = () => {
               fill={"#00f"}
               fill2={"#00f"}
               fill3={"#ddd"}
+              className="rotate"
               // fill={tapsState ? tapColor : "#B62511"}
             />
           );

@@ -1,0 +1,7 @@
+.rotate{
+    animation: mymove 500ms infinite;
+}
+@keyframes mymove {
+    /* 0%{transform: rotate(180deg);} */
+    100% {transform: rotate(360deg);}
+  }
