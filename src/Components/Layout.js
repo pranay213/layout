@@ -334,13 +334,18 @@ const Layout = () => {
       {tapsData &&
         tapsData.map((item) => {
           return (
-            <Taps
+            <Motor
               style={{
                 ...commonStyles,
                 ...item,
-                ...dimentions,
+                // ...dimentions,
+                height: 3,
+                width: 3,
               }}
-              fill={tapsState ? tapColor : "#B62511"}
+              // fill={tapsState ? tapColor : "#B62511"}
+              fill={"#B62511"}
+              fill2={"#B62511"}
+              fill3={"#ddd"}
             />
           );
         })}
@@ -355,6 +360,8 @@ const Layout = () => {
                 ...motorDimentions,
               }}
               fill={"#00f"}
+              fill2={"#00f"}
+              fill3={"#ddd"}
               // fill={tapsState ? tapColor : "#B62511"}
             />
           );
