@@ -111,7 +111,7 @@ const Layout = () => {
     },
     {
       id: 19,
-      left: "44.5%",
+      left: "45.2%",
       bottom: "43.5%",
     },
     {
@@ -129,11 +129,11 @@ const Layout = () => {
       left: "59.6%",
       bottom: "25.2%",
     },
-    {
-      id: 23,
-      left: "59.6%",
-      bottom: "25.2%",
-    },
+    // {
+    //   id: 23,
+    //   left: "59.6%",
+    //   bottom: "25.2%",
+    // },
   ]);
 
   const [valvesData, setValvesData] = useState([
@@ -196,7 +196,7 @@ const Layout = () => {
     {
       id: 9,
       top: "54.8%",
-      right: "55.12%",
+      right: "55.5%",
       transform: "rotate(-40deg)",
       state: true,
     },
