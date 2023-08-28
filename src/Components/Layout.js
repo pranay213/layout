@@ -74,6 +74,66 @@ const Layout = () => {
       left: "65.5%",
       bottom: "59.7%",
     },
+    {
+      id: 12,
+      left: "44%",
+      bottom: "52.7%",
+    },
+    {
+      id: 13,
+      left: "39.2%",
+      bottom: "50.7%",
+    },
+    {
+      id: 14,
+      left: "35.2%",
+      bottom: "51.7%",
+    },
+    {
+      id: 15,
+      left: "32.2%",
+      bottom: "49.7%",
+    },
+    {
+      id: 16,
+      left: "30.2%",
+      bottom: "46.2%",
+    },
+    {
+      id: 17,
+      left: "35.5%",
+      bottom: "46.9%",
+    },
+    {
+      id: 18,
+      left: "40.5%",
+      bottom: "45.5%",
+    },
+    {
+      id: 19,
+      left: "44.5%",
+      bottom: "43.5%",
+    },
+    {
+      id: 20,
+      left: "44.6%",
+      bottom: "48.2%",
+    },
+    {
+      id: 21,
+      left: "52.6%",
+      bottom: "25.2%",
+    },
+    {
+      id: 22,
+      left: "59.6%",
+      bottom: "25.2%",
+    },
+    {
+      id: 23,
+      left: "59.6%",
+      bottom: "25.2%",
+    },
   ]);
 
   const [valvesData, setValvesData] = useState([
