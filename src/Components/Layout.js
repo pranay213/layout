@@ -5,6 +5,8 @@ import Valve from "../svg/Valve";
 import Taps from "./Taps";
 import Motor from "./Motor";
 import "../Anim.css";
+import NewMotor from "./NewMotor";
+import waterAnim from "../images/water.gif";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = () => {
@@ -130,11 +132,103 @@ const Layout = () => {
       left: "59.6%",
       bottom: "25.2%",
     },
-    // {
-    //   id: 23,
-    //   left: "59.6%",
-    //   bottom: "25.2%",
-    // },
+    {
+      id: 23,
+      left: "39.5%",
+      bottom: "48.6%",
+      fill1: "green",
+      fill2: "green",
+      fill3: "#ddd",
+      className: "rotate",
+    },
+    {
+      id: 24,
+      left: "66.5%",
+      bottom: "20.8%",
+      fill1: "#ff0000",
+      fill2: "#ff0000",
+      fill3: "#ddd",
+      className: "rotate",
+      height: 2,
+      width: 2,
+    },
+    {
+      id: 25,
+      left: "68.5%",
+      bottom: "20%",
+      fill1: "#ff0000",
+      fill2: "#ff0000",
+      fill3: "#ddd",
+      height: 2,
+      width: 2,
+      className: "rotate",
+    },
+    {
+      id: 26,
+      left: "69.9%",
+      bottom: "19.5%",
+      fill1: "#ff0000",
+      fill2: "#ff0000",
+      fill3: "#ddd",
+      height: 2,
+      width: 2,
+      className: "rotate",
+    },
+    {
+      id: 27,
+      left: "71.7%",
+      bottom: "19%",
+      fill1: "#ff0000",
+      fill2: "#ff0000",
+      fill3: "#ddd",
+      height: 2,
+      width: 2,
+      className: "rotate",
+    },
+    {
+      id: 28,
+      left: "73.4%",
+      bottom: "18.6%",
+      fill1: "#ff0000",
+      fill2: "#ff0000",
+      fill3: "#ddd",
+      height: 2,
+      width: 2,
+      className: "rotate",
+    },
+    {
+      id: 29,
+      left: "75.2%",
+      bottom: "18.2%",
+      fill1: "#ff0000",
+      fill2: "#ff0000",
+      fill3: "#ddd",
+      height: 2,
+      width: 2,
+      className: "rotate",
+    },
+    {
+      id: 30,
+      left: "75.4%",
+      bottom: "17%",
+      fill1: "#ff0000",
+      fill2: "#ff0000",
+      fill3: "#ddd",
+      height: 2,
+      width: 2,
+      className: "rotate",
+    },
+    {
+      id: 31,
+      left: "75.6%",
+      bottom: "16%",
+      fill1: "#ff0000",
+      fill2: "#ff0000",
+      fill3: "#ddd",
+      height: 2,
+      width: 2,
+      className: "rotate",
+    },
   ]);
 
   const [valvesData, setValvesData] = useState([
@@ -340,14 +434,21 @@ const Layout = () => {
                 ...commonStyles,
                 ...item,
                 // ...dimentions,
-                height: 3,
-                width: 3,
+                height: item.height ? item.height : 3,
+                width: item.width ? item.width : 3,
               }}
               // fill={tapsState ? tapColor : "#B62511"}
-              fill={"#B62511"}
-              fill2={"#B62511"}
-              fill3={"#ddd"}
+              // fill={"#B62511"}
+              // fill2={"#B62511"}
+              // fill3={"#ddd"}
+              fill={item.fill1 ? item.fill1 : "#B62511"}
+              fill2={item.fill2 ? item.fill2 : "#B62511"}
+              fill3={item.fill3 ? item.fill3 : "#ddd"}
+              // fill={item.fill1 ? item.fill1 : "#0000ff"}
+              // fill2={item.fill2 ? item.fill2 : "#0000ff"}
+              // fill3={item.fill3 ? item.fill3 : "#ddd"}
               className="rotate"
+              // className={item.className ? item.className : ""}
             />
           );
         })}
