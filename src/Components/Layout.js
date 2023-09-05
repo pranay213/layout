@@ -789,7 +789,7 @@ const Layout = () => {
           );
         })}
 
-      {true && (
+      {/* {true && (
         <div
           className="valve-container "
           style={{
@@ -806,10 +806,10 @@ const Layout = () => {
           <p style={{ transform: "rotate(180deg)" }}>Valve Number :5</p>
           <p style={{ transform: "rotate(180deg)" }}>
             {"Status"}
-            {/* {valve1 ? "ON" : "OFF"} */}
+            {valve1 ? "ON" : "OFF"}
           </p>
         </div>
-      )}
+      )} */}
 
       {tapsData &&
         tapsData.map((item) => {
