@@ -624,6 +624,7 @@ const Layout = () => {
       right: "41.2%",
       transform: "rotate(-180deg)",
       state: true,
+      msgDisp: true,
     },
     {
       id: 2,
@@ -631,6 +632,7 @@ const Layout = () => {
       right: "29.5%",
       transform: "rotate(-180deg)",
       state: false,
+      msgDisp: false,
     },
     {
       id: 3,
@@ -638,6 +640,7 @@ const Layout = () => {
       right: "28.9%",
       transform: "rotate(-180deg)",
       state: false,
+      msgDisp: false,
     },
     {
       id: 4,
@@ -645,6 +648,7 @@ const Layout = () => {
       right: "30.9%",
       transform: "rotate(-60deg)",
       state: false,
+      msgDisp: false,
     },
     {
       id: 5,
@@ -652,6 +656,7 @@ const Layout = () => {
       right: "40.4%",
       transform: "rotate(-27deg)",
       state: false,
+      msgDisp: false,
     },
     {
       id: 6,
@@ -659,6 +664,7 @@ const Layout = () => {
       right: "25.65%",
       transform: "rotate(-27deg)",
       state: false,
+      msgDisp: false,
     },
     {
       id: 7,
@@ -666,6 +672,7 @@ const Layout = () => {
       right: "21.12%",
       transform: "rotate()",
       state: false,
+      msgDisp: false,
     },
     {
       id: 8,
@@ -673,6 +680,7 @@ const Layout = () => {
       right: "54.12%",
       transform: "rotate()",
       state: false,
+      msgDisp: false,
     },
     {
       id: 9,
@@ -680,6 +688,7 @@ const Layout = () => {
       right: "55.5%",
       transform: "rotate(-40deg)",
       state: true,
+      msgDisp: false,
     },
   ]);
   const [dimentions, setDimentions] = useState({
@@ -758,6 +767,13 @@ const Layout = () => {
     // setValvesData((prev) => [...newValveData]);
   };
 
+  const toggleMsg = (id) => {
+    valvesData.map((item) => {
+      if (item.id === id) {
+        item.msgDisp = !item.msgDisp;
+      }
+    });
+  };
   const ShowDisplayMsg = () => {};
 
   return (
@@ -791,11 +807,11 @@ const Layout = () => {
                 // ...dimentions,
               }}
               fill={item.state ? waterCol : "#ff0000"}
+              // onClick={() => {
+              //   toggleValve(item.id);
+              // }}
               onClick={() => {
-                toggleValve(item.id);
-              }}
-              onDoubleClick={() => {
-                setShowMsg(true);
+                toggleMsg(item.id);
               }}
             />
           );
@@ -825,7 +841,13 @@ const Layout = () => {
       {/* {msgData && msgData.length > 0 && (
         <DisplayMsg msgData={msgData} valvesData={valvesData} />
       )} */}
-      {/* {showMsg && <DisplayMsg tapsData={tapsData} valvesData={valvesData} />} */}
+      {
+        <DisplayMsg
+          tapsData={tapsData}
+          valvesData={valvesData}
+          toggleMsg={toggleMsg}
+        />
+      }
 
       {tapsData &&
         tapsData.map((item) => {
