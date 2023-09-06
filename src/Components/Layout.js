@@ -623,7 +623,7 @@ const Layout = () => {
       top: " 54.1%",
       right: "41.2%",
       transform: "rotate(-180deg)",
-      state: false,
+      state: true,
     },
     {
       id: 2,
@@ -723,6 +723,7 @@ const Layout = () => {
     height: 5,
     width: 5,
   });
+  const [showMsg, setShowMsg] = useState(false);
 
   const [msgData, setMsgData] = useState([
     {
@@ -756,6 +757,8 @@ const Layout = () => {
     });
     // setValvesData((prev) => [...newValveData]);
   };
+
+  const ShowDisplayMsg = () => {};
 
   return (
     <div className="layout-container">
@@ -791,6 +794,9 @@ const Layout = () => {
               onClick={() => {
                 toggleValve(item.id);
               }}
+              onDoubleClick={() => {
+                setShowMsg(true);
+              }}
             />
           );
         })}
@@ -819,7 +825,7 @@ const Layout = () => {
       {/* {msgData && msgData.length > 0 && (
         <DisplayMsg msgData={msgData} valvesData={valvesData} />
       )} */}
-      {/* <DisplayMsg tapsData={tapsData} valvesData={valvesData} /> */}
+      {/* {showMsg && <DisplayMsg tapsData={tapsData} valvesData={valvesData} />} */}
 
       {tapsData &&
         tapsData.map((item) => {
@@ -842,7 +848,7 @@ const Layout = () => {
               // fill={item.fill1 ? item.fill1 : "#0000ff"}
               // fill2={item.fill2 ? item.fill2 : "#0000ff"}
               // fill3={item.fill3 ? item.fill3 : "#ddd"}
-              className="rotate"
+              className={valvesData[0].state ? "rotate" : ""}
               // className={item.className ? item.className : ""}
             />
           );
