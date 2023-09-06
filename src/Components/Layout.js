@@ -7,6 +7,7 @@ import Motor from "./Motor";
 import "../Anim.css";
 import NewMotor from "./NewMotor";
 import waterAnim from "../images/water.gif";
+import DisplayMsg from "./DisplayMsg";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = () => {
@@ -723,6 +724,11 @@ const Layout = () => {
     width: 5,
   });
 
+  const [msgData, setMsgData] = useState([
+    {
+      id: 1,
+    },
+  ]);
   const [waterCol, setWaterCol] = useState("#416BDF");
 
   useEffect(() => {
@@ -810,6 +816,10 @@ const Layout = () => {
           </p>
         </div>
       )} */}
+      {/* {msgData && msgData.length > 0 && (
+        <DisplayMsg msgData={msgData} valvesData={valvesData} />
+      )} */}
+      {/* <DisplayMsg tapsData={tapsData} valvesData={valvesData} /> */}
 
       {tapsData &&
         tapsData.map((item) => {
