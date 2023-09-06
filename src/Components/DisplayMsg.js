@@ -20,7 +20,7 @@ const DisplayMsg = (props) => {
             width: 40,
             ...newDimensions,
             transform: [" rotate(0deg)"],
-            backgroundColor: "rgba(0,0,0,0.35)",
+            backgroundColor: "rgba(45,23,78,0.45)",
             borderRadius: "0px 2px 2px 2px",
             zIndex: 1,
             //   border: "0.1px dotted",

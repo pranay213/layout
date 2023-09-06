@@ -807,9 +807,9 @@ const Layout = () => {
                 // ...dimentions,
               }}
               fill={item.state ? waterCol : "#ff0000"}
-              // onClick={() => {
-              //   toggleValve(item.id);
-              // }}
+              onDoubleClick={() => {
+                toggleValve(item.id);
+              }}
               onClick={() => {
                 toggleMsg(item.id);
               }}
