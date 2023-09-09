@@ -733,7 +733,8 @@ const Layout = () => {
     height: 5,
     width: 5,
   });
-  const [seconds, setSeconds] = useState(0);
+  // const [seconds, setSeconds] = useState(25);
+
   const [dripData, setDripData] = useState([
     // {
     //   id: 1,
@@ -769,6 +770,7 @@ const Layout = () => {
       transform: "rotate(-69deg)",
       top: "66.2%",
       left: "20.9%",
+      delay: 0,
     },
     {
       id: 6,
@@ -844,6 +846,20 @@ const Layout = () => {
       }
     });
   };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const newDripData = dripData.map((obj, i) => ({
+        ...obj,
+        delay: obj.delay + 25,
+      }));
+      setDripData(newDripData);
+      console.log("newDripData", newDripData);
+    }, 25000);
+    return () => {
+      clearInterval(timeout);
+    };
+  }, [dripData]);
 
   const ShowDisplayMsg = () => {};
 
