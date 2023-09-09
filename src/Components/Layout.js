@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import layout from "../images/layout2.jpg";
-import "./style.css";
+import layout from "../images/layout3.jpg";
+import "./style.scss";
 import Valve from "../svg/Valve";
 import Taps from "./Taps";
 import Motor from "./Motor";
@@ -8,6 +8,7 @@ import "../Anim.css";
 import NewMotor from "./NewMotor";
 import waterAnim from "../images/water.gif";
 import DisplayMsg from "./DisplayMsg";
+import Line from "./Line";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = () => {
@@ -732,7 +733,76 @@ const Layout = () => {
     height: 5,
     width: 5,
   });
-  const [showMsg, setShowMsg] = useState(false);
+  const [seconds, setSeconds] = useState(0);
+  const [dripData, setDripData] = useState([
+    // {
+    //   id: 1,
+    //   left: "49%",
+    //   top: "82.2%",
+    //   transform: "rotate(16deg)",
+    //   width: "12.2%",
+    // },
+    // {
+    //   id: 2,
+    //   left: "60%",
+    //   top: "76.8%",
+    //   transform: "rotate(14deg)",
+    //   width: "4%",
+    // },
+    // {
+    //   id: 3,
+    //   left: "55.3%",
+    //   top: "77.5%",
+    //   transform: "rotate(14deg)",
+    //   width: "10%",
+    // },
+    // {
+    //   id: 4,
+    //   left: "52%",
+    //   top: "77.8%",
+    //   transform: "rotate(14deg)",
+    //   width: "12%",
+    // },
+    {
+      id: 5,
+      width: "5.8%",
+      transform: "rotate(-69deg)",
+      top: "66.2%",
+      left: "20.9%",
+    },
+    {
+      id: 6,
+      width: "5.5%",
+      transform: "rotate(-83deg)",
+      top: "70%",
+      left: "19.5%",
+      delay: 5,
+    },
+    {
+      id: 7,
+      width: "5.5%",
+      transform: "rotate(-87deg)",
+      top: "74%",
+      left: "19.2%",
+      delay: 10,
+    },
+    {
+      id: 7,
+      width: "5.5%",
+      transform: "rotate(-98deg)",
+      top: "78%",
+      left: "19.4%",
+      delay: 15,
+    },
+    {
+      id: 7,
+      width: "5.5%",
+      transform: "rotate(-108deg)",
+      top: "81.7%",
+      left: "20.5%",
+      delay: 20,
+    },
+  ]);
 
   const [msgData, setMsgData] = useState([
     {
@@ -774,6 +844,7 @@ const Layout = () => {
       }
     });
   };
+
   const ShowDisplayMsg = () => {};
 
   return (
@@ -875,6 +946,11 @@ const Layout = () => {
             />
           );
         })}
+      {dripData &&
+        dripData.map((item) => {
+          return <Line key={item.id} item={item} />;
+        })}
+      <Line />
 
       {motorsData &&
         motorsData.map((item) => {
