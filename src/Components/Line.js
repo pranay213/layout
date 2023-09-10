@@ -23,7 +23,7 @@ const Liquid = styled.div`
   animation: ${(props) =>
     props.delay
       ? `drip 5s linear ${props.delay}s 1 forwards`
-      : "drip 5s linear 0s 1 forwards"};
+      : "drip 5s linear 0s infinte forwards"};
 `;
 
 const Line = (props) => {

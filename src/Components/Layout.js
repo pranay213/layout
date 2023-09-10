@@ -929,6 +929,19 @@ const Layout = () => {
       }
     });
   };
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const newDripData = dripData.map((obj, i) => ({
+        ...obj,
+        delay: obj.delay + 25,
+      }));
+      setDripData(newDripData);
+      console.log("newDripData", newDripData);
+    }, 25000);
+    return () => {
+      clearInterval(timeout);
+    };
+  }, [dripData]);
 
   const ShowDisplayMsg = () => {};
 
