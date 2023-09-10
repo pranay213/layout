@@ -9,6 +9,8 @@ import NewMotor from "./NewMotor";
 import waterAnim from "../images/water.gif";
 import DisplayMsg from "./DisplayMsg";
 import Line from "./Line";
+
+import { v4 as uuidV4 } from "uuid";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = () => {
@@ -733,8 +735,7 @@ const Layout = () => {
     height: 5,
     width: 5,
   });
-  // const [seconds, setSeconds] = useState(25);
-
+  const [seconds, setSeconds] = useState(0);
   const [dripData, setDripData] = useState([
     // {
     //   id: 1,
@@ -765,12 +766,28 @@ const Layout = () => {
     //   width: "12%",
     // },
     {
+      id: 3,
+      width: "4%",
+      transform: "rotate(-56deg)",
+      top: "63.9%",
+      left: "26.1%",
+      delay: 0,
+    },
+    {
+      id: 4,
+      width: "3%",
+      transform: "rotate(26deg)",
+      top: "64.5%",
+      left: "24.5%",
+      delay: 5,
+    },
+    {
       id: 5,
       width: "5.8%",
       transform: "rotate(-69deg)",
       top: "66.2%",
       left: "20.9%",
-      delay: 0,
+      delay: 10,
     },
     {
       id: 6,
@@ -778,7 +795,7 @@ const Layout = () => {
       transform: "rotate(-83deg)",
       top: "70%",
       left: "19.5%",
-      delay: 5,
+      delay: 15,
     },
     {
       id: 7,
@@ -786,23 +803,87 @@ const Layout = () => {
       transform: "rotate(-87deg)",
       top: "74%",
       left: "19.2%",
-      delay: 10,
+      delay: 20,
     },
     {
-      id: 7,
+      id: 8,
       width: "5.5%",
       transform: "rotate(-98deg)",
       top: "78%",
       left: "19.4%",
-      delay: 15,
+      delay: 25,
     },
     {
-      id: 7,
+      id: 9,
       width: "5.5%",
       transform: "rotate(-108deg)",
       top: "81.7%",
       left: "20.5%",
-      delay: 20,
+      delay: 30,
+    },
+    {
+      id: 9,
+      width: "8%",
+      transform: "rotate(-114deg)",
+      top: "85.7%",
+      left: "21.5%",
+      delay: 35,
+    },
+    {
+      id: 10,
+      width: "5%",
+      transform: "rotate(-196deg)",
+      top: "87.9%",
+      left: "26.9%",
+      delay: 40,
+    },
+    {
+      id: 11,
+      width: "5%",
+      transform: "rotate(50deg)",
+      top: "85.9%",
+      left: "27.9%",
+      delay: 45,
+    },
+    {
+      id: 12,
+      width: "13%",
+      transform: "rotate(155deg)",
+      top: "82.4%",
+      left: "27.9%",
+      delay: 50,
+    },
+    {
+      id: 13,
+      width: "5%",
+      transform: "rotate(42deg)",
+      top: "78.9%",
+      left: "35.1%",
+      delay: 55,
+    },
+    {
+      id: 14,
+      width: "13.7%",
+      transform: "rotate(120deg)",
+      top: "73.2%",
+      left: "32.5%",
+      delay: 60,
+    },
+    {
+      id: 15,
+      width: "3%",
+      transform: "rotate(17deg)",
+      top: "68.5%",
+      left: "39.5%",
+      delay: 65,
+    },
+    {
+      id: 16,
+      width: "5%",
+      transform: "rotate(79deg)",
+      top: "66.5%",
+      left: "36.8%",
+      delay: 70,
     },
   ]);
 
@@ -814,20 +895,22 @@ const Layout = () => {
   const [waterCol, setWaterCol] = useState("#416BDF");
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (waterCol === "#006100") setWaterCol("#99C0E3");
       else {
         setWaterCol((prev) => "#006100");
       }
+      return () => clearTimeout(timer);
     }, 1000);
     if (tapsState) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         if (tapColor === "#7FCDFF") setTapColor("#A82B02");
         else {
           setTapColor((prev) => "#7FCDFF");
         }
       }, 500);
     }
+    return () => clearTimeout(timer);
   }, [waterCol, valvesData, tapsState, tapColor]);
 
   const toggleValve = (id) => {
@@ -846,20 +929,6 @@ const Layout = () => {
       }
     });
   };
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      const newDripData = dripData.map((obj, i) => ({
-        ...obj,
-        delay: obj.delay + 25,
-      }));
-      setDripData(newDripData);
-      console.log("newDripData", newDripData);
-    }, 25000);
-    return () => {
-      clearInterval(timeout);
-    };
-  }, [dripData]);
 
   const ShowDisplayMsg = () => {};
 
@@ -888,6 +957,7 @@ const Layout = () => {
         valvesData.map((item) => {
           return (
             <Valve
+              key={uuidV4()}
               style={{
                 ...valveCommonStyles,
                 ...item,
@@ -972,6 +1042,7 @@ const Layout = () => {
         motorsData.map((item) => {
           return (
             <Motor
+              key={uuidV4()}
               style={{
                 ...commonStyles,
                 ...item,
