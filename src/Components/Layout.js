@@ -766,60 +766,60 @@ const Layout = () => {
     //   width: "12%",
     // },
     {
-      id: 3,
+      id: 2,
       width: "4%",
       transform: "rotate(-56deg)",
       top: "63.9%",
       left: "26.1%",
-      delay: 0,
+      delay: 1,
     },
     {
-      id: 4,
+      id: 3,
       width: "3%",
       transform: "rotate(26deg)",
       top: "64.5%",
       left: "24.5%",
-      delay: 5,
+      delay: 1.5,
     },
     {
-      id: 5,
+      id: 4,
       width: "5.8%",
       transform: "rotate(-69deg)",
       top: "66.2%",
       left: "20.9%",
-      delay: 10,
+      delay: 2,
     },
     {
-      id: 6,
+      id: 5,
       width: "5.5%",
       transform: "rotate(-83deg)",
       top: "70%",
       left: "19.5%",
-      delay: 15,
+      delay: 2.5,
     },
     {
-      id: 7,
+      id: 6,
       width: "5.5%",
       transform: "rotate(-87deg)",
       top: "74%",
       left: "19.2%",
-      delay: 20,
+      delay: 3,
     },
     {
-      id: 8,
+      id: 7,
       width: "5.5%",
       transform: "rotate(-98deg)",
       top: "78%",
       left: "19.4%",
-      delay: 25,
+      delay: 3.5,
     },
     {
-      id: 9,
+      id: 8,
       width: "5.5%",
       transform: "rotate(-108deg)",
       top: "81.7%",
       left: "20.5%",
-      delay: 30,
+      delay: 4,
     },
     {
       id: 9,
@@ -827,7 +827,7 @@ const Layout = () => {
       transform: "rotate(-114deg)",
       top: "85.7%",
       left: "21.5%",
-      delay: 35,
+      delay: 4.5,
     },
     {
       id: 10,
@@ -835,7 +835,7 @@ const Layout = () => {
       transform: "rotate(-196deg)",
       top: "87.9%",
       left: "26.9%",
-      delay: 40,
+      delay: 5,
     },
     {
       id: 11,
@@ -843,7 +843,7 @@ const Layout = () => {
       transform: "rotate(50deg)",
       top: "85.9%",
       left: "27.9%",
-      delay: 45,
+      delay: 5.5,
     },
     {
       id: 12,
@@ -851,7 +851,7 @@ const Layout = () => {
       transform: "rotate(155deg)",
       top: "82.4%",
       left: "27.9%",
-      delay: 50,
+      delay: 6,
     },
     {
       id: 13,
@@ -859,7 +859,7 @@ const Layout = () => {
       transform: "rotate(42deg)",
       top: "78.9%",
       left: "35.1%",
-      delay: 55,
+      delay: 6.5,
     },
     {
       id: 14,
@@ -867,7 +867,7 @@ const Layout = () => {
       transform: "rotate(120deg)",
       top: "73.2%",
       left: "32.5%",
-      delay: 60,
+      delay: 7,
     },
     {
       id: 15,
@@ -875,7 +875,7 @@ const Layout = () => {
       transform: "rotate(17deg)",
       top: "68.5%",
       left: "39.5%",
-      delay: 65,
+      delay: 7.5,
     },
     {
       id: 16,
@@ -883,7 +883,7 @@ const Layout = () => {
       transform: "rotate(79deg)",
       top: "66.5%",
       left: "36.8%",
-      delay: 70,
+      delay: 8,
     },
   ]);
 
@@ -933,11 +933,11 @@ const Layout = () => {
     const timeout = setTimeout(() => {
       const newDripData = dripData.map((obj, i) => ({
         ...obj,
-        delay: obj.delay + 25,
+        delay: obj.delay + 9,
       }));
-      setDripData(newDripData);
+      setDripData((prev) => newDripData);
       console.log("newDripData", newDripData);
-    }, 25000);
+    }, 9000);
     return () => {
       clearInterval(timeout);
     };

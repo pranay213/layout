@@ -22,8 +22,8 @@ const Liquid = styled.div`
   background-color: rgba(27, 158, 229, 01);
   animation: ${(props) =>
     props.delay
-      ? `drip 5s linear ${props.delay}s 1 forwards`
-      : "drip 5s linear 0s infinte forwards"};
+      ? `drip 0.5s linear ${props.delay}s 1 forwards`
+      : "drip 0.5s linear 0s infinte forwards"};
 `;
 
 const Line = (props) => {
