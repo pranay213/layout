@@ -17,14 +17,15 @@ const Liquid = styled.div`
   position: relative;
   width: 2%;
   right: -99%;
-  height: 0.25px;
+  height: 1.5px;
   // background-color: (27, 158, 229, 0.75);
   background-color: rgba(27, 158, 229, 01);
-  animation: ${(props) =>
-    props.delay
-      ? `drip 0.5s linear ${props.delay}s 1 forwards`
-      : "drip 0.5s linear 0s infinte forwards"};
+  animation: drip 1s infinite;
 `;
+// animation: ${(props) =>
+//   props.delay
+//     ? `drip 0.5s linear ${props.delay}s 1 forwards`
+//     : "drip 1s infinite"};
 
 const Line = (props) => {
   const { item } = props;

@@ -22,6 +22,7 @@ const Layout = () => {
     height: "1.35%",
     width: "1.35%",
     position: "absolute",
+    zIndex: 100,
   };
   const [tapsState, setTapState] = useState(true);
   const [tapColor, setTapColor] = useState("#7FCDFF");
@@ -627,7 +628,7 @@ const Layout = () => {
       right: "41.2%",
       transform: "rotate(-180deg)",
       state: true,
-      msgDisp: true,
+      msgDisp: false,
     },
     {
       id: 2,
@@ -737,38 +738,10 @@ const Layout = () => {
   });
   const [seconds, setSeconds] = useState(0);
   const [dripData, setDripData] = useState([
-    // {
-    //   id: 1,
-    //   left: "49%",
-    //   top: "82.2%",
-    //   transform: "rotate(16deg)",
-    //   width: "12.2%",
-    // },
-    // {
-    //   id: 2,
-    //   left: "60%",
-    //   top: "76.8%",
-    //   transform: "rotate(14deg)",
-    //   width: "4%",
-    // },
-    // {
-    //   id: 3,
-    //   left: "55.3%",
-    //   top: "77.5%",
-    //   transform: "rotate(14deg)",
-    //   width: "10%",
-    // },
-    // {
-    //   id: 4,
-    //   left: "52%",
-    //   top: "77.8%",
-    //   transform: "rotate(14deg)",
-    //   width: "12%",
-    // },
     {
       id: 2,
       width: "4%",
-      transform: "rotate(-56deg)",
+      transform: "rotate(-62deg)",
       top: "63.9%",
       left: "26.1%",
       delay: 1,
@@ -791,7 +764,7 @@ const Layout = () => {
     },
     {
       id: 5,
-      width: "5.5%",
+      width: "5.7%",
       transform: "rotate(-83deg)",
       top: "70%",
       left: "19.5%",
@@ -823,26 +796,26 @@ const Layout = () => {
     },
     {
       id: 9,
-      width: "8%",
-      transform: "rotate(-114deg)",
+      width: "11.1%",
+      transform: "rotate(-115deg)",
       top: "85.7%",
-      left: "21.5%",
+      left: "20%",
       delay: 4.5,
     },
     {
       id: 10,
       width: "5%",
       transform: "rotate(-196deg)",
-      top: "87.9%",
-      left: "26.9%",
+      top: "89%",
+      left: "27.8%",
       delay: 5,
     },
     {
       id: 11,
-      width: "5%",
-      transform: "rotate(50deg)",
-      top: "85.9%",
-      left: "27.9%",
+      width: "7%",
+      transform: "rotate(58deg)",
+      top: "86.4%",
+      left: "27.3%",
       delay: 5.5,
     },
     {
@@ -855,7 +828,7 @@ const Layout = () => {
     },
     {
       id: 13,
-      width: "5%",
+      width: "6%",
       transform: "rotate(42deg)",
       top: "78.9%",
       left: "35.1%",
@@ -884,6 +857,143 @@ const Layout = () => {
       top: "66.5%",
       left: "36.8%",
       delay: 8,
+    },
+  ]);
+  const [dripData2, setDripData2] = useState([
+    {
+      id: 110,
+      left: "49%",
+      top: "82.2%",
+      transform: "rotate(16deg)",
+      width: "12.2%",
+    },
+    {
+      id: 112,
+      left: "60%",
+      top: "76.8%",
+      transform: "rotate(14deg)",
+      width: "4%",
+    },
+    {
+      id: 113,
+      left: "55.3%",
+      top: "77.5%",
+      transform: "rotate(14deg)",
+      width: "10%",
+    },
+    {
+      id: 114,
+      left: "52%",
+      top: "77.8%",
+      transform: "rotate(14deg)",
+      width: "12%",
+    },
+    {
+      id: 115,
+      left: "49.4%",
+      top: "78.2%",
+      transform: "rotate(-65deg)",
+      width: "4%",
+    },
+    {
+      id: 116,
+      left: "61.3%",
+      top: "81%",
+      transform: "rotate(-59deg)",
+      width: "3%",
+    },
+    {
+      id: 117,
+      left: "61.8%",
+      top: "79.6%",
+      transform: "rotate(-346deg)",
+      width: "2%",
+    },
+  ]);
+  const [dripData3, setDripData3] = useState([
+    {
+      id: 2,
+      width: "54%",
+      transform: "rotate(-100deg)",
+      top: "59%",
+      left: "44.1%",
+    },
+    {
+      id: 3,
+      width: "8.5%",
+      transform: "rotate(24deg)",
+      top: "77.5%",
+      left: "67.5%",
+    },
+    {
+      id: 4,
+      width: "6.5%",
+      transform: "rotate(49deg)",
+      top: "74.4%",
+      left: "62.5%",
+    },
+    {
+      id: 5,
+      width: "6.5%",
+      transform: "rotate(66deg)",
+      top: "70.4%",
+      left: "59.2%",
+    },
+    {
+      id: 6,
+      width: "6.5%",
+      transform: "rotate(88deg)",
+      top: "66.1%",
+      left: "58%",
+    },
+    {
+      id: 7,
+      width: "6.5%",
+      transform: "rotate(101deg)",
+      top: "61.4%",
+      left: "58.5%",
+    },
+    {
+      id: 8,
+      width: "7%",
+      transform: "rotate(92deg)",
+      top: "56.6%",
+      left: "58.9%",
+    },
+    {
+      id: 8,
+      width: "7%",
+      transform: "rotate(88deg)",
+      top: "51.6%",
+      left: "58.9%",
+    },
+    {
+      id: 9,
+      width: "7%",
+      transform: "rotate(79deg)",
+      top: "46.6%",
+      left: "58.204%",
+    },
+    {
+      id: 9,
+      width: "3%",
+      transform: "rotate(94deg)",
+      top: "43%",
+      left: "59.56%",
+    },
+    {
+      id: 10,
+      width: "4%",
+      transform: "rotate(132deg)",
+      top: "41%",
+      left: "60.6%",
+    },
+    {
+      id: 11,
+      width: "3%",
+      transform: "rotate(153deg)",
+      top: "39.5%",
+      left: "63.6%",
     },
   ]);
 
@@ -929,19 +1039,6 @@ const Layout = () => {
       }
     });
   };
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      const newDripData = dripData.map((obj, i) => ({
-        ...obj,
-        delay: obj.delay + 9,
-      }));
-      setDripData((prev) => newDripData);
-      console.log("newDripData", newDripData);
-    }, 9000);
-    return () => {
-      clearInterval(timeout);
-    };
-  }, [dripData]);
 
   const ShowDisplayMsg = () => {};
 
@@ -1049,7 +1146,15 @@ const Layout = () => {
         dripData.map((item) => {
           return <Line key={item.id} item={item} />;
         })}
-      <Line />
+      {dripData2 &&
+        dripData2.map((item) => {
+          return <Line key={item.id} item={item} />;
+        })}
+      {dripData3 &&
+        dripData3.map((item) => {
+          return <Line key={item.id} item={item} />;
+        })}
+      {/* <Line /> */}
 
       {motorsData &&
         motorsData.map((item) => {
