@@ -174,9 +174,16 @@ text-shadow: 0px 1px 1px grey;
  
     height: 1.5px;
     position: absolute !important;
-    background-color: rgb(246, 188, 23);
-    border-radius: 5px;
+    background-color: rgba(246, 188, 23,0.75);
+    border-radius: 10px;
     
+}
+.drip-line-new
+{
+  height: 0.1px !important;
+  position: absolute ;
+  background-color: #F28114;
+  border-radius: 10px;
 }
 
 // .liquid
@@ -203,3 +210,42 @@ text-shadow: 0px 1px 1px grey;
   
 }
 
+.line-1,.line-2,.line-3
+{
+  
+  position: relative;
+  width: 5px;
+  // height: 85px;
+  background-color: rgba(0,0,0,0.65);
+  border-width: 0px;
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  border-top-right-radius: 5%;
+  border-top-left-radius: 5%;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+
+}
+.liquid2{
+  position: relative;
+  width: 4px;
+  height: 98%;
+  background-color: rgba(27, 158, 229,0.75);
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  border: none;
+  animation: drip2 2s infinite;
+
+}
+
+@keyframes drip2 {
+  0%{height: 0%;
+  // right: -99%;
+
+  }
+  100% {
+  height: 98%;}
+  
+}

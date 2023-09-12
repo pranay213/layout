@@ -11,6 +11,7 @@ import DisplayMsg from "./DisplayMsg";
 import Line from "./Line";
 
 import { v4 as uuidV4 } from "uuid";
+import DripLine from "./DripLine";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = () => {
@@ -912,13 +913,6 @@ const Layout = () => {
   ]);
   const [dripData3, setDripData3] = useState([
     {
-      id: 2,
-      width: "54%",
-      transform: "rotate(-100deg)",
-      top: "59%",
-      left: "44.1%",
-    },
-    {
       id: 3,
       width: "8.5%",
       transform: "rotate(24deg)",
@@ -994,6 +988,25 @@ const Layout = () => {
       transform: "rotate(153deg)",
       top: "39.5%",
       left: "63.6%",
+    },
+
+    {
+      id: 14,
+      width: "5%",
+      transform: "rotate(81deg)",
+      top: "65.6%",
+      left: "64.2%",
+    },
+  ]);
+
+  const [threeDrips, setThreeDrips] = useState([
+    {
+      id: 1,
+      width: "0.5px",
+      transform: "rotate(-10deg)",
+      top: "38.4%",
+      left: "70.6%",
+      height: "41%",
     },
   ]);
 
@@ -1153,6 +1166,11 @@ const Layout = () => {
       {dripData3 &&
         dripData3.map((item) => {
           return <Line key={item.id} item={item} />;
+        })}
+
+      {threeDrips &&
+        threeDrips.map((item) => {
+          return <DripLine key={item.id} item={item} />;
         })}
       {/* <Line /> */}
 

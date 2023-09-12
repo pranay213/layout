@@ -21,6 +21,7 @@ const Liquid = styled.div`
   // background-color: (27, 158, 229, 0.75);
   background-color: rgba(27, 158, 229, 01);
   animation: drip 1s infinite;
+  border-radius: 10px;
 `;
 // animation: ${(props) =>
 //   props.delay
