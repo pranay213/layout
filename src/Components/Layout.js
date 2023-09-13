@@ -12,6 +12,13 @@ import Line from "./Line";
 
 import { v4 as uuidV4 } from "uuid";
 import DripLine from "./DripLine";
+import Eclipse from "./Eclipse";
+import CustomShape from "./CustomShape";
+import PartOne from "./PartOne";
+import PartTwo from "./PartTwo";
+import PartThree from "./PartThree";
+import Circle from "./Circle";
+import Rectangle from "./Rectangle";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = () => {
@@ -989,14 +996,6 @@ const Layout = () => {
       top: "39.5%",
       left: "63.6%",
     },
-
-    {
-      id: 14,
-      width: "5%",
-      transform: "rotate(81deg)",
-      top: "65.6%",
-      left: "64.2%",
-    },
   ]);
 
   const [threeDrips, setThreeDrips] = useState([
@@ -1008,14 +1007,105 @@ const Layout = () => {
       left: "70.6%",
       height: "41%",
     },
+    {
+      id: 2,
+      width: "0.5px",
+      transform: "rotate(-10deg)",
+      top: "34.4%",
+      left: "65.2%",
+      height: "2.5%",
+    },
+    {
+      id: 3,
+      width: "0.5px",
+      transform: "rotate(-10deg)",
+      top: "81.5%",
+      left: "77.6%",
+      height: "13%",
+    },
   ]);
 
+  const [eclipseData, setEclipseData] = useState([
+    { id: 1, width: "3%", height: "5%", left: "63.5%", top: "49.9%" },
+    {
+      id: 2,
+      width: "3%",
+      height: "5%",
+      left: "65.8%",
+      top: "62.9%",
+      transform: "rotate(-7deg)",
+    },
+    {
+      id: 3,
+      width: "3%",
+      height: "5%",
+      left: "65.8%",
+      top: "62.9%",
+      transform: "rotate(-7deg)",
+    },
+  ]);
   const [msgData, setMsgData] = useState([
     {
       id: 1,
     },
   ]);
   const [waterCol, setWaterCol] = useState("#416BDF");
+  const [fillColor, setFillColor] = useState(0.5);
+  const [circleData, setCircleData] = useState([
+    { id: 1, width: "1.5%", height: "1.5%", top: "51%", left: "32.9%" },
+    { id: 2, width: "3%", height: "3%", top: "49.9%", left: "40.65%" },
+    { id: 3, width: "1.5%", height: "1.5%", top: "71.1%", left: "56%" },
+  ]);
+  const [rectangleData, setRectangleData] = useState([
+    {
+      id: 1,
+      width: "1%",
+      height: "1%",
+      top: "43.9%",
+      left: "63.5%",
+      transform: "rotate(-9deg)",
+    },
+    {
+      id: 2,
+      width: "1%",
+      height: "1%",
+      top: "47.3%",
+      left: "64.2%",
+      transform: "rotate(-9deg)",
+    },
+    {
+      id: 3,
+      width: "1%",
+      height: "1%",
+      top: "57%",
+      left: "65.4%",
+      transform: "rotate(-9deg)",
+    },
+    {
+      id: 4,
+      width: "1%",
+      height: "1%",
+      top: "60.3%",
+      left: "66%",
+      transform: "rotate(-9deg)",
+    },
+    {
+      id: 5,
+      width: "1%",
+      height: "1%",
+      top: "69.8%",
+      left: "68.22%",
+      transform: "rotate(-9deg)",
+    },
+    {
+      id: 6,
+      width: "1%",
+      height: "1%",
+      top: "73.1%",
+      left: "69%",
+      transform: "rotate(-9deg)",
+    },
+  ]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -1054,6 +1144,18 @@ const Layout = () => {
   };
 
   const ShowDisplayMsg = () => {};
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (fillColor < 1) {
+        setFillColor((prev) => prev + 0.1);
+      } else {
+        setFillColor((prev) => 0);
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [fillColor]);
 
   return (
     <div className="layout-container">
@@ -1173,6 +1275,77 @@ const Layout = () => {
           return <DripLine key={item.id} item={item} />;
         })}
       {/* <Line /> */}
+
+      {eclipseData &&
+        eclipseData.map((item) => {
+          return <Eclipse item={item} />;
+        })}
+      <CustomShape
+        style={{
+          position: "absolute",
+          width: "12%",
+          height: "8%",
+          top: "34.6%",
+          left: "52.6%",
+        }}
+        fill={`rgba(42,140,194,${fillColor})`}
+      />
+      <PartOne
+        style={{
+          position: "absolute",
+          width: "19%",
+          height: "17%",
+          top: "45.1%",
+          left: "27.6%",
+        }}
+        fill={`rgba(42,140,194,${fillColor})`}
+      />
+      <PartTwo
+        style={{
+          position: "absolute",
+          width: "13%",
+          height: "5%",
+          top: "79.6%",
+          left: "62.8%",
+        }}
+        fill={`rgba(42,140,194,${fillColor})`}
+      />
+      <PartThree
+        style={{
+          position: "absolute",
+          width: "18%",
+          height: "13%",
+          top: "83.1%",
+          left: "60.9%",
+        }}
+        fill={`rgba(42,140,194,${fillColor})`}
+      />
+
+      {circleData &&
+        circleData.map((item) => {
+          return (
+            <Circle
+              style={{
+                position: "absolute",
+                ...item,
+              }}
+              fill={`rgba(42,140,194,${fillColor})`}
+            />
+          );
+        })}
+
+      {rectangleData &&
+        rectangleData.map((item) => {
+          return (
+            <Rectangle
+              style={{
+                position: "absolute",
+                ...item,
+              }}
+              fill={`rgba(42,140,194,${fillColor})`}
+            />
+          );
+        })}
 
       {motorsData &&
         motorsData.map((item) => {

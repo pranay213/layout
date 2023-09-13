@@ -225,18 +225,23 @@ text-shadow: 0px 1px 1px grey;
   border-top-left-radius: 5%;
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
+  border-radius: 20px;
+
 
 }
 .liquid2{
   position: relative;
-  width: 4px;
+  width: 1px;
   height: 98%;
+  margin-left: 10px;
   background-color: rgba(27, 158, 229,0.75);
   z-index: 5;
   margin: 0;
   padding: 0;
   border: none;
   animation: drip2 2s infinite;
+  border-radius: 20px;
+
 
 }
 
@@ -246,6 +251,37 @@ text-shadow: 0px 1px 1px grey;
 
   }
   100% {
-  height: 98%;}
+  height: 100%;}
   
+}
+
+.eclipse
+{
+    position: absolute;
+    border-radius: 50%;
+    background-color:rgba(236,130,28,0.75);
+    // background-color: transparent;
+    border: 0.2px solid grey;
+    overflow: hidden;
+    
+}
+
+.liquid-eclipse
+{
+  position: relative;
+  width: 100%;
+  height: 0%;
+  background: rgba(42,140,194,0.75);
+  border-radius: 50%;
+  animation: eclipseliquid 2s infinite;
+}
+@keyframes eclipseliquid {
+  0%
+  {
+    height: 0%;
+  }
+  100%
+  {
+    height: 100%;
+  }
 }

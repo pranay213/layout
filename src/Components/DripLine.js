@@ -110,6 +110,8 @@ const DripLine = (props) => {
       >
         <div className="line-1">
           <div className="liquid2"></div>
+          <div className="liquid2"></div>
+          <div className="liquid2"></div>
         </div>
       </div>
     </>
