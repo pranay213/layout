@@ -636,7 +636,7 @@ const Layout = () => {
       top: " 54.1%",
       right: "41.2%",
       transform: "rotate(-180deg)",
-      state: true,
+      state: false,
       msgDisp: false,
     },
     {
@@ -1109,54 +1109,71 @@ const Layout = () => {
   ]);
 
   // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     if (waterCol === "#006100") setWaterCol("#99C0E3");
-  //     else {
-  //       setWaterCol((prev) => "#006100");
-  //     }
-  //     return () => clearTimeout(timer);
-  //   }, 1000);
-  //   if (tapsState) {
-  //     const timer = setTimeout(() => {
-  //       if (tapColor === "#7FCDFF") setTapColor("#A82B02");
-  //       else {
-  //         setTapColor((prev) => "#7FCDFF");
-  //       }
-  //     }, 500);
-  //   }
-  //   return () => clearTimeout(timer);
+  //   // const timer = setTimeout(() => {
+  //   //   if (waterCol === "#006100") setWaterCol("#99C0E3");
+  //   //   else {
+  //   //     setWaterCol((prev) => "#006100");
+  //   //   }
+  //   //   return () => clearTimeout(timer);
+  //   // }, 1000);
+  //   // if (tapsState) {
+  //   //   const timer = setTimeout(() => {
+  //   //     if (tapColor === "#7FCDFF") setTapColor("#A82B02");
+  //   //     else {
+  //   //       setTapColor((prev) => "#7FCDFF");
+  //   //     }
+  //   //   }, 500);
+  //   // }
+  //   // return () => clearTimeout(timer);
   // }, [waterCol, valvesData, tapsState, tapColor]);
+  var timer;
+  const handlerFn = (event, id) => {
+    clearTimeout(timer);
+
+    if (event.detail === 1) {
+      timer = setTimeout(() => {
+        toggleMsg(id);
+      }, 200);
+    } else if (event.detail === 2) {
+      toggleValve(id);
+    }
+  };
 
   const toggleValve = (id) => {
-    valvesData.map((item) => {
+    let newValveData = valvesData.map((item) => {
       if (item.id === id) {
         item.state = !item.state;
       }
+      return item;
     });
-    // setValvesData((prev) => [...newValveData]);
+    console.log("newValveData ---", newValveData);
+    // setValvesData((prev) => [...prev]);
+    setValvesData((prev) => newValveData);
   };
 
   const toggleMsg = (id) => {
-    valvesData.map((item) => {
+    let newValveData = valvesData.map((item) => {
       if (item.id === id) {
         item.msgDisp = !item.msgDisp;
       }
+      return item;
     });
+    setValvesData((prev) => newValveData);
   };
 
-  const ShowDisplayMsg = () => {};
+  // const ShowDisplayMsg = () => {};
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (fillColor < 1) {
-        setFillColor((prev) => prev + 0.1);
-      } else {
-        setFillColor((prev) => 0);
-      }
-    }, 100);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (fillColor < 1) {
+  //       setFillColor((prev) => prev + 0.1);
+  //     } else {
+  //       setFillColor((prev) => 0);
+  //     }
+  //   }, 500);
 
-    return () => clearTimeout(timer);
-  }, [fillColor]);
+  //   return () => clearTimeout(timer);
+  // }, [fillColor]);
 
   return (
     <div className="layout-container">
@@ -1191,13 +1208,11 @@ const Layout = () => {
                 ...item,
                 // ...dimentions,
               }}
-              fill={item.state ? waterCol : "#ff0000"}
-              onDoubleClick={() => {
-                toggleValve(item.id);
+              // fill={item.state ? waterCol : "#ff0000"}
+              onClick={(event) => {
+                handlerFn(event, item.id);
               }}
-              onClick={() => {
-                toggleMsg(item.id);
-              }}
+              className={item.state ? "valve-open" : "valve-close"}
             />
           );
         })}
@@ -1291,7 +1306,7 @@ const Layout = () => {
           top: "34.6%",
           left: "52.6%",
         }}
-        fill={`rgba(42,140,194,${fillColor})`}
+        className="dripping"
       />
       <PartOne
         style={{
@@ -1301,7 +1316,7 @@ const Layout = () => {
           top: "45.1%",
           left: "27.6%",
         }}
-        fill={`rgba(42,140,194,${fillColor})`}
+        className="dripping"
       />
       <PartTwo
         style={{
@@ -1311,7 +1326,7 @@ const Layout = () => {
           top: "79.6%",
           left: "62.8%",
         }}
-        fill={`rgba(42,140,194,${fillColor})`}
+        className="dripping"
       />
       <PartThree
         style={{
@@ -1321,7 +1336,7 @@ const Layout = () => {
           top: "83.1%",
           left: "60.9%",
         }}
-        fill={`rgba(42,140,194,${fillColor})`}
+        className="dripping"
       />
 
       {circleData &&
@@ -1332,7 +1347,7 @@ const Layout = () => {
                 position: "absolute",
                 ...item,
               }}
-              fill={`rgba(42,140,194,${fillColor})`}
+              className="dripping"
             />
           );
         })}
@@ -1345,7 +1360,7 @@ const Layout = () => {
                 position: "absolute",
                 ...item,
               }}
-              fill={`rgba(42,140,194,${fillColor})`}
+              className="dripping"
             />
           );
         })}
