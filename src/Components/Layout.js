@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import layout from "../images/layout3.jpg";
+import layout from "../images/layout2.jpg";
 import "./style.scss";
 import Valve from "../svg/Valve";
 import Taps from "./Taps";
@@ -19,6 +19,7 @@ import PartTwo from "./PartTwo";
 import PartThree from "./PartThree";
 import Circle from "./Circle";
 import Rectangle from "./Rectangle";
+import Directions from "./Directions";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = () => {
@@ -1107,24 +1108,24 @@ const Layout = () => {
     },
   ]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (waterCol === "#006100") setWaterCol("#99C0E3");
-      else {
-        setWaterCol((prev) => "#006100");
-      }
-      return () => clearTimeout(timer);
-    }, 1000);
-    if (tapsState) {
-      const timer = setTimeout(() => {
-        if (tapColor === "#7FCDFF") setTapColor("#A82B02");
-        else {
-          setTapColor((prev) => "#7FCDFF");
-        }
-      }, 500);
-    }
-    return () => clearTimeout(timer);
-  }, [waterCol, valvesData, tapsState, tapColor]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (waterCol === "#006100") setWaterCol("#99C0E3");
+  //     else {
+  //       setWaterCol((prev) => "#006100");
+  //     }
+  //     return () => clearTimeout(timer);
+  //   }, 1000);
+  //   if (tapsState) {
+  //     const timer = setTimeout(() => {
+  //       if (tapColor === "#7FCDFF") setTapColor("#A82B02");
+  //       else {
+  //         setTapColor((prev) => "#7FCDFF");
+  //       }
+  //     }, 500);
+  //   }
+  //   return () => clearTimeout(timer);
+  // }, [waterCol, valvesData, tapsState, tapColor]);
 
   const toggleValve = (id) => {
     valvesData.map((item) => {
@@ -1159,6 +1160,8 @@ const Layout = () => {
 
   return (
     <div className="layout-container">
+      {/* <Directions /> */}
+
       <div
         style={{
           width: "90%",

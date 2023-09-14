@@ -15,7 +15,11 @@ const SVGComponent = (props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      style={{ ...props.style, transform: `rotate(${transformDeg}deg)` }}
+      style={{
+        ...props.style,
+        transform: `rotate(${transformDeg}deg)`,
+        zIndex: 60,
+      }}
     >
       <path
         d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z"
