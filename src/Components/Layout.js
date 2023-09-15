@@ -1195,7 +1195,7 @@ const Layout = (props) => {
           marginTop: "33%",
           // backgroundColor: "gray",
           backgroundImage:
-            "url('https://t4.ftcdn.net/jpg/01/64/55/75/360_F_164557575_TobMREVSSownEbFU5ySyfDieWdVwDu2W.jpg')",
+            "url('https://media.istockphoto.com/id/1360311849/vector/city-map-navigation-interface-gps-navigator-screen.jpg?s=612x612&w=0&k=20&c=Y2UYchi1D8rz4GLgLsWvzM0TlhHUUCGOSsIpsh57aSA=')",
         }}
       >
         <img
@@ -1203,7 +1203,7 @@ const Layout = (props) => {
           style={{
             width: "100%",
             height: "100%",
-            opacity: 0.7,
+            opacity: 0.2,
           }}
           alt="layout"
           onLoad={() => setLoading(false)}
@@ -1362,7 +1362,7 @@ const Layout = (props) => {
         className="dripping"
       />
 
-      {/* <Map
+      <Map
         style={{
           position: "absolute",
           width: "75%",
@@ -1371,7 +1371,7 @@ const Layout = (props) => {
           left: "7%",
         }}
         // className="dripping"
-      /> */}
+      />
 
       {circleData &&
         circleData.map((item) => {
