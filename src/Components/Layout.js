@@ -21,6 +21,7 @@ import Circle from "./Circle";
 import Rectangle from "./Rectangle";
 import Directions from "./Directions";
 import PartFour from "./PartFour";
+import Map from "./Map";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = (props) => {
@@ -1193,6 +1194,8 @@ const Layout = (props) => {
           margin: "auto",
           marginTop: "33%",
           // backgroundColor: "gray",
+          backgroundImage:
+            "url('https://t4.ftcdn.net/jpg/01/64/55/75/360_F_164557575_TobMREVSSownEbFU5ySyfDieWdVwDu2W.jpg')",
         }}
       >
         <img
@@ -1200,7 +1203,7 @@ const Layout = (props) => {
           style={{
             width: "100%",
             height: "100%",
-            opacity: 0.75,
+            opacity: 0.7,
           }}
           alt="layout"
           onLoad={() => setLoading(false)}
@@ -1358,6 +1361,17 @@ const Layout = (props) => {
         }}
         className="dripping"
       />
+
+      {/* <Map
+        style={{
+          position: "absolute",
+          width: "75%",
+          height: "65%",
+          top: "34%",
+          left: "7%",
+        }}
+        // className="dripping"
+      /> */}
 
       {circleData &&
         circleData.map((item) => {
