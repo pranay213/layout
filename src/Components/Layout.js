@@ -1189,16 +1189,22 @@ const Layout = (props) => {
           display: "flex",
           alignItems: "center",
           justifyItems: "center",
-          border: "10px solid transparent",
+          border: "10px solid tranparent",
           margin: "auto",
           marginTop: "33%",
+          // backgroundColor: "gray",
         }}
       >
         <img
           src={layout}
-          style={{ width: "100%", height: "100%" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            opacity: 0.75,
+          }}
           alt="layout"
           onLoad={() => setLoading(false)}
+          onResize={() => setLoading(true)}
         />
       </div>
 
