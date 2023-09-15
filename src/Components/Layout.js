@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import layout from "../images/layout2.webp";
+import layout from "../images/layout2.png";
 import "./style.scss";
 import Valve from "../svg/Valve";
 import Taps from "./Taps";
@@ -1180,7 +1180,7 @@ const Layout = (props) => {
   // }, [fillColor]);
 
   return (
-    <div className="layout-container">
+    <div className="layout-container" style={{ zoom: 1 }}>
       {/* <Directions /> */}
 
       <div
@@ -1193,9 +1193,9 @@ const Layout = (props) => {
           border: "10px solid tranparent",
           margin: "auto",
           marginTop: "33%",
-          // backgroundColor: "gray",
+          // backgroundColor: "#000",
           backgroundImage:
-            "url('https://media.istockphoto.com/id/1360311849/vector/city-map-navigation-interface-gps-navigator-screen.jpg?s=612x612&w=0&k=20&c=Y2UYchi1D8rz4GLgLsWvzM0TlhHUUCGOSsIpsh57aSA=')",
+            "url('https://cdn.pixabay.com/photo/2018/01/31/05/43/web-3120321_1280.png')",
         }}
       >
         <img
@@ -1203,11 +1203,15 @@ const Layout = (props) => {
           style={{
             width: "100%",
             height: "100%",
-            opacity: 0.2,
+            opacity: 1,
           }}
           alt="layout"
-          onLoad={() => setLoading(false)}
-          onResize={() => setLoading(true)}
+          onLoad={() => {
+            setTimeout(() => {
+              setLoading(false);
+            }, 10000);
+          }}
+          // onResize={() => setLoading(true)}
         />
       </div>
 

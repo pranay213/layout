@@ -26,6 +26,7 @@
 
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import Loader from "./Components/Loader";
+import LoaderPage from "./Components/LoaderPage";
 // import Layout from "./Components/Layout";
 const Layout = lazy(() => import("./Components/Layout"));
 
@@ -34,7 +35,11 @@ const App = () => {
 
   return (
     <div style={{ flex: 1 }}>
-      {loading && <Loader />}
+      {loading && (
+        <>
+          <LoaderPage />
+        </>
+      )}
 
       <Suspense>
         <Layout setLoading={setLoading} />
