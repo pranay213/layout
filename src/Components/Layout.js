@@ -20,9 +20,12 @@ import PartThree from "./PartThree";
 import Circle from "./Circle";
 import Rectangle from "./Rectangle";
 import Directions from "./Directions";
+import PartFour from "./PartFour";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
-const Layout = () => {
+const Layout = (props) => {
+  const { setLoading } = props;
+  console.log("setLoading", setLoading);
   const commonStyles = {
     position: "absolute",
     borderRadius: "50%",
@@ -1186,7 +1189,7 @@ const Layout = () => {
           display: "flex",
           alignItems: "center",
           justifyItems: "center",
-          border: "10px solid black",
+          border: "10px solid transparent",
           margin: "auto",
           marginTop: "33%",
         }}
@@ -1195,6 +1198,7 @@ const Layout = () => {
           src={layout}
           style={{ width: "100%", height: "100%" }}
           alt="layout"
+          onLoad={() => setLoading(false)}
         />
       </div>
 
@@ -1335,6 +1339,16 @@ const Layout = () => {
           height: "13%",
           top: "83.1%",
           left: "60.9%",
+        }}
+        className="dripping"
+      />
+      <PartFour
+        style={{
+          position: "absolute",
+          width: "5%",
+          height: "10%",
+          top: "64.5%",
+          left: "56.4%",
         }}
         className="dripping"
       />

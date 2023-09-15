@@ -30,21 +30,15 @@ import Loader from "./Components/Loader";
 const Layout = lazy(() => import("./Components/Layout"));
 
 const App = () => {
-  const [layoutView, setLayoutView] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setLayoutView(true);
-    }, 5000);
-  }, []);
+  const [loading, setLoading] = useState(true);
+
   return (
     <div style={{ flex: 1 }}>
-      {layoutView ? (
-        <Suspense>
-          <Layout />
-        </Suspense>
-      ) : (
-        <Loader />
-      )}
+      {loading && <Loader />}
+
+      <Suspense>
+        <Layout setLoading={setLoading} />
+      </Suspense>
     </div>
   );
 };
