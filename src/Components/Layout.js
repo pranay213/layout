@@ -157,7 +157,7 @@ const Layout = (props) => {
     {
       id: 24,
       left: "66.5%",
-      bottom: "20.8%",
+      bottom: "19.8%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -168,7 +168,7 @@ const Layout = (props) => {
     {
       id: 25,
       left: "68.5%",
-      bottom: "20%",
+      bottom: "19%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -179,7 +179,7 @@ const Layout = (props) => {
     {
       id: 26,
       left: "69.9%",
-      bottom: "19.5%",
+      bottom: "18.5%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -190,7 +190,7 @@ const Layout = (props) => {
     {
       id: 27,
       left: "71.7%",
-      bottom: "19%",
+      bottom: "18%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -201,7 +201,7 @@ const Layout = (props) => {
     {
       id: 28,
       left: "73.4%",
-      bottom: "18.6%",
+      bottom: "17.6%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -212,7 +212,7 @@ const Layout = (props) => {
     {
       id: 29,
       left: "75.2%",
-      bottom: "18.2%",
+      bottom: "17.2%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -223,7 +223,7 @@ const Layout = (props) => {
     {
       id: 30,
       left: "75.4%",
-      bottom: "17%",
+      bottom: "16%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -234,7 +234,7 @@ const Layout = (props) => {
     {
       id: 31,
       left: "75.6%",
-      bottom: "16%",
+      bottom: "15%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -245,7 +245,7 @@ const Layout = (props) => {
     {
       id: 32,
       left: "46.4%",
-      bottom: "18.9%",
+      bottom: "17.9%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -256,7 +256,7 @@ const Layout = (props) => {
     {
       id: 33,
       left: "47.6%",
-      bottom: "20.1%",
+      bottom: "19.1%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -748,26 +748,26 @@ const Layout = (props) => {
   const [dripData, setDripData] = useState([
     {
       id: 2,
-      width: "4%",
-      transform: "rotate(-62deg)",
-      top: "63.9%",
-      left: "26.1%",
+      width: "5%",
+      transform: "rotate(-58deg)",
+      top: "64.5%",
+      left: "25.5%",
       delay: 1,
     },
     {
       id: 3,
       width: "3%",
-      transform: "rotate(26deg)",
-      top: "64.5%",
-      left: "24.5%",
+      transform: "rotate(44deg)",
+      top: "65.2%",
+      left: "24.2%",
       delay: 1.5,
     },
     {
       id: 4,
       width: "5.8%",
-      transform: "rotate(-69deg)",
+      transform: "rotate(-65deg)",
       top: "66.2%",
-      left: "20.9%",
+      left: "21.5%",
       delay: 2,
     },
     {
@@ -797,9 +797,9 @@ const Layout = (props) => {
     {
       id: 8,
       width: "5.5%",
-      transform: "rotate(-108deg)",
+      transform: "rotate(-105deg)",
       top: "81.7%",
-      left: "20.5%",
+      left: "20.3%",
       delay: 4,
     },
     {
@@ -807,7 +807,7 @@ const Layout = (props) => {
       width: "11.1%",
       transform: "rotate(-115deg)",
       top: "85.7%",
-      left: "20%",
+      left: "19.5%",
       delay: 4.5,
     },
     {
@@ -815,30 +815,30 @@ const Layout = (props) => {
       width: "5%",
       transform: "rotate(-196deg)",
       top: "89%",
-      left: "27.8%",
+      left: "26.8%",
       delay: 5,
     },
     {
       id: 11,
-      width: "7%",
-      transform: "rotate(58deg)",
-      top: "86.4%",
-      left: "27.3%",
+      width: "5%",
+      transform: "rotate(52deg)",
+      top: "86.9%",
+      left: "28%",
       delay: 5.5,
     },
     {
       id: 12,
       width: "13%",
       transform: "rotate(155deg)",
-      top: "82.4%",
+      top: "83.4%",
       left: "27.9%",
       delay: 6,
     },
     {
       id: 13,
       width: "6%",
-      transform: "rotate(42deg)",
-      top: "78.9%",
+      transform: "rotate(37deg)",
+      top: "79.9%",
       left: "35.1%",
       delay: 6.5,
     },
@@ -846,24 +846,32 @@ const Layout = (props) => {
       id: 14,
       width: "13.7%",
       transform: "rotate(120deg)",
-      top: "73.2%",
+      top: "74.2%",
       left: "32.5%",
       delay: 7,
     },
     {
       id: 15,
       width: "3%",
-      transform: "rotate(17deg)",
-      top: "68.5%",
+      transform: "rotate(15deg)",
+      top: "69.3%",
       left: "39.5%",
       delay: 7.5,
     },
     {
       id: 16,
-      width: "5%",
-      transform: "rotate(79deg)",
-      top: "66.5%",
-      left: "36.8%",
+      width: "4%",
+      transform: "rotate(86deg)",
+      top: "67.5%",
+      left: "37.8%",
+      delay: 8,
+    },
+    {
+      id: 16,
+      width: "2%",
+      transform: "rotate(40deg)",
+      top: "67.5%",
+      left: "37.8%",
       delay: 8,
     },
   ]);
@@ -1253,32 +1261,6 @@ const Layout = (props) => {
         />
       }
 
-      {tapsData &&
-        tapsData.map((item) => {
-          return (
-            <Motor
-              style={{
-                ...commonStyles,
-                ...item,
-                // ...dimentions,
-                height: item.height ? item.height : 3,
-                width: item.width ? item.width : 3,
-              }}
-              // fill={tapsState ? tapColor : "#B62511"}
-              // fill={"#B62511"}
-              // fill2={"#B62511"}
-              // fill3={"#ddd"}
-              fill={item.fill1 ? item.fill1 : "#B62511"}
-              fill2={item.fill2 ? item.fill2 : "#B62511"}
-              fill3={item.fill3 ? item.fill3 : "#ddd"}
-              // fill={item.fill1 ? item.fill1 : "#0000ff"}
-              // fill2={item.fill2 ? item.fill2 : "#0000ff"}
-              // fill3={item.fill3 ? item.fill3 : "#ddd"}
-              className={valvesData[0].state ? "rotate" : ""}
-              // className={item.className ? item.className : ""}
-            />
-          );
-        })}
       {dripData &&
         dripData.map((item) => {
           return <Line key={item.id} item={item} />;
@@ -1405,6 +1387,34 @@ const Layout = (props) => {
               fill3={"#ddd"}
               className="rotate"
               // fill={tapsState ? tapColor : "#B62511"}
+            />
+          );
+        })}
+      {tapsData &&
+        tapsData.map((item) => {
+          return (
+            <Motor
+              style={{
+                ...commonStyles,
+                ...item,
+                // ...dimentions,
+                // height: item.height ? item.height : 5,
+                // width: item.width ? item.width : 3,
+                height: 4,
+                width: 4,
+              }}
+              // fill={tapsState ? tapColor : "#B62511"}
+              // fill={"#B62511"}
+              // fill2={"#B62511"}
+              // fill3={"#ddd"}
+              fill={item.fill1 ? item.fill1 : "#B62511"}
+              fill2={item.fill2 ? item.fill2 : "#B62511"}
+              fill3={item.fill3 ? item.fill3 : "#ddd"}
+              // fill={item.fill1 ? item.fill1 : "#0000ff"}
+              // fill2={item.fill2 ? item.fill2 : "#0000ff"}
+              // fill3={item.fill3 ? item.fill3 : "#ddd"}
+              className={valvesData[0].state ? "rotate" : ""}
+              // className={item.className ? item.className : ""}
             />
           );
         })}
