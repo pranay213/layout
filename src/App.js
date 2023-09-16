@@ -34,17 +34,16 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   return (
-    <div style={{ flex: 1 }}>
+    <>
       {loading && (
         <>
           <LoaderPage />
         </>
       )}
-
       <Suspense>
-        <Layout setLoading={setLoading} />
+        <Layout setLoading={setLoading} loading={loading} />
       </Suspense>
-    </div>
+    </>
   );
 };
 

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import layout from "../images/layout2.webp";
+import layout from "../images/layout3.jpg";
 import "./style.scss";
 import Valve from "../svg/Valve";
-import Taps from "./Taps";
 import Motor from "./Motor";
 import "../Anim.css";
-import NewMotor from "./NewMotor";
-import waterAnim from "../images/water.gif";
 import DisplayMsg from "./DisplayMsg";
 import Line from "./Line";
 
@@ -19,13 +16,11 @@ import PartTwo from "./PartTwo";
 import PartThree from "./PartThree";
 import Circle from "./Circle";
 import Rectangle from "./Rectangle";
-import Directions from "./Directions";
 import PartFour from "./PartFour";
-import Map from "./Map";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = (props) => {
-  const { setLoading } = props;
+  const { setLoading, loading } = props;
   console.log("setLoading", setLoading);
   const commonStyles = {
     position: "absolute",
@@ -876,49 +871,49 @@ const Layout = (props) => {
     {
       id: 110,
       left: "49%",
-      top: "82.2%",
+      top: "83.2%",
       transform: "rotate(16deg)",
       width: "12.2%",
     },
     {
       id: 112,
       left: "60%",
-      top: "76.8%",
+      top: "77.8%",
       transform: "rotate(14deg)",
       width: "4%",
     },
     {
       id: 113,
       left: "55.3%",
-      top: "77.5%",
+      top: "78.5%",
       transform: "rotate(14deg)",
       width: "10%",
     },
     {
       id: 114,
       left: "52%",
-      top: "77.8%",
+      top: "78.8%",
       transform: "rotate(14deg)",
       width: "12%",
     },
     {
       id: 115,
       left: "49.4%",
-      top: "78.2%",
+      top: "79.2%",
       transform: "rotate(-65deg)",
       width: "4%",
     },
     {
       id: 116,
       left: "61.3%",
-      top: "81%",
+      top: "82%",
       transform: "rotate(-59deg)",
       width: "3%",
     },
     {
       id: 117,
       left: "61.8%",
-      top: "79.6%",
+      top: "80.6%",
       transform: "rotate(-346deg)",
       width: "2%",
     },
@@ -928,77 +923,77 @@ const Layout = (props) => {
       id: 3,
       width: "8.5%",
       transform: "rotate(24deg)",
-      top: "77.5%",
+      top: "78.5%",
       left: "67.5%",
     },
     {
       id: 4,
       width: "6.5%",
       transform: "rotate(49deg)",
-      top: "74.4%",
+      top: "75.4%",
       left: "62.5%",
     },
     {
       id: 5,
       width: "6.5%",
       transform: "rotate(66deg)",
-      top: "70.4%",
+      top: "71.4%",
       left: "59.2%",
     },
     {
       id: 6,
       width: "6.5%",
       transform: "rotate(88deg)",
-      top: "66.1%",
+      top: "67.1%",
       left: "58%",
     },
     {
       id: 7,
       width: "6.5%",
       transform: "rotate(101deg)",
-      top: "61.4%",
+      top: "62.4%",
       left: "58.5%",
     },
     {
       id: 8,
       width: "7%",
       transform: "rotate(92deg)",
-      top: "56.6%",
+      top: "57.6%",
       left: "58.9%",
     },
     {
       id: 8,
       width: "7%",
       transform: "rotate(88deg)",
-      top: "51.6%",
+      top: "52.6%",
       left: "58.9%",
     },
     {
       id: 9,
       width: "7%",
-      transform: "rotate(79deg)",
-      top: "46.6%",
-      left: "58.204%",
+      transform: "rotate(82deg)",
+      top: "47.6%",
+      left: "58.304%",
     },
     {
       id: 9,
       width: "3%",
-      transform: "rotate(94deg)",
+      transform: "rotate(88deg)",
       top: "43%",
-      left: "59.56%",
+      left: "59.2%",
     },
     {
       id: 10,
       width: "4%",
       transform: "rotate(132deg)",
-      top: "41%",
+      top: "40.5%",
       left: "60.6%",
     },
     {
       id: 11,
       width: "3%",
       transform: "rotate(153deg)",
-      top: "39.5%",
+      top: "39%",
       left: "63.6%",
     },
   ]);
@@ -1008,23 +1003,23 @@ const Layout = (props) => {
       id: 1,
       width: "0.5px",
       transform: "rotate(-10deg)",
-      top: "38.4%",
+      top: "38%",
       left: "70.6%",
-      height: "41%",
+      height: "42.8%",
     },
     {
       id: 2,
       width: "0.5px",
       transform: "rotate(-10deg)",
-      top: "34.4%",
-      left: "65.2%",
+      top: "33.6%",
+      left: "65.4%",
       height: "2.5%",
     },
     {
       id: 3,
       width: "0.5px",
       transform: "rotate(-10deg)",
-      top: "81.5%",
+      top: "83.0%",
       left: "77.6%",
       height: "13%",
     },
@@ -1037,15 +1032,7 @@ const Layout = (props) => {
       width: "3%",
       height: "5%",
       left: "65.8%",
-      top: "62.9%",
-      transform: "rotate(-7deg)",
-    },
-    {
-      id: 3,
-      width: "3%",
-      height: "5%",
-      left: "65.8%",
-      top: "62.9%",
+      top: "63.3%",
       transform: "rotate(-7deg)",
     },
   ]);
@@ -1059,14 +1046,14 @@ const Layout = (props) => {
   const [circleData, setCircleData] = useState([
     { id: 1, width: "1.5%", height: "1.5%", top: "51%", left: "32.9%" },
     { id: 2, width: "3%", height: "3%", top: "49.9%", left: "40.65%" },
-    { id: 3, width: "1.5%", height: "1.5%", top: "71.1%", left: "56%" },
+    { id: 3, width: "1.5%", height: "1.5%", top: "72%", left: "56%" },
   ]);
   const [rectangleData, setRectangleData] = useState([
     {
       id: 1,
       width: "1%",
       height: "1%",
-      top: "43.9%",
+      top: "43.5%",
       left: "63.5%",
       transform: "rotate(-9deg)",
     },
@@ -1074,7 +1061,7 @@ const Layout = (props) => {
       id: 2,
       width: "1%",
       height: "1%",
-      top: "47.3%",
+      top: "47.2%",
       left: "64.2%",
       transform: "rotate(-9deg)",
     },
@@ -1090,7 +1077,7 @@ const Layout = (props) => {
       id: 4,
       width: "1%",
       height: "1%",
-      top: "60.3%",
+      top: "60.6%",
       left: "66%",
       transform: "rotate(-9deg)",
     },
@@ -1098,7 +1085,7 @@ const Layout = (props) => {
       id: 5,
       width: "1%",
       height: "1%",
-      top: "69.8%",
+      top: "70.4%",
       left: "68.22%",
       transform: "rotate(-9deg)",
     },
@@ -1106,7 +1093,7 @@ const Layout = (props) => {
       id: 6,
       width: "1%",
       height: "1%",
-      top: "73.1%",
+      top: "73.8%",
       left: "69%",
       transform: "rotate(-9deg)",
     },
@@ -1180,7 +1167,7 @@ const Layout = (props) => {
   // }, [fillColor]);
 
   return (
-    <div className="layout-container" style={{ zoom: 1 }}>
+    <div className="layout-container" style={{ display: loading && "none" }}>
       {/* <Directions /> */}
 
       <div
@@ -1194,8 +1181,8 @@ const Layout = (props) => {
           margin: "auto",
           marginTop: "33%",
           // backgroundColor: "#000",
-          backgroundImage:
-            "url('https://cdn.pixabay.com/photo/2018/01/31/05/43/web-3120321_1280.png')",
+          // backgroundImage:
+          //   "url('https://cdn.pixabay.com/photo/2018/01/31/05/43/web-3120321_1280.png')",
         }}
       >
         <img
@@ -1320,7 +1307,7 @@ const Layout = (props) => {
           position: "absolute",
           width: "12%",
           height: "8%",
-          top: "34.6%",
+          top: "34%",
           left: "52.6%",
         }}
         className="dripping"
@@ -1340,7 +1327,7 @@ const Layout = (props) => {
           position: "absolute",
           width: "13%",
           height: "5%",
-          top: "79.6%",
+          top: "81.1%",
           left: "62.8%",
         }}
         className="dripping"
@@ -1350,7 +1337,7 @@ const Layout = (props) => {
           position: "absolute",
           width: "18%",
           height: "13%",
-          top: "83.1%",
+          top: "84.5%",
           left: "60.9%",
         }}
         className="dripping"
@@ -1360,13 +1347,13 @@ const Layout = (props) => {
           position: "absolute",
           width: "5%",
           height: "10%",
-          top: "64.5%",
+          top: "65.5%",
           left: "56.4%",
         }}
         className="dripping"
       />
 
-      <Map
+      {/* <Map
         style={{
           position: "absolute",
           width: "75%",
@@ -1375,7 +1362,7 @@ const Layout = (props) => {
           left: "7%",
         }}
         // className="dripping"
-      />
+      /> */}
 
       {circleData &&
         circleData.map((item) => {
