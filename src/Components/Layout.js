@@ -542,7 +542,7 @@ const Layout = (props) => {
     {
       id: 58,
       left: "55.4%",
-      bottom: "54.8%",
+      bottom: "56.8%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
