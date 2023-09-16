@@ -757,7 +757,7 @@ const Layout = (props) => {
     {
       id: 3,
       width: "3%",
-      transform: "rotate(44deg)",
+      transform: "rotate(48deg)",
       top: "65.2%",
       left: "24.2%",
       delay: 1.5,
@@ -765,9 +765,9 @@ const Layout = (props) => {
     {
       id: 4,
       width: "5.8%",
-      transform: "rotate(-65deg)",
-      top: "66.2%",
-      left: "21.5%",
+      transform: "rotate(-68deg)",
+      top: "66.5%",
+      left: "20.7%",
       delay: 2,
     },
     {
@@ -815,7 +815,7 @@ const Layout = (props) => {
       width: "5%",
       transform: "rotate(-196deg)",
       top: "89%",
-      left: "26.8%",
+      left: "27.3%",
       delay: 5,
     },
     {
@@ -978,14 +978,14 @@ const Layout = (props) => {
     },
     {
       id: 9,
-      width: "7%",
+      width: "8%",
       transform: "rotate(82deg)",
       top: "47.6%",
-      left: "58.304%",
+      left: "58%",
     },
     {
       id: 9,
-      width: "3%",
+      width: "4%",
       transform: "rotate(88deg)",
       top: "43%",
       left: "59.2%",
@@ -1034,11 +1034,11 @@ const Layout = (props) => {
   ]);
 
   const [eclipseData, setEclipseData] = useState([
-    { id: 1, width: "3%", height: "5%", left: "63.5%", top: "49.9%" },
+    { id: 1, width: "3.2%", height: "6%", left: "63.2%", top: "49.9%" },
     {
       id: 2,
       width: "3%",
-      height: "5%",
+      height: "5.2%",
       left: "65.8%",
       top: "63.3%",
       transform: "rotate(-7deg)",
