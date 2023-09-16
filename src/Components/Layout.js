@@ -138,12 +138,12 @@ const Layout = (props) => {
     {
       id: 21,
       left: "52.6%",
-      bottom: "25.2%",
+      bottom: "24.2%",
     },
     {
       id: 22,
       left: "59.6%",
-      bottom: "25.2%",
+      bottom: "24.2%",
     },
     {
       id: 23,
@@ -256,7 +256,7 @@ const Layout = (props) => {
     {
       id: 33,
       left: "47.6%",
-      bottom: "19.1%",
+      bottom: "18.1%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -267,7 +267,7 @@ const Layout = (props) => {
     {
       id: 34,
       left: "48.6%",
-      bottom: "21.5%",
+      bottom: "20.5%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -278,7 +278,7 @@ const Layout = (props) => {
     {
       id: 35,
       left: "49.5%",
-      bottom: "22.7%",
+      bottom: "21.7%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -289,7 +289,7 @@ const Layout = (props) => {
     {
       id: 36,
       left: "50.5%",
-      bottom: "24%",
+      bottom: "23%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -300,7 +300,7 @@ const Layout = (props) => {
     {
       id: 37,
       left: "51.6%",
-      bottom: "25.8%",
+      bottom: "24.8%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -322,7 +322,7 @@ const Layout = (props) => {
     {
       id: 39,
       left: "52.4%",
-      bottom: "27%",
+      bottom: "26%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -333,7 +333,7 @@ const Layout = (props) => {
     {
       id: 40,
       left: "53.2%",
-      bottom: "28.5%",
+      bottom: "27.5%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -344,7 +344,7 @@ const Layout = (props) => {
     {
       id: 41,
       left: "53.9%",
-      bottom: "29.8%",
+      bottom: "28.8%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -355,7 +355,7 @@ const Layout = (props) => {
     {
       id: 42,
       left: "54.5%",
-      bottom: "31%",
+      bottom: "30%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -366,7 +366,7 @@ const Layout = (props) => {
     {
       id: 43,
       left: "55%",
-      bottom: "32%",
+      bottom: "31%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -377,7 +377,7 @@ const Layout = (props) => {
     {
       id: 44,
       left: "55.4%",
-      bottom: "33.5%",
+      bottom: "32.5%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -388,7 +388,7 @@ const Layout = (props) => {
     {
       id: 45,
       left: "55.9%",
-      bottom: "34.8%",
+      bottom: "33.8%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -399,7 +399,7 @@ const Layout = (props) => {
     {
       id: 46,
       left: "56.23%",
-      bottom: "36.2%",
+      bottom: "35.2%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -410,7 +410,7 @@ const Layout = (props) => {
     {
       id: 47,
       left: "56.7%",
-      bottom: "37.6%",
+      bottom: "36.6%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -421,7 +421,7 @@ const Layout = (props) => {
     {
       id: 48,
       left: "57.2%",
-      bottom: "40.2%",
+      bottom: "39.2%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -432,7 +432,7 @@ const Layout = (props) => {
     {
       id: 49,
       left: "57.5%",
-      bottom: "41.6%",
+      bottom: "40.6%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -443,7 +443,7 @@ const Layout = (props) => {
     {
       id: 50,
       left: "57.5%",
-      bottom: "43%",
+      bottom: "42%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -454,7 +454,7 @@ const Layout = (props) => {
     {
       id: 51,
       left: "57.5%",
-      bottom: "46.3%",
+      bottom: "45.3%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -465,7 +465,7 @@ const Layout = (props) => {
     {
       id: 52,
       left: "57.5%",
-      bottom: "47.3%",
+      bottom: "46.3%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -476,7 +476,7 @@ const Layout = (props) => {
     {
       id: 53,
       left: "57.5%",
-      bottom: "48.7%",
+      bottom: "47.7%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -487,7 +487,7 @@ const Layout = (props) => {
     {
       id: 53,
       left: "57.4%",
-      bottom: "49.8%",
+      bottom: "48.8%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -498,7 +498,7 @@ const Layout = (props) => {
     {
       id: 54,
       left: "57.4%",
-      bottom: "51%",
+      bottom: "50%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -509,7 +509,7 @@ const Layout = (props) => {
     {
       id: 55,
       left: "56.8%",
-      bottom: "53.7%",
+      bottom: "52.7%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -520,7 +520,7 @@ const Layout = (props) => {
     {
       id: 56,
       left: "56.2%",
-      bottom: "55%",
+      bottom: "54%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -531,7 +531,7 @@ const Layout = (props) => {
     {
       id: 57,
       left: "55.8%",
-      bottom: "56.2%",
+      bottom: "55.2%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -542,7 +542,7 @@ const Layout = (props) => {
     {
       id: 58,
       left: "55.4%",
-      bottom: "57.8%",
+      bottom: "54.8%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -553,7 +553,7 @@ const Layout = (props) => {
     {
       id: 59,
       left: "54.9%",
-      bottom: "59.1%",
+      bottom: "58.1%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -564,7 +564,7 @@ const Layout = (props) => {
     {
       id: 60,
       left: "54.1%",
-      bottom: "60.5%",
+      bottom: "59.5%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -575,7 +575,7 @@ const Layout = (props) => {
     {
       id: 61,
       left: "53.6%",
-      bottom: "61.8%",
+      bottom: "60.8%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -586,7 +586,7 @@ const Layout = (props) => {
     {
       id: 61,
       left: "52.8%",
-      bottom: "63%",
+      bottom: "62%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -597,7 +597,7 @@ const Layout = (props) => {
     {
       id: 62,
       left: "52.2%",
-      bottom: "64.2%",
+      bottom: "63.2%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -608,7 +608,7 @@ const Layout = (props) => {
     {
       id: 63,
       left: "55.6%",
-      bottom: "31%",
+      bottom: "30%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -619,7 +619,7 @@ const Layout = (props) => {
     {
       id: 64,
       left: "56.8%",
-      bottom: "33%",
+      bottom: "32%",
       fill1: "#B72E1C",
       fill2: "#B72E1C",
       fill3: "#ddd",
@@ -635,7 +635,7 @@ const Layout = (props) => {
       top: " 54.1%",
       right: "41.2%",
       transform: "rotate(-180deg)",
-      state: false,
+      state: true,
       msgDisp: false,
     },
     {
