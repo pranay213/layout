@@ -750,7 +750,7 @@ const Layout = (props) => {
     {
       id: 2,
       width: "5%",
-      transform: "rotate(-58deg)",
+      transform: "rotate(-54deg)",
       top: "64.5%",
       left: "25.5%",
       delay: 1,
@@ -758,7 +758,7 @@ const Layout = (props) => {
     {
       id: 3,
       width: "3%",
-      transform: "rotate(48deg)",
+      transform: "rotate(53deg)",
       top: "65.2%",
       left: "24.2%",
       delay: 1.5,
@@ -767,16 +767,16 @@ const Layout = (props) => {
       id: 4,
       width: "5.8%",
       transform: "rotate(-68deg)",
-      top: "66.5%",
-      left: "20.7%",
+      top: "66.2%",
+      left: "20.9%",
       delay: 2,
     },
     {
       id: 5,
       width: "5.7%",
-      transform: "rotate(-83deg)",
-      top: "70%",
-      left: "19.5%",
+      transform: "rotate(-82deg)",
+      top: "70.3%",
+      left: "19.7%",
       delay: 2.5,
     },
     {
@@ -805,10 +805,10 @@ const Layout = (props) => {
     },
     {
       id: 9,
-      width: "11.1%",
-      transform: "rotate(-115deg)",
-      top: "85.7%",
-      left: "19.5%",
+      width: "8.7%",
+      transform: "rotate(-116deg)",
+      top: "86.6%",
+      left: "21.3%",
       delay: 4.5,
     },
     {
@@ -821,7 +821,7 @@ const Layout = (props) => {
     },
     {
       id: 11,
-      width: "5%",
+      width: "5.4%",
       transform: "rotate(52deg)",
       top: "86.9%",
       left: "28%",
@@ -831,8 +831,8 @@ const Layout = (props) => {
       id: 12,
       width: "13%",
       transform: "rotate(155deg)",
-      top: "83.4%",
-      left: "27.9%",
+      top: "83.3%",
+      left: "28.4%",
       delay: 6,
     },
     {
@@ -854,9 +854,9 @@ const Layout = (props) => {
     {
       id: 15,
       width: "3%",
-      transform: "rotate(15deg)",
+      transform: "rotate(19deg)",
       top: "69.3%",
-      left: "39.5%",
+      left: "39.9%",
       delay: 7.5,
     },
     {
@@ -869,8 +869,8 @@ const Layout = (props) => {
     },
     {
       id: 16,
-      width: "2%",
-      transform: "rotate(40deg)",
+      width: "2.4%",
+      transform: "rotate(51deg)",
       top: "65.5%",
       left: "37.8%",
       delay: 8,
@@ -880,14 +880,14 @@ const Layout = (props) => {
     {
       id: 110,
       left: "49%",
-      top: "83.2%",
-      transform: "rotate(16deg)",
+      top: "83.4%",
+      transform: "rotate(19deg)",
       width: "12.2%",
     },
     {
       id: 112,
       left: "60%",
-      top: "77.8%",
+      top: "77.9%",
       transform: "rotate(14deg)",
       width: "4%",
     },
@@ -901,28 +901,28 @@ const Layout = (props) => {
     {
       id: 114,
       left: "52%",
-      top: "78.8%",
-      transform: "rotate(14deg)",
+      top: "78.9%",
+      transform: "rotate(15deg)",
       width: "12%",
     },
     {
       id: 115,
       left: "49.4%",
-      top: "79.2%",
+      top: "79.1%",
       transform: "rotate(-65deg)",
-      width: "4%",
+      width: "4.3%",
     },
     {
       id: 116,
-      left: "61.3%",
+      left: "61.7%",
       top: "82%",
       transform: "rotate(-59deg)",
       width: "3%",
     },
     {
       id: 117,
-      left: "61.8%",
-      top: "80.6%",
+      left: "62.2%",
+      top: "80.9%",
       transform: "rotate(-346deg)",
       width: "2%",
     },
@@ -1035,14 +1035,21 @@ const Layout = (props) => {
   ]);
 
   const [eclipseData, setEclipseData] = useState([
-    { id: 1, width: "3.2%", height: "6%", left: "63.4%", top: "49.9%" },
+    {
+      id: 1,
+      width: "3.2%",
+      height: "6%",
+      left: "63.4%",
+      top: "49.9%",
+      transform: "rotate(-5deg)",
+    },
     {
       id: 2,
       width: "3%",
       height: "5.2%",
       left: "65.8%",
       top: "63.3%",
-      transform: "rotate(-7deg)",
+      transform: "rotate(-10deg)",
     },
   ]);
   const [msgData, setMsgData] = useState([
@@ -1205,7 +1212,7 @@ const Layout = (props) => {
           onLoad={() => {
             setTimeout(() => {
               setLoading(false);
-            }, 2000);
+            }, 10000);
           }}
           // onResize={() => setLoading(true)}
         />
