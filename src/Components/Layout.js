@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import layout from "../images/layout3.jpg";
+import layout from "../images/layout2.webp";
 import "./style.scss";
 import Valve from "../svg/Valve";
 import Motor from "./Motor";
@@ -17,6 +17,7 @@ import PartThree from "./PartThree";
 import Circle from "./Circle";
 import Rectangle from "./Rectangle";
 import PartFour from "./PartFour";
+import Map from "./Map";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = (props) => {
@@ -1034,7 +1035,7 @@ const Layout = (props) => {
   ]);
 
   const [eclipseData, setEclipseData] = useState([
-    { id: 1, width: "3.2%", height: "6%", left: "63.2%", top: "49.9%" },
+    { id: 1, width: "3.2%", height: "6%", left: "63.4%", top: "49.9%" },
     {
       id: 2,
       width: "3%",
@@ -1188,9 +1189,9 @@ const Layout = (props) => {
           border: "10px solid tranparent",
           margin: "auto",
           marginTop: "33%",
-          // backgroundColor: "#000",
+          backgroundColor: "rgba(0,0,0,0.25)",
           // backgroundImage:
-          //   "url('https://cdn.pixabay.com/photo/2018/01/31/05/43/web-3120321_1280.png')",
+          //   "url('https://media.istockphoto.com/id/1151367251/vector/seamless-texture-city-map-in-retro-style-outline-map.jpg?s=612x612&w=0&k=20&c=0EzK-SAxKD6tkZJGMjICcYenqTgL6SXc8LFGxMpHY3Y=')",
         }}
       >
         <img
@@ -1204,7 +1205,7 @@ const Layout = (props) => {
           onLoad={() => {
             setTimeout(() => {
               setLoading(false);
-            }, 10000);
+            }, 2000);
           }}
           // onResize={() => setLoading(true)}
         />
