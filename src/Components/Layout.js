@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import layout from "../images/layout3.jpg";
+import layout from "../images/layout2.webp";
 import "./style.scss";
 import Valve from "../svg/Valve";
 import Motor from "./Motor";
@@ -1185,7 +1185,7 @@ const Layout = (props) => {
   return (
     <div
       className="layout-container"
-      style={{ display: loading && "none", marginTop: "10%" }}
+      style={{ display: loading && "none", marginTop: "15%" }}
     >
       {/* <Directions /> */}
 
@@ -1199,7 +1199,7 @@ const Layout = (props) => {
           border: "10px solid tranparent",
           margin: "auto",
           marginTop: "33%",
-          // backgroundColor: "rgba(0,0,0,0.25)",
+          // backgroundColor: "rgba(0,255,0,0.5)",
           // backgroundImage:
           //   "url('https://media.istockphoto.com/id/1151367251/vector/seamless-texture-city-map-in-retro-style-outline-map.jpg?s=612x612&w=0&k=20&c=0EzK-SAxKD6tkZJGMjICcYenqTgL6SXc8LFGxMpHY3Y=')",
         }}
