@@ -1183,7 +1183,10 @@ const Layout = (props) => {
   // }, [fillColor]);
 
   return (
-    <div className="layout-container" style={{ display: loading && "none" }}>
+    <div
+      className="layout-container"
+      style={{ display: loading && "none", marginTop: "10%" }}
+    >
       {/* <Directions /> */}
 
       <div
@@ -1196,7 +1199,7 @@ const Layout = (props) => {
           border: "10px solid tranparent",
           margin: "auto",
           marginTop: "33%",
-          backgroundColor: "rgba(0,0,0,0.25)",
+          // backgroundColor: "rgba(0,0,0,0.25)",
           // backgroundImage:
           //   "url('https://media.istockphoto.com/id/1151367251/vector/seamless-texture-city-map-in-retro-style-outline-map.jpg?s=612x612&w=0&k=20&c=0EzK-SAxKD6tkZJGMjICcYenqTgL6SXc8LFGxMpHY3Y=')",
         }}
@@ -1297,7 +1300,7 @@ const Layout = (props) => {
           position: "absolute",
           width: "12%",
           height: "8%",
-          top: "34%",
+          top: "33.8%",
           left: "52.6%",
         }}
         className="dripping"
