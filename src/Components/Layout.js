@@ -1049,7 +1049,7 @@ const Layout = (props) => {
       height: "5.2%",
       left: "66.1%",
       top: "63.3%",
-      transform: "rotate(-10deg)",
+      transform: "rotate(-12deg)",
     },
   ]);
   const [msgData, setMsgData] = useState([
