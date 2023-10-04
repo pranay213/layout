@@ -1046,7 +1046,7 @@ const Layout = (props) => {
     {
       id: 2,
       width: "3.2%",
-      height: "5.4%",
+      height: "5.5%",
       left: "65.9%",
       top: "63.3%",
       transform: "rotate(-12deg)",
