@@ -1185,7 +1185,7 @@ const Layout = (props) => {
   return (
     <div
       className="layout-container"
-      style={{ display: loading && "none", marginTop: "30%" }}
+      style={{ display: loading && "none", marginTop: "15%" }}
     >
       {/* <Directions /> */}
 
