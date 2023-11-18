@@ -1,19 +1,18 @@
-.rotate{
-    animation: mymove 500ms infinite;
+.rotate {
+  animation: mymove 500ms infinite;
 }
 @keyframes mymove {
-    /* 0%{transform: rotate(360deg);} */
-    100% {transform: rotate(360deg);}
+  /* 0%{transform: rotate(360deg);} */
+  100% {
+    transform: rotate(360deg);
   }
+}
 
-.water-drops{
-    animation: waterdops 500ms infinite;
-
+.water-drops {
+  animation: waterdops 500ms infinite;
 }
 
 @keyframes waterdops {
-    /* 0%{transform: rotate(180deg);} */
-    /* 100% {transform: rotate(360deg);} */
-  }
-
- 
+  /* 0%{transform: rotate(180deg);} */
+  /* 100% {transform: rotate(360deg);} */
+}

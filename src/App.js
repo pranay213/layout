@@ -24,14 +24,33 @@
 
 // export default App;
 
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { Suspense, lazy, useContext, useEffect, useState } from "react";
+// import { io } from "socket.io-client";
 import Loader from "./Components/Loader";
 import LoaderPage from "./Components/LoaderPage";
+import { UserContext, UsercontextProvider } from "./context";
 // import Layout from "./Components/Layout";
 const Layout = lazy(() => import("./Components/Layout"));
 
 const App = () => {
+  // const socket = io();
+  const { setData } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
+  const queryParameters = new URLSearchParams(window.location.search);
+  const userid = queryParameters.get("userid");
+
+  useEffect(() => {
+    const ws = new WebSocket(`ws://192.236.161.98:8080/${userid}`);
+    ws.addEventListener("open", () => {
+      console.log("We are connected");
+    });
+    ws.onmessage = function (e) {
+      var server_message = e.data;
+      console.log(server_message);
+      setData(JSON.parse(server_message));
+      // document.getElementById("ph-value").innerHTML = server_message;
+    };
+  }, []);
 
   return (
     <>
@@ -47,4 +66,12 @@ const App = () => {
   );
 };
 
-export default App;
+const LayoutView = () => {
+  return (
+    <UsercontextProvider>
+      <App />
+    </UsercontextProvider>
+  );
+};
+
+export default LayoutView;

@@ -6,7 +6,7 @@ const DisplayMsg = (props) => {
   return valvesData.map((item, index) => {
     let newval = item.right.replace(/%/g, "");
     newval = parseInt(newval - 12) + "%";
-    console.log("msgDisp", item.msgDisp);
+    // console.log("msgDisp", item.msgDisp);
     let newDimensions = {
       ...item,
       right: newval,
