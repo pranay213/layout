@@ -40,7 +40,7 @@ const App = () => {
   const userid = queryParameters.get("userid");
 
   useEffect(() => {
-    const ws = new WebSocket(`wss://192.236.161.98:8080/${userid}`);
+    const ws = new WebSocket(`ws://192.236.161.98:8080/${userid}`);
     ws.addEventListener("open", () => {
       console.log("We are connected");
     });
