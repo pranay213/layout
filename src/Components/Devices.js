@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Valve from "../svg/Valve";
 import Motor from "./Motor";
 import MotorNew from "../svg/MotorNew";
@@ -8,6 +8,23 @@ import "../Anim.css";
 const Devices = (props) => {
   const { closeFn, showV } = props;
   const { data } = useContext(UserContext);
+  const [valveState, setValveState] = useState(false);
+  const [motorState, setmotorState] = useState(false);
+
+  useEffect(() => {
+    if (data?.msg === "open") {
+      setValveState(true);
+      setTimeout(() => {
+        setmotorState(true);
+      }, 5000);
+    } else if (data?.msg === "close") {
+      setmotorState(false);
+      setTimeout(() => {
+        setValveState(false);
+      }, 5000);
+    }
+  }, [data]);
+
   return (
     <>
       <div className="absolute right-5 top-5 bg-zinc-700 px-3 py-1 rounded-md">
@@ -20,7 +37,7 @@ const Devices = (props) => {
           <span className="font-semibold text-blue-900">VALVE 1</span>
           <Valve
             className={`w-[40px] h-[40px] -rotate-90 ${
-              data?.msg === "open" ? "valveon" : "fill-[#000]"
+              valveState ? "valveon" : "fill-[#000]"
             }`}
             // newClass="animation-spin"
             width={40}
@@ -32,7 +49,7 @@ const Devices = (props) => {
           <span className="font-semibold text-blue-900">VALVE 2</span>
           <Valve
             className={`w-[40px] h-[40px] -rotate-90 ${
-              data?.msg === "open" ? "valveon" : "fill-[#000]"
+              valveState ? "valveon" : "fill-[#000]"
             }`}
             width={40}
             height={40}
@@ -45,9 +62,7 @@ const Devices = (props) => {
         {/* <Motor fill="black" width={50} height={50} /> */}
         <MotorNew
           className={`w-full ${
-            data?.msg === "open"
-              ? " fill-[#D15478] animate-pulse"
-              : "fill-[#000]"
+            motorState ? " fill-[#D15478] animate-pulse" : "fill-[#000]"
           } `}
         />
         <span className="font-semibold my-1 ">6006.1</span>
