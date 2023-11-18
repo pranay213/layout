@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import layout from "../images/layout3_new2.webp";
 import "./style.scss";
 import Valve from "../svg/Valve";
@@ -18,11 +18,38 @@ import Circle from "./Circle";
 import Rectangle from "./Rectangle";
 import PartFour from "./PartFour";
 import Map from "./Map";
+import Devices from "./Devices";
+import Hamburger from "../svg/Hamburger";
+import { UserContext } from "../context";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = (props) => {
   const { setLoading, loading } = props;
-  console.log("setLoading", setLoading);
+
+  const { data } = useContext(UserContext);
+  const [valvesState, setvalvesState] = useState(false);
+  const [sprinklersState, setSprinklers] = useState(false);
+  const [dripState, setdripState] = useState(false);
+
+  // console.log("setLoading", setLoading);
+
+  useEffect(() => {
+    if (data?.msg == "open") {
+      setvalvesState(true);
+      setTimeout(() => {
+        setSprinklers(true);
+        setdripState(true);
+      }, 5000);
+    } else if (data?.msg === "close") {
+      setSprinklers(false);
+      setTimeout(() => {
+        setvalvesState(false);
+      }, 5000);
+      setTimeout(() => {
+        setdripState(false);
+      }, 5000);
+    }
+  }, [data]);
   const commonStyles = {
     position: "absolute",
     borderRadius: "50%",
@@ -486,7 +513,7 @@ const Layout = (props) => {
       className: "rotate",
     },
     {
-      id: 53,
+      id: "53a",
       left: "57.4%",
       bottom: "48.8%",
       fill1: "#B72E1C",
@@ -585,7 +612,7 @@ const Layout = (props) => {
       className: "rotate",
     },
     {
-      id: 61,
+      id: "61a",
       left: "52.8%",
       bottom: "62%",
       fill1: "#B72E1C",
@@ -868,7 +895,7 @@ const Layout = (props) => {
       delay: 8,
     },
     {
-      id: 16,
+      id: 17,
       width: "2.4%",
       transform: "rotate(51deg)",
       top: "65.5%",
@@ -971,7 +998,7 @@ const Layout = (props) => {
       left: "58.9%",
     },
     {
-      id: 8,
+      id: "8a",
       width: "7%",
       transform: "rotate(88deg)",
       top: "52.6%",
@@ -985,7 +1012,7 @@ const Layout = (props) => {
       left: "58%",
     },
     {
-      id: 9,
+      id: "9a",
       width: "4%",
       transform: "rotate(88deg)",
       top: "43%",
@@ -1153,7 +1180,7 @@ const Layout = (props) => {
       }
       return item;
     });
-    console.log("newValveData ---", newValveData);
+    // console.log("newValveData ---", newValveData);
     // setValvesData((prev) => [...prev]);
     setValvesData((prev) => newValveData);
   };
@@ -1181,13 +1208,33 @@ const Layout = (props) => {
 
   //   return () => clearTimeout(timer);
   // }, [fillColor]);
+  const [showV, setShowV] = useState(false);
+  const closeFn = () => {
+    setShowV(false);
+  };
+  const openFn = () => {
+    setShowV(true);
+  };
 
   return (
     <div
       className="layout-container"
       style={{ display: loading && "none", marginTop: "15%" }}
     >
-      {/* <Directions /> */}
+      <div
+        className="absolute right-6 top-0 z-[1001]"
+        hidden={showV ? showV : false}
+        onClick={openFn}
+      >
+        <Hamburger fill="#000" />
+      </div>
+      <div
+        className={`absolute -top-[11%] border w-full text-center h-[100vh] bg-black bg-opacity-80 z-[300]  flex-col items-center justify-center p-0 ${
+          showV ? "flex" : "hidden"
+        } `}
+      >
+        <Devices closeFn={closeFn} showV={showV} />
+      </div>
 
       <div
         style={{
@@ -1225,7 +1272,7 @@ const Layout = (props) => {
         valvesData.map((item) => {
           return (
             <Valve
-              key={uuidV4()}
+              key={item.id}
               style={{
                 ...valveCommonStyles,
                 ...item,
@@ -1235,7 +1282,7 @@ const Layout = (props) => {
               onClick={(event) => {
                 handlerFn(event, item.id);
               }}
-              className={item.state ? "valve-open" : "valve-close"}
+              className={valvesState ? "valve-open" : "valve-close"}
             />
           );
         })}
@@ -1274,26 +1321,26 @@ const Layout = (props) => {
 
       {dripData &&
         dripData.map((item) => {
-          return <Line key={item.id} item={item} />;
+          return <Line key={item.id} item={item} dripState={dripState} />;
         })}
       {dripData2 &&
         dripData2.map((item) => {
-          return <Line key={item.id} item={item} />;
+          return <Line key={item.id} item={item} dripState={dripState} />;
         })}
       {dripData3 &&
         dripData3.map((item) => {
-          return <Line key={item.id} item={item} />;
+          return <Line key={item.id} item={item} dripState={dripState} />;
         })}
 
       {threeDrips &&
         threeDrips.map((item) => {
-          return <DripLine key={item.id} item={item} />;
+          return <DripLine key={item.id} item={item} dripState={dripState} />;
         })}
       {/* <Line /> */}
 
       {eclipseData &&
         eclipseData.map((item) => {
-          return <Eclipse item={item} />;
+          return <Eclipse key={item.id} item={item} dripState={dripState} />;
         })}
       <CustomShape
         style={{
@@ -1303,7 +1350,7 @@ const Layout = (props) => {
           top: "33.8%",
           left: "52.6%",
         }}
-        className="dripping"
+        className={dripState ? "dripping" : "bg-no-display"}
       />
       <PartOne
         style={{
@@ -1313,7 +1360,7 @@ const Layout = (props) => {
           top: "45.1%",
           left: "27.6%",
         }}
-        className="dripping"
+        className={dripState ? "dripping" : "bg-transparent"}
       />
       <PartTwo
         style={{
@@ -1323,7 +1370,7 @@ const Layout = (props) => {
           top: "81.1%",
           left: "62.8%",
         }}
-        className="dripping"
+        className={dripState ? "dripping" : "bg-transaparent"}
       />
       <PartThree
         style={{
@@ -1333,7 +1380,7 @@ const Layout = (props) => {
           top: "84.5%",
           left: "60.9%",
         }}
-        className="dripping"
+        className={dripState ? "dripping" : "hidden"}
       />
       <PartFour
         style={{
@@ -1343,7 +1390,7 @@ const Layout = (props) => {
           top: "65.5%",
           left: "56.4%",
         }}
-        className="dripping"
+        className={dripState ? "dripping" : "hidden"}
       />
 
       {/* <Map
@@ -1361,11 +1408,12 @@ const Layout = (props) => {
         circleData.map((item) => {
           return (
             <Circle
+              key={item.id}
               style={{
                 position: "absolute",
                 ...item,
               }}
-              className="dripping"
+              className={dripState ? "dripping" : "bg-no-display"}
             />
           );
         })}
@@ -1374,11 +1422,12 @@ const Layout = (props) => {
         rectangleData.map((item) => {
           return (
             <Rectangle
+              key={item.id}
               style={{
                 position: "absolute",
                 ...item,
               }}
-              className="dripping"
+              className={dripState ? "dripping" : ""}
             />
           );
         })}
@@ -1387,7 +1436,7 @@ const Layout = (props) => {
         motorsData.map((item) => {
           return (
             <Motor
-              key={uuidV4()}
+              key={item.id}
               style={{
                 ...commonStyles,
                 ...item,
@@ -1396,7 +1445,8 @@ const Layout = (props) => {
               fill={"#00f"}
               fill2={"#00f"}
               fill3={"#ddd"}
-              className="rotate"
+              className={sprinklersState ? "rotate" : ""}
+
               // fill={tapsState ? tapColor : "#B62511"}
             />
           );
@@ -1405,6 +1455,7 @@ const Layout = (props) => {
         tapsData.map((item) => {
           return (
             <Motor
+              key={item.id}
               style={{
                 ...commonStyles,
                 ...item,
@@ -1424,7 +1475,7 @@ const Layout = (props) => {
               // fill={item.fill1 ? item.fill1 : "#0000ff"}
               // fill2={item.fill2 ? item.fill2 : "#0000ff"}
               // fill3={item.fill3 ? item.fill3 : "#ddd"}
-              className={valvesData[0].state ? "rotate" : ""}
+              className={sprinklersState ? "rotate" : ""}
               // className={item.className ? item.className : ""}
             />
           );

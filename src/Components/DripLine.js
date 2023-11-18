@@ -31,8 +31,8 @@ const Liquid = styled.div`
 //     : "drip 1s infinite"};
 
 const DripLine = (props) => {
-  const { item } = props;
-  console.log("new-item", item);
+  const { item, dripState } = props;
+  // console.log("new-item", item);
   const [left1, setLeft1] = useState();
   const [left2, setLeft2] = useState();
 
@@ -41,7 +41,7 @@ const DripLine = (props) => {
     let newval1 = parseFloat(Number(newval) - 0.4) + "%";
     let newval2 = parseFloat(Number(newval) + 0.4) + "%";
 
-    console.log("newval", newval, "newval1", newval1, "newval2", newval2);
+    // console.log("newval", newval, "newval1", newval1, "newval2", newval2);
     let newDimensions1 = {
       ...item,
       left: newval1,
@@ -109,9 +109,9 @@ const DripLine = (props) => {
         }}
       >
         <div className="line-1">
-          <div className="liquid2"></div>
-          <div className="liquid2"></div>
-          <div className="liquid2"></div>
+          <div className={dripState ? "liquid2" : ""}></div>
+          <div className={dripState ? "liquid2" : ""}></div>
+          <div className={dripState ? "liquid2" : ""}></div>
         </div>
       </div>
     </>

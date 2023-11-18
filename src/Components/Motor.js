@@ -1,5 +1,5 @@
 import * as React from "react";
-const SVGComponent = (props) => {
+const Motor = (props) => {
   const { fill, fill2, fill3 } = props;
   const [transformDeg, setTransfromDeg] = React.useState(0);
 
@@ -58,4 +58,4 @@ const SVGComponent = (props) => {
     </svg>
   );
 };
-export default SVGComponent;
+export default Motor;
