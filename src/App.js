@@ -25,7 +25,6 @@
 // export default App;
 
 import React, { Suspense, lazy, useContext, useEffect, useState } from "react";
-// import { io } from "socket.io-client";
 import Loader from "./Components/Loader";
 import LoaderPage from "./Components/LoaderPage";
 import { UserContext, UsercontextProvider } from "./context";
