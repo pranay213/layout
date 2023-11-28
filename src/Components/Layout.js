@@ -21,35 +21,22 @@ import Map from "./Map";
 import Devices from "./Devices";
 import Hamburger from "../svg/Hamburger";
 import { UserContext } from "../context";
+import { allDevices } from "../api";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = (props) => {
-  const { setLoading, loading } = props;
+  const { setLoading, loading, gatewayid } = props;
 
-  const { data } = useContext(UserContext);
+  const { data, devicesList, setDevicesList } = useContext(UserContext);
   const [valvesState, setvalvesState] = useState(false);
   const [sprinklersState, setSprinklers] = useState(false);
   const [dripState, setdripState] = useState(false);
+  const [motorData, setMotorData] = useState();
+  const [lists] = useState(["valve", "Motor_Control"]);
+  // const [devicesList, setDevicesList] = useState([]);
 
   // console.log("setLoading", setLoading);
 
-  useEffect(() => {
-    if (data?.msg == "open") {
-      setvalvesState(true);
-      setTimeout(() => {
-        setSprinklers(true);
-        setdripState(true);
-      }, 5000);
-    } else if (data?.msg === "close") {
-      setSprinklers(false);
-      setTimeout(() => {
-        setvalvesState(false);
-      }, 5000);
-      setTimeout(() => {
-        setdripState(false);
-      }, 5000);
-    }
-  }, [data]);
   const commonStyles = {
     position: "absolute",
     borderRadius: "50%",
@@ -659,7 +646,7 @@ const Layout = (props) => {
 
   const [valvesData, setValvesData] = useState([
     {
-      id: 1,
+      id: 6004.1,
       top: " 54.1%",
       right: "41.2%",
       transform: "rotate(-180deg)",
@@ -667,7 +654,7 @@ const Layout = (props) => {
       msgDisp: false,
     },
     {
-      id: 2,
+      id: 6005.1,
       top: "52.1%",
       right: "29.5%",
       transform: "rotate(-180deg)",
@@ -675,7 +662,7 @@ const Layout = (props) => {
       msgDisp: false,
     },
     {
-      id: 3,
+      id: 6007.1,
       top: "60.5%",
       right: "28.9%",
       transform: "rotate(-180deg)",
@@ -683,7 +670,7 @@ const Layout = (props) => {
       msgDisp: false,
     },
     {
-      id: 4,
+      id: 6008.1,
       top: "75.5%",
       right: "30.9%",
       transform: "rotate(-60deg)",
@@ -691,7 +678,7 @@ const Layout = (props) => {
       msgDisp: false,
     },
     {
-      id: 5,
+      id: 6009.1,
       top: "71.8%",
       right: "40.4%",
       transform: "rotate(-27deg)",
@@ -699,7 +686,7 @@ const Layout = (props) => {
       msgDisp: false,
     },
     {
-      id: 6,
+      id: 6010.1,
       top: "81.6%",
       right: "25.65%",
       transform: "rotate(-27deg)",
@@ -707,7 +694,7 @@ const Layout = (props) => {
       msgDisp: false,
     },
     {
-      id: 7,
+      id: 6011.1,
       top: "86%",
       right: "21.12%",
       transform: "rotate()",
@@ -715,7 +702,7 @@ const Layout = (props) => {
       msgDisp: false,
     },
     {
-      id: 8,
+      id: 6012.1,
       top: "52%",
       right: "54.12%",
       transform: "rotate()",
@@ -723,7 +710,23 @@ const Layout = (props) => {
       msgDisp: false,
     },
     {
-      id: 9,
+      id: 6013.1,
+      top: "54.8%",
+      right: "55.5%",
+      transform: "rotate(-40deg)",
+      state: true,
+      msgDisp: false,
+    },
+    {
+      id: 6014.1,
+      top: "54.8%",
+      right: "55.5%",
+      transform: "rotate(-40deg)",
+      state: true,
+      msgDisp: false,
+    },
+    {
+      id: 6015.1,
       top: "54.8%",
       right: "55.5%",
       transform: "rotate(-40deg)",
@@ -1216,6 +1219,38 @@ const Layout = (props) => {
     setShowV(true);
   };
 
+  useEffect(() => {
+    let count = 0;
+    let newvalves = valvesData.map((item) => {
+      // console.log("asdfadfjk");
+      let status = devicesList
+        .filter((item2) => {
+          if (item2.device_id == item.id) {
+            if (item2.status === "open") {
+              count++;
+            }
+            // console.log("-----", item2.status, item.id);
+            return item2;
+          }
+        })
+        .map((item) => item.status);
+      // console.log("nestatus", status);
+      item.state = status[0];
+      // item.state = "open";
+
+      return item;
+    });
+    // console.log("newvalves", newvalves);
+    setValvesData(newvalves);
+    if (count > 0) {
+      setdripState(true);
+      setSprinklers(true);
+    } else {
+      setSprinklers(false);
+      setdripState(false);
+    }
+  }, [devicesList]);
+
   return (
     <div
       className="layout-container"
@@ -1233,7 +1268,12 @@ const Layout = (props) => {
           showV ? "flex" : "hidden"
         } `}
       >
-        <Devices closeFn={closeFn} showV={showV} />
+        <Devices
+          closeFn={closeFn}
+          showV={showV}
+          valvesData={valvesData}
+          motorData={motorData}
+        />
       </div>
 
       <div
@@ -1282,7 +1322,7 @@ const Layout = (props) => {
               onClick={(event) => {
                 handlerFn(event, item.id);
               }}
-              className={valvesState ? "valve-open" : "valve-close"}
+              className={item.state === "open" ? "valve-open" : "valve-close"}
             />
           );
         })}

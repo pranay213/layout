@@ -20,19 +20,21 @@ const DisplayMsg = (props) => {
             width: 40,
             ...newDimensions,
             transform: [" rotate(0deg)"],
-            backgroundColor: "rgba(45,23,78,0.45)",
+            backgroundColor: "rgba(45,23,78,0.65)",
             borderRadius: "0px 2px 2px 2px",
             zIndex: 1,
             //   border: "0.1px dotted",
           }}
+          key={index}
         >
           <div className="arrow-left"></div>
           <div
             style={{
               display: "flex",
+              flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-around",
-              top: "-50%",
+              // top: "-50%",
               position: "relative",
             }}
           >
@@ -40,9 +42,10 @@ const DisplayMsg = (props) => {
               <p
                 style={{
                   fontSize: 5,
-                  color: "#000",
+                  color: "#fff",
                   textShadow: "0px 0px 1px white",
                 }}
+                className="drop-shadow-md"
               >
                 valve {item.id}
               </p>
@@ -56,7 +59,7 @@ const DisplayMsg = (props) => {
                 bottom: "-20%",
                 boxShadow: "0px 0px 2px black",
                 padding: "0px 2px",
-                color: "#",
+                color: "#000",
                 fontWeight: "600",
                 border: "none",
                 borderRadius: 2,

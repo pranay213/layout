@@ -1,55 +1,42 @@
-// import "./App.css";
-// // import layout from "../src/svg/3P.svg";
-// // import Map from "./svg/layout.svg";
-// import React from "react";
-// import ThirdPart from "./svg/ThirdPart";
-// // const SVGMap = React.lazy(() => import("../src/svg/3P.svg"));
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         {/* <img src={layout} alt="logo" /> */}
-//         <ThirdPart />
-//         {/* <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p> */}
-//         {/* <Suspense fallback={""}>
-//           <SVGMap />
-//         </Suspense> */}
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React, { Suspense, lazy, useContext, useEffect, useState } from "react";
 import Loader from "./Components/Loader";
 import LoaderPage from "./Components/LoaderPage";
 import { UserContext, UsercontextProvider } from "./context";
+import { allDevices } from "./api";
 // import Layout from "./Components/Layout";
 const Layout = lazy(() => import("./Components/Layout"));
 
 const App = () => {
   // const socket = io();
-  const { setData } = useContext(UserContext);
+  const {
+    setData,
+    devicesList,
+    setDevicesList,
+    gatewayid,
+    setGatewayId,
+    userid,
+    setUserId,
+  } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
-  const queryParameters = new URLSearchParams(window.location.search);
-  const userid = queryParameters.get("userid");
 
-  useEffect(() => {
-    const ws = new WebSocket(`ws://192.236.161.98:8080/${userid}`);
-    ws.addEventListener("open", () => {
-      console.log("We are connected");
-    });
-    ws.onmessage = function (e) {
-      var server_message = e.data;
-      console.log(server_message);
-      setData(JSON.parse(server_message));
-      // document.getElementById("ph-value").innerHTML = server_message;
-    };
-  }, []);
+  const [lists] = useState(["valve", "Motor_Control"]);
+
+  // document.write("userid", userid, "gatewayid", gatewayid);
+
+  // let devices = async (gatewayid) => {
+  //   let resp = await allDevices(gatewayid);
+  //   console.log("respo", resp);
+  //   // document.write(JSON.stringify(resp.status));
+  //   if (resp.status === "SUCCESS") {
+  //     if (resp.data?.length > 0) {
+  //       let newdevices = resp.data.filter((item) => {
+  //         if (lists.includes(item.device_type)) return item;
+  //       });
+  //       // document.write(JSON.stringify(newdevices));
+  //       setDevicesList(newdevices);
+  //     }
+  //   }
+  // };
 
   return (
     <>
@@ -59,7 +46,11 @@ const App = () => {
         </>
       )}
       <Suspense>
-        <Layout setLoading={setLoading} loading={loading} />
+        <Layout
+          setLoading={setLoading}
+          loading={loading}
+          gatewayid={gatewayid}
+        />
       </Suspense>
     </>
   );
