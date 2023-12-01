@@ -27,16 +27,16 @@ const Devices = (props) => {
 
   return (
     <>
-      <div className="absolute right-5 top-5 bg-zinc-700 px-3 py-1 rounded-md">
+      <div className="absolute right-5 top-14 bg-zinc-700 px-3 py-1 rounded-md z-[100]">
         <span className="text-white" onClick={closeFn}>
           X
         </span>
       </div>
 
-      <div className="w-full flex  items-center justify-evenly flex-wrap ">
+      <div className="w-full flex  items-center justify-evenly flex-wrap z-[500]">
         {devicesList.map((item) => (
           <div
-            className="bg-white w-1/3 flex items-center justify-center rounded-md m-2 p-4 flex-col"
+            className="bg-white w-1/3 flex items-center justify-center rounded-md m-2 flex-col"
             key={item._id}
           >
             {item.device_type === "Valve" && (

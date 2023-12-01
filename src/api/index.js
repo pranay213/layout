@@ -16,14 +16,26 @@ ApiCall.interceptors.response.use((res) => {
   }
 
   return res;
+  // console.log("res", res);
 });
 
 export const allDevices = async (gatewayId) => {
-  let res = await ApiCall.get(`/gateway/${gatewayId}/devices`);
-  return res.data;
+  try {
+    let res = await ApiCall.get(`/gateway/${gatewayId}/devices`);
+    return res?.data;
+  } catch (err) {
+    toast.error("Something went wrong");
+
+    return { status: "FAIL" };
+  }
 };
 
 export const gateWays = async (userId) => {
-  let res = await ApiCall.get(`user/${userId}/gateways`);
-  return res.data;
+  try {
+    let res = await ApiCall.get(`user/${userId}/gateways`);
+    return res?.data;
+  } catch (error) {
+    toast.error("Something went wrong");
+    return { status: "FAIL" };
+  }
 };

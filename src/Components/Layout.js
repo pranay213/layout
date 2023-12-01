@@ -22,17 +22,28 @@ import Devices from "./Devices";
 import Hamburger from "../svg/Hamburger";
 import { UserContext } from "../context";
 import { allDevices } from "../api";
+import InfoIcon from "./InfoIcon";
+import StatusScreen from "./StatusScreen";
+import GearIcon from "./GearIcon";
+import StopIcon from "./StopIcon";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import ZoomIn from "./Zoomin";
+import Zoomout from "./Zoomout";
+import Reset from "./Reset";
 const windowWidth = window.innerWidth;
 const windowHeight = window.innerHeight;
 const Layout = (props) => {
   const { setLoading, loading, gatewayid } = props;
 
-  const { data, devicesList, setDevicesList } = useContext(UserContext);
+  const { data, devicesList, setDevicesList, flowstatus } =
+    useContext(UserContext);
   const [valvesState, setvalvesState] = useState(false);
   const [sprinklersState, setSprinklers] = useState(false);
   const [dripState, setdripState] = useState(false);
   const [motorData, setMotorData] = useState();
   const [lists] = useState(["valve", "Motor_Control"]);
+
+  let ZoomingFns;
   // const [devicesList, setDevicesList] = useState([]);
 
   // console.log("setLoading", setLoading);
@@ -1212,6 +1223,8 @@ const Layout = (props) => {
   //   return () => clearTimeout(timer);
   // }, [fillColor]);
   const [showV, setShowV] = useState(false);
+  const [showV2, setShowV2] = useState(false);
+
   const closeFn = () => {
     setShowV(false);
   };
@@ -1219,6 +1232,12 @@ const Layout = (props) => {
     setShowV(true);
   };
 
+  const closeFn2 = () => {
+    setShowV2(false);
+  };
+  const openFn2 = () => {
+    setShowV2(true);
+  };
   useEffect(() => {
     let count = 0;
     let newvalves = valvesData.map((item) => {
@@ -1226,7 +1245,10 @@ const Layout = (props) => {
       let status = devicesList
         .filter((item2) => {
           if (item2.device_id == item.id) {
-            if (item2.status === "open") {
+            if (
+              item2.device_type == "Motor_Control" &&
+              item2.status === "open"
+            ) {
               count++;
             }
             // console.log("-----", item2.status, item.id);
@@ -1257,8 +1279,21 @@ const Layout = (props) => {
       style={{ display: loading && "none", marginTop: "15%" }}
     >
       <div
+        className={`absolute -top-[11%] border w-full text-center h-[100vh] bg-black bg-opacity-80 z-[300]  flex-col items-center justify-center p-0 ${
+          showV2 ? "flex" : "hidden"
+        } `}
+      >
+        <StatusScreen
+          closeFn={closeFn2}
+          showV={showV2}
+          valvesData={valvesData}
+          motorData={motorData}
+        />
+      </div>
+
+      <div
         className="absolute right-6 top-0 z-[1001]"
-        hidden={showV ? showV : false}
+        hidden={showV || showV2 ? true : false}
         onClick={openFn}
       >
         <Hamburger fill="#000" />
@@ -1276,58 +1311,134 @@ const Layout = (props) => {
         />
       </div>
 
-      <div
-        style={{
-          width: "90%",
-          height: "90%",
-          display: "flex",
-          alignItems: "center",
-          justifyItems: "center",
-          border: "10px solid tranparent",
-          margin: "auto",
-          marginTop: "33%",
-          // backgroundColor: "rgba(0,255,0,0.5)",
-          // backgroundImage:
-          //   "url('https://media.istockphoto.com/id/1151367251/vector/seamless-texture-city-map-in-retro-style-outline-map.jpg?s=612x612&w=0&k=20&c=0EzK-SAxKD6tkZJGMjICcYenqTgL6SXc8LFGxMpHY3Y=')",
-        }}
-      >
-        <img
-          src={layout}
-          style={{
-            width: "100%",
-            height: "100%",
-            opacity: 1,
-          }}
-          alt="layout"
-          onLoad={() => {
-            setTimeout(() => {
-              setLoading(false);
-            }, 10000);
-          }}
-          // onResize={() => setLoading(true)}
-        />
+      <div className="absolute left-[30%] z-[100] bg-white flex flex-row space-x-2">
+        <div
+          className=""
+          hidden={showV || showV2 ? true : false}
+          onClick={openFn2}
+        >
+          <InfoIcon />
+        </div>
+
+        {flowstatus ? (
+          <div className="flex flex-row items-center space-x-2">
+            <h3 className="animate-pulse text-green-600 text-xl font-semibold text-center">
+              {"Flow is running"}
+            </h3>
+            <GearIcon className="animate-spin w-[20px] h-[20px]" />
+          </div>
+        ) : (
+          <div className="flex flex-row items-center space-x-2 -ml-24">
+            <h3 className="text-red-400 text-xl font-semibold">
+              {"Flow is not running"}
+            </h3>
+            <StopIcon className="animate-pulse w-[20px] h-[20px]" />
+          </div>
+        )}
       </div>
 
-      {valvesData &&
-        valvesData.map((item) => {
-          return (
-            <Valve
-              key={item.id}
-              style={{
-                ...valveCommonStyles,
-                ...item,
-                // ...dimentions,
-              }}
-              // fill={item.state ? waterCol : "#ff0000"}
-              onClick={(event) => {
-                handlerFn(event, item.id);
-              }}
-              className={item.state === "open" ? "valve-open" : "valve-close"}
-            />
-          );
-        })}
+      <div className="w-full flex flex-row absolute top-[10%] space-x-2 items-center justify-center z-[50] ">
+        <button
+          onClick={() => {
+            ZoomingFns.zoomIn();
+          }}
+          className="border border-spacing-0 p-2 rounded-xl "
+        >
+          <ZoomIn />
+        </button>
+        <button
+          onClick={() => {
+            ZoomingFns.zoomOut();
+          }}
+          className="border border-spacing-0 p-2 rounded-xl "
+        >
+          <Zoomout />
+        </button>
+        <button
+          onClick={() => {
+            ZoomingFns.resetTransform();
+          }}
+          className="border border-spacing-0 p-3 rounded-xl  font-bold text-3xl px-4 foucs:"
+        >
+          <Reset />
+        </button>
+      </div>
 
-      {/* {true && (
+      <TransformWrapper>
+        {({ zoomIn, zoomOut, resetTransform, ...rest }) => {
+          // if (!loading) {
+          //   setZoomingFn((prev) => ({
+          //     zoomIn: zoomIn,
+          //     zoomOut: zoomOut,
+          //     resetTransform: resetTransform,
+          //   }));
+          // }
+          ZoomingFns = {
+            zoomIn: zoomIn,
+            zoomOut: zoomOut,
+            resetTransform: resetTransform,
+          };
+          return (
+            <>
+              <TransformComponent
+                contentClass="  "
+                wrapperStyle={{ height: "88vh", marginTop: "-5%" }}
+              >
+                <div
+                  style={{
+                    width: "90%",
+                    height: "90%",
+                    flexDirection: "column",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyItems: "center",
+                    border: "10px solid tranparent",
+                    margin: "auto",
+                    marginTop: "33%",
+                    // backgroundColor: "rgba(0,255,0,0.5)",
+                    // backgroundImage:
+                    //   "url('https://media.istockphoto.com/id/1151367251/vector/seamless-texture-city-map-in-retro-style-outline-map.jpg?s=612x612&w=0&k=20&c=0EzK-SAxKD6tkZJGMjICcYenqTgL6SXc8LFGxMpHY3Y=')",
+                  }}
+                >
+                  <img
+                    src={layout}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      opacity: 1,
+                    }}
+                    alt="layout"
+                    onLoad={() => {
+                      setTimeout(() => {
+                        setLoading(false);
+                      }, 10000);
+                    }}
+                    // onResize={() => setLoading(true)}
+                  />
+                </div>
+
+                {valvesData &&
+                  valvesData.map((item) => {
+                    return (
+                      <Valve
+                        key={item.id}
+                        style={{
+                          ...valveCommonStyles,
+                          ...item,
+                          // ...dimentions,
+                        }}
+                        // fill={item.state ? waterCol : "#ff0000"}
+                        onClick={(event) => {
+                          handlerFn(event, item.id);
+                        }}
+                        className={
+                          item.state === "open" ? "valve-open" : "valve-close"
+                        }
+                      />
+                    );
+                  })}
+
+                {/* {true && (
         <div
           className="valve-container "
           style={{
@@ -1348,92 +1459,110 @@ const Layout = (props) => {
           </p>
         </div>
       )} */}
-      {/* {msgData && msgData.length > 0 && (
+                {/* {msgData && msgData.length > 0 && (
         <DisplayMsg msgData={msgData} valvesData={valvesData} />
       )} */}
-      {
-        <DisplayMsg
-          tapsData={tapsData}
-          valvesData={valvesData}
-          toggleMsg={toggleMsg}
-        />
-      }
+                {
+                  <DisplayMsg
+                    tapsData={tapsData}
+                    valvesData={valvesData}
+                    toggleMsg={toggleMsg}
+                  />
+                }
 
-      {dripData &&
-        dripData.map((item) => {
-          return <Line key={item.id} item={item} dripState={dripState} />;
-        })}
-      {dripData2 &&
-        dripData2.map((item) => {
-          return <Line key={item.id} item={item} dripState={dripState} />;
-        })}
-      {dripData3 &&
-        dripData3.map((item) => {
-          return <Line key={item.id} item={item} dripState={dripState} />;
-        })}
+                {dripData &&
+                  dripData.map((item) => {
+                    return (
+                      <Line key={item.id} item={item} dripState={dripState} />
+                    );
+                  })}
+                {dripData2 &&
+                  dripData2.map((item) => {
+                    return (
+                      <Line key={item.id} item={item} dripState={dripState} />
+                    );
+                  })}
+                {dripData3 &&
+                  dripData3.map((item) => {
+                    return (
+                      <Line key={item.id} item={item} dripState={dripState} />
+                    );
+                  })}
 
-      {threeDrips &&
-        threeDrips.map((item) => {
-          return <DripLine key={item.id} item={item} dripState={dripState} />;
-        })}
-      {/* <Line /> */}
+                {threeDrips &&
+                  threeDrips.map((item) => {
+                    return (
+                      <DripLine
+                        key={item.id}
+                        item={item}
+                        dripState={dripState}
+                      />
+                    );
+                  })}
+                {/* <Line /> */}
 
-      {eclipseData &&
-        eclipseData.map((item) => {
-          return <Eclipse key={item.id} item={item} dripState={dripState} />;
-        })}
-      <CustomShape
-        style={{
-          position: "absolute",
-          width: "12%",
-          height: "8%",
-          top: "33.8%",
-          left: "52.6%",
-        }}
-        className={dripState ? "dripping" : "bg-no-display"}
-      />
-      <PartOne
-        style={{
-          position: "absolute",
-          width: "19%",
-          height: "17%",
-          top: "45.1%",
-          left: "27.6%",
-        }}
-        className={dripState ? "dripping" : "bg-transparent"}
-      />
-      <PartTwo
-        style={{
-          position: "absolute",
-          width: "13%",
-          height: "5%",
-          top: "81.1%",
-          left: "62.8%",
-        }}
-        className={dripState ? "dripping" : "bg-transaparent"}
-      />
-      <PartThree
-        style={{
-          position: "absolute",
-          width: "18%",
-          height: "13%",
-          top: "84.5%",
-          left: "60.9%",
-        }}
-        className={dripState ? "dripping" : "hidden"}
-      />
-      <PartFour
-        style={{
-          position: "absolute",
-          width: "5%",
-          height: "10%",
-          top: "65.5%",
-          left: "56.4%",
-        }}
-        className={dripState ? "dripping" : "hidden"}
-      />
+                {eclipseData &&
+                  eclipseData.map((item) => {
+                    return (
+                      <Eclipse
+                        key={item.id}
+                        item={item}
+                        dripState={dripState}
+                      />
+                    );
+                  })}
+                <CustomShape
+                  style={{
+                    position: "absolute",
+                    width: "12%",
+                    height: "8%",
+                    top: "33.8%",
+                    left: "52.6%",
+                  }}
+                  className={dripState ? "dripping" : "bg-no-display"}
+                />
+                <PartOne
+                  style={{
+                    position: "absolute",
+                    width: "19%",
+                    height: "17%",
+                    top: "45.1%",
+                    left: "27.6%",
+                  }}
+                  className={dripState ? "dripping" : "bg-transparent"}
+                />
+                <PartTwo
+                  style={{
+                    position: "absolute",
+                    width: "13%",
+                    height: "5%",
+                    top: "81.1%",
+                    left: "62.8%",
+                  }}
+                  className={dripState ? "dripping" : "bg-transaparent"}
+                />
+                <PartThree
+                  style={{
+                    position: "absolute",
+                    width: "18%",
+                    height: "13%",
+                    top: "84.5%",
+                    left: "60.9%",
+                  }}
+                  className={dripState ? "dripping" : "hidden"}
+                />
+                <PartFour
+                  style={{
+                    position: "absolute",
+                    width: "5%",
+                    height: "10%",
+                    top: "65.5%",
+                    left: "56.4%",
+                  }}
+                  className={dripState ? "dripping" : "hidden"}
+                />
 
-      {/* <Map
+                {/* <Map
         style={{
           position: "absolute",
           width: "75%",
@@ -1444,82 +1573,101 @@ const Layout = (props) => {
         // className="dripping"
       /> */}
 
-      {circleData &&
-        circleData.map((item) => {
-          return (
-            <Circle
-              key={item.id}
-              style={{
-                position: "absolute",
-                ...item,
-              }}
-              className={dripState ? "dripping" : "bg-no-display"}
-            />
-          );
-        })}
+                {circleData &&
+                  circleData.map((item) => {
+                    return (
+                      <Circle
+                        key={item.id}
+                        style={{
+                          position: "absolute",
+                          ...item,
+                        }}
+                        className={dripState ? "dripping" : "bg-no-display"}
+                      />
+                    );
+                  })}
 
-      {rectangleData &&
-        rectangleData.map((item) => {
-          return (
-            <Rectangle
-              key={item.id}
-              style={{
-                position: "absolute",
-                ...item,
-              }}
-              className={dripState ? "dripping" : ""}
-            />
-          );
-        })}
+                {rectangleData &&
+                  rectangleData.map((item) => {
+                    return (
+                      <Rectangle
+                        key={item.id}
+                        style={{
+                          position: "absolute",
+                          ...item,
+                        }}
+                        className={dripState ? "dripping" : ""}
+                      />
+                    );
+                  })}
 
-      {motorsData &&
-        motorsData.map((item) => {
-          return (
-            <Motor
-              key={item.id}
-              style={{
-                ...commonStyles,
-                ...item,
-                ...motorDimentions,
-              }}
-              fill={"#00f"}
-              fill2={"#00f"}
-              fill3={"#ddd"}
-              className={sprinklersState ? "rotate" : ""}
+                {motorsData &&
+                  motorsData.map((item) => {
+                    return (
+                      <Motor
+                        key={item.id}
+                        style={{
+                          ...commonStyles,
+                          ...item,
+                          ...motorDimentions,
+                        }}
+                        fill={"#00f"}
+                        fill2={"#00f"}
+                        fill3={"#ddd"}
+                        className={sprinklersState ? "rotate" : ""}
 
-              // fill={tapsState ? tapColor : "#B62511"}
-            />
+                        // fill={tapsState ? tapColor : "#B62511"}
+                      />
+                    );
+                  })}
+                {tapsData &&
+                  tapsData.map((item) => {
+                    return (
+                      <Motor
+                        key={item.id}
+                        style={{
+                          ...commonStyles,
+                          ...item,
+                          // ...dimentions,
+                          // height: item.height ? item.height : 5,
+                          // width: item.width ? item.width : 3,
+                          height: 4,
+                          width: 4,
+                        }}
+                        // fill={tapsState ? tapColor : "#B62511"}
+                        // fill={"#B62511"}
+                        // fill2={"#B62511"}
+                        // fill3={"#ddd"}
+                        fill={item.fill1 ? item.fill1 : "#B62511"}
+                        fill2={item.fill2 ? item.fill2 : "#B62511"}
+                        fill3={item.fill3 ? item.fill3 : "#ddd"}
+                        // fill={item.fill1 ? item.fill1 : "#0000ff"}
+                        // fill2={item.fill2 ? item.fill2 : "#0000ff"}
+                        // fill3={item.fill3 ? item.fill3 : "#ddd"}
+                        className={sprinklersState ? "rotate" : ""}
+                        // className={item.className ? item.className : ""}
+                      />
+                    );
+                  })}
+              </TransformComponent>
+              {/* <div className="absolute -bottom-[35%] flex flex-row my-20 w-full space-x-4 items-center justify-center">
+              <button className="bg-red-400 w-1/5" onClick={() => zoomIn()}>
+                +
+              </button>
+              <button className="bg-red-400 w-1/5" onClick={() => zoomOut()}>
+                -
+              </button>
+              <button
+                className="bg-red-400 w-1/5"
+                onClick={() => resetTransform()}
+              >
+                X
+              </button>
+            </div> */}
+            </>
           );
-        })}
-      {tapsData &&
-        tapsData.map((item) => {
-          return (
-            <Motor
-              key={item.id}
-              style={{
-                ...commonStyles,
-                ...item,
-                // ...dimentions,
-                // height: item.height ? item.height : 5,
-                // width: item.width ? item.width : 3,
-                height: 4,
-                width: 4,
-              }}
-              // fill={tapsState ? tapColor : "#B62511"}
-              // fill={"#B62511"}
-              // fill2={"#B62511"}
-              // fill3={"#ddd"}
-              fill={item.fill1 ? item.fill1 : "#B62511"}
-              fill2={item.fill2 ? item.fill2 : "#B62511"}
-              fill3={item.fill3 ? item.fill3 : "#ddd"}
-              // fill={item.fill1 ? item.fill1 : "#0000ff"}
-              // fill2={item.fill2 ? item.fill2 : "#0000ff"}
-              // fill3={item.fill3 ? item.fill3 : "#ddd"}
-              className={sprinklersState ? "rotate" : ""}
-              // className={item.className ? item.className : ""}
-            />
-          );
-        })}
+        }}
+      </TransformWrapper>
     </div>
   );
 };

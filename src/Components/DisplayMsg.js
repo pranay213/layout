@@ -5,7 +5,7 @@ const DisplayMsg = (props) => {
   const { msgData, valvesData, toggleMsg } = props;
   return valvesData.map((item, index) => {
     let newval = item.right.replace(/%/g, "");
-    newval = parseInt(newval - 12) + "%";
+    newval = parseInt(newval - 18) + "%";
     // console.log("msgDisp", item.msgDisp);
     let newDimensions = {
       ...item,
@@ -17,43 +17,21 @@ const DisplayMsg = (props) => {
           className="msg-display"
           style={{
             height: 10,
-            width: 40,
+            width: 65,
             ...newDimensions,
-            transform: [" rotate(0deg)"],
-            backgroundColor: "rgba(45,23,78,0.65)",
+            transform: ["rotate(0deg)"],
+            backgroundColor: "rgba(45,23,78,0.85)",
             borderRadius: "0px 2px 2px 2px",
-            zIndex: 1,
+            zIndex: 100,
             //   border: "0.1px dotted",
           }}
           key={index}
         >
-          <div className="arrow-left"></div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-around",
-              // top: "-50%",
-              position: "relative",
-            }}
-          >
-            <div style={{ position: "relative" }}>
-              <p
-                style={{
-                  fontSize: 5,
-                  color: "#fff",
-                  textShadow: "0px 0px 1px white",
-                }}
-                className="drop-shadow-md"
-              >
-                valve {item.id}
-              </p>
-            </div>
+          <div className="text-white text-center flex flex-row items-center justify-between ">
+            <p className="text-[7px] m-auto">{`valve ${item.id}`}</p>
             <button
-              className="close-btn"
+              className="close-btn text-[5px]"
               style={{
-                fontSize: 5,
                 position: "relative",
                 right: "-10%",
                 bottom: "-20%",

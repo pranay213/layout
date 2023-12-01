@@ -24,7 +24,7 @@ const App = () => {
   // document.write("userid", userid, "gatewayid", gatewayid);
 
   // let devices = async (gatewayid) => {
-  //   let resp = await allDevices(gatewayid);
+  //   let resp = await value.toString(gatewayid);
   //   console.log("respo", resp);
   //   // document.write(JSON.stringify(resp.status));
   //   if (resp.status === "SUCCESS") {

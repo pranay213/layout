@@ -1,7 +1,7 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useRef, useState } from "react";
 import Toastify from "./Components/Toastity";
 import { toast } from "react-toastify";
-import { allDevices } from "./api";
+import { allDevices, gateWays } from "./api";
 
 const UserContext = createContext({});
 const UsercontextProvider = ({ children }) => {
@@ -11,6 +11,9 @@ const UsercontextProvider = ({ children }) => {
   const [userid, setUserId] = useState(queryParameters.get("userid"));
   const [lists] = useState(["Valve", "Motor_Control"]);
   const [gatewayid, setGatewayId] = useState(queryParameters.get("gatewayid"));
+  const [gatewayStatus, setGatewayStatus] = useState(false);
+  const [flowstatus, setFlowStatus] = useState(false);
+  const [primarydevices] = useState([6001.2, 6002.1, 6003.1]);
 
   useEffect(() => {
     if (userid) {
@@ -40,27 +43,13 @@ const UsercontextProvider = ({ children }) => {
 
   useEffect(() => {
     if (data?.flow) {
-      toast.success(data.msg, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        // pauseOnHover: true,
-        // draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      toast.info(data.msg);
+    } else if (data?.msg === "Gateway is disconnected") {
+      // toast.info("Gateway is disconnected");
     } else if (data?.msg) {
-      toast.success(`${data?.device_id} is  ${data.msg}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        // pauseOnHover: true,
-        // draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      if (data.msg === "open" || data.msg === "close") {
+        toast.info(`${data?.device_id} is  ${data.msg}`);
+      }
     } else if (data?.msg === "") {
       toast.info("flow is not running");
     }
@@ -69,14 +58,18 @@ const UsercontextProvider = ({ children }) => {
 
   async function devices(gatewayid) {
     if (gatewayid) {
+      let count = 0;
       let resp = await allDevices(gatewayid);
-      console.log("respo", resp);
+      console.log("resp", resp);
       // document.write(JSON.stringify(resp.status));
-      if (resp.status === "SUCCESS") {
-        if (resp.data?.length > 0) {
+      if (resp?.status === "SUCCESS") {
+        if (resp?.data?.length > 0) {
           let newdevices = resp.data
             .filter((item) => {
               if (lists.includes(item.device_type)) {
+                if (item.flow) {
+                  count++;
+                }
                 return item;
               }
             })
@@ -87,13 +80,31 @@ const UsercontextProvider = ({ children }) => {
           setDevicesList(newdevices);
         }
       }
+      if (count > 0) {
+        setFlowStatus(true);
+      } else {
+        setFlowStatus(false);
+      }
     }
   }
 
-  useEffect(() => {
-    console.log("devicesList", devicesList);
-  }, [devicesList]);
+  const getwaysData = async () => {
+    if (userid) {
+      let res = await gateWays(userid);
+      if (res.status === "SUCCESS") {
+        res.data.filter((item) => {
+          if (item.gateway_id === gatewayid && item.active)
+            setGatewayStatus(true);
+          else setGatewayStatus(false);
+        });
+      }
+    }
+  };
 
+  useEffect(() => {
+    getwaysData();
+    var myInterval = setInterval(getwaysData, 60 * 1000);
+  }, []);
   return (
     <UserContext.Provider
       value={{
@@ -105,6 +116,10 @@ const UsercontextProvider = ({ children }) => {
         setGatewayId,
         userid,
         setUserId,
+        gatewayStatus,
+        setGatewayStatus,
+        flowstatus,
+        setFlowStatus,
       }}
     >
       <Toastify />
