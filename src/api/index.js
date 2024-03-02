@@ -39,3 +39,33 @@ export const gateWays = async (userId) => {
     return { status: "FAIL" };
   }
 };
+
+export const getSump = async (userId) => {
+  try {
+    let res = await ApiCall.get(`device/6001.2/value`);
+    return res?.data;
+  } catch (error) {
+    toast.error("Something went wrong");
+    return { status: "FAIL" };
+  }
+};
+
+export const moisture1 = async (userId) => {
+  try {
+    let res = await ApiCall.get(`device/6002.1/value`);
+    return res?.data;
+  } catch (error) {
+    toast.error("Something went wrong");
+    return { status: "FAIL" };
+  }
+};
+
+export const moisture2 = async (userId) => {
+  try {
+    let res = await ApiCall.get(`device/6003.1/value`);
+    return res?.data;
+  } catch (error) {
+    toast.error("Something went wrong");
+    return { status: "FAIL" };
+  }
+};

@@ -13,6 +13,7 @@ const StatusScreen = (props) => {
   const [valveState, setValveState] = useState(false);
   const [motorState, setmotorState] = useState(false);
   const { gatewayid } = useContext(UserContext);
+  console.log("Flow", gatewayStatus);
 
   // useEffect(() => {
   //   if (data?.msg === "open") {
@@ -58,7 +59,7 @@ const StatusScreen = (props) => {
           </p>
           <p className=" text-xl my-2 text-blue-600 font-bold ">FLow Status</p>
           <p>
-            {flowstatus && gatewayStatus ? (
+            {flowstatus ? (
               <span className="text-green-800 font-bold ">Running</span>
             ) : (
               <span className="text-red-800 font-bold ">Not Running</span>
