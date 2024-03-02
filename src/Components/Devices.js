@@ -6,12 +6,28 @@ import { UserContext } from "../context";
 import "../Anim.css";
 import WaterLevel from "./WaterLevel";
 import MoistureSensor from "./MoistureSensor";
+import InfoIcon from "./InfoIcon";
+import { toast } from "react-toastify";
 
 const Devices = (props) => {
   const { closeFn, showV } = props;
   const { data, devicesList } = useContext(UserContext);
   const [valveState, setValveState] = useState(false);
   const [motorState, setmotorState] = useState(false);
+
+  const showToastFn = (error) => {
+    toast.error(error, {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      className: "foo-bar",
+    });
+  };
 
   return (
     <>
@@ -30,7 +46,19 @@ const Devices = (props) => {
                 key={item._id}
               >
                 <>
-                  <p className="font-semibold text-blue-900">Valve</p>
+                  <div className="flex ">
+                    <p className="font-semibold text-blue-900 flex items-center text-center ml-[20%]">
+                      Valve
+                    </p>
+                    {item?.response_status === "Error" && (
+                      <button
+                        className=" relative top-5 -right-[40%]"
+                        onClick={() => showToastFn(item.response_error)}
+                      >
+                        <InfoIcon fill="#f00" />
+                      </button>
+                    )}
+                  </div>
                   <Valve
                     key={item._id}
                     className={`w-[40px] h-[40px] -rotate-90 ${

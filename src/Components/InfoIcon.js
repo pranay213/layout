@@ -21,7 +21,7 @@ const InfoIcon = (props) => (
     />
     <path
       fill="none"
-      stroke="#000000"
+      stroke={props?.fill ? props.fill : "#000"}
       strokeWidth={2.5}
       strokeMiterlimit={10}
       cx={16}
