@@ -1275,24 +1275,6 @@ const Layout = (props) => {
     },
   ]);
 
-  // useEffect(() => {
-  //   // const timer = setTimeout(() => {
-  //   //   if (waterCol === "#006100") setWaterCol("#99C0E3");
-  //   //   else {
-  //   //     setWaterCol((prev) => "#006100");
-  //   //   }
-  //   //   return () => clearTimeout(timer);
-  //   // }, 1000);
-  //   // if (tapsState) {
-  //   //   const timer = setTimeout(() => {
-  //   //     if (tapColor === "#7FCDFF") setTapColor("#A82B02");
-  //   //     else {
-  //   //       setTapColor((prev) => "#7FCDFF");
-  //   //     }
-  //   //   }, 500);
-  //   // }
-  //   // return () => clearTimeout(timer);
-  // }, [waterCol, valvesData, tapsState, tapColor]);
   var timer;
   const handlerFn = (event, id) => {
     // alert("hi");
@@ -1329,19 +1311,6 @@ const Layout = (props) => {
     setCourtYardValves((prev) => newValveData);
   };
 
-  // const ShowDisplayMsg = () => {};
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     if (fillColor < 1) {
-  //       setFillColor((prev) => prev + 0.1);
-  //     } else {
-  //       setFillColor((prev) => 0);
-  //     }
-  //   }, 500);
-
-  //   return () => clearTimeout(timer);
-  // }, [fillColor]);
   const [showV, setShowV] = useState(false);
   const [showV2, setShowV2] = useState(false);
   const [showV3, setShowV3] = useState(false);
@@ -1365,40 +1334,6 @@ const Layout = (props) => {
   const openFn3 = () => {
     setShowV3(true);
   };
-  useEffect(() => {
-    let count = 0;
-    let newvalves = valvesData.map((item) => {
-      // console.log("asdfadfjk");
-      let status = devicesList
-        .filter((item2) => {
-          if (item2.device_id == item.id) {
-            // console.log("-----", item2.status, item.id);
-            return item2;
-          } else if (
-            item2.device_type == "Motor_Control" &&
-            item2.status === "true"
-          ) {
-            // alert("hi");
-            count++;
-          }
-        })
-        .map((item) => item.status);
-      // console.log("nestatus", status);
-      item.state = status[0];
-      // item.state = "open";
-
-      return item;
-    });
-    // console.log("newvalves", newvalves);
-    setValvesData(newvalves);
-    if (count > 0) {
-      setdripState(true);
-      setSprinklers(true);
-    } else {
-      setSprinklers(false);
-      setdripState(false);
-    }
-  }, [devicesList]);
 
   return (
     <div className="layout-container  " style={{ display: loading && "none" }}>
@@ -1430,7 +1365,7 @@ const Layout = (props) => {
         <Devices
           closeFn={closeFn}
           showV={showV}
-          valvesData={valvesData}
+          valvesData={devicesList}
           motorData={motorData}
         />
       </div>

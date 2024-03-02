@@ -17,36 +17,6 @@ const Sensors = (props) => {
   });
   const { flowstatus } = useContext(UserContext);
 
-  useEffect(() => {
-    let timer = setInterval(() => {
-      devices();
-    }, 60 * 1000);
-    // return clearTimeout(timer);
-  }, []);
-
-  const devices = async () => {
-    const newvalues = {
-      sump: 0,
-      moisture1: 0,
-      moisture2: 0,
-    };
-    let sumpres = await getSump();
-    console.log("sumpres", sumpres);
-    if (sumpres.status === "SUCCESS") {
-      newvalues.sump = sumpres.data.value;
-    }
-    let mresp1 = await moisture1();
-
-    if (mresp1.status === "SUCCESS") {
-      newvalues.moisture1 = mresp1.data.value;
-    }
-    let mresp2 = await moisture2();
-    if (mresp2.status === "SUCCESS") {
-      newvalues.moisture2 = mresp2.data.value;
-    }
-    setDeviceValues(newvalues);
-  };
-
   //   useEffect(() => {
   //     console.log({ deviceValues });
   //   }, [deviceValues]);
@@ -62,7 +32,7 @@ const Sensors = (props) => {
         {devicesList.map((item) => (
           <React.Fragment key={item._id}>
             {/* {console.log("item", item)} */}
-            {item.device_type === "Moisture_Sensor" && (
+            {item?.devicetemplate_id?.name.includes("Moisture") && (
               <div
                 className="bg-white w-1/3 flex items-center justify-center rounded-md m-2 flex-col"
                 key={item._id}
@@ -71,18 +41,14 @@ const Sensors = (props) => {
                   <p className="font-semibold text-blue-900">Moisture Sensor</p>
 
                   <MoistureSensor
-                    value={
-                      item.device_id === "6002.1"
-                        ? deviceValues?.moisture1
-                        : deviceValues?.moisture2
-                    }
+                    value={item?.get_value?.toFixed(2) || 0}
                     status={flowstatus}
                   />
                   <span className="font-semibold ">{item.device_id}</span>
                 </>
               </div>
             )}
-            {item.device_type === "Sump_Monitor" && (
+            {item?.devicetemplate_id?.name.includes("Sump") && (
               <div
                 className="bg-white w-1/3 flex items-center justify-center rounded-md m-2 flex-col"
                 key={item._id}
@@ -90,7 +56,10 @@ const Sensors = (props) => {
                 <>
                   <p className="font-semibold text-blue-900">Sump Monitor</p>
 
-                  <WaterLevel value={deviceValues.sump} status={flowstatus} />
+                  <WaterLevel
+                    value={item?.get_value?.toFixed(2) || 0}
+                    status={flowstatus}
+                  />
                   <span className="font-semibold ">{item.device_id}</span>
                 </>
               </div>

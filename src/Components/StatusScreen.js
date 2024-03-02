@@ -12,22 +12,7 @@ const StatusScreen = (props) => {
     useContext(UserContext);
   const [valveState, setValveState] = useState(false);
   const [motorState, setmotorState] = useState(false);
-  const { gatewayid } = useContext(UserContext);
-  console.log("Flow", gatewayStatus);
-
-  // useEffect(() => {
-  //   if (data?.msg === "open") {
-  //     setValveState(true);
-  //     setTimeout(() => {
-  //       setmotorState(true);
-  //     }, 5000);
-  //   } else if (data?.msg === "close") {
-  //     setmotorState(false);
-  //     setTimeout(() => {
-  //       setValveState(false);
-  //     }, 5000);
-  //   }
-  // }, [data]);
+  const { macId } = useContext(UserContext);
 
   return (
     <>
@@ -39,15 +24,11 @@ const StatusScreen = (props) => {
         </div>
         <GearIcon
           className={`absolute top-[1%] w-[35px] h-[35px] right-[1%] 
-        ${
-          flowstatus && gatewayStatus
-            ? " stroke-green-700 animate-spin"
-            : " stroke-red-800"
-        }`}
+        ${flowstatus ? " stroke-green-700 animate-spin" : " stroke-red-800"}`}
         />
         <div className="-mt-10">
           <p className=" text-xl  text-blue-600 font-bold my-2 ">Gateway id</p>
-          <p>{gatewayid}</p>
+          <p>{macId}</p>
 
           <p className=" text-xl my-2   text-blue-600 font-bold">Status</p>
           <p>

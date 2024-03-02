@@ -1,7 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const BaseUrl2 = "http://192.236.161.98:8085/";
+// export const BaseUrl2 = "http://192.236.161.98:8085/";
+export const BaseUrl2 = "http://65.0.141.176:8000/api/";
 
 export const ApiCall = axios.create({
   baseURL: BaseUrl2,
@@ -19,8 +20,9 @@ ApiCall.interceptors.response.use((res) => {
   // console.log("res", res);
 });
 
-export const allDevices = async (gatewayId) => {
+export const allDevices = async (gatewayId, token) => {
   try {
+    ApiCall.defaults.headers.common["isaayu-user-auth"] = token;
     let res = await ApiCall.get(`/gateway/${gatewayId}/devices`);
     return res?.data;
   } catch (err) {

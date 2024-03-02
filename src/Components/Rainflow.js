@@ -24,7 +24,7 @@ const RainFlow = (props) => {
       // Cleanup function to remove drops when component unmounts
       rainContainer.innerHTML = "";
     };
-  }, [index]);
+  }, []);
 
   return (
     <div className={`rain absolute rain-${index} `} style={stylenew}></div>

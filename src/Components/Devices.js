@@ -13,20 +13,6 @@ const Devices = (props) => {
   const [valveState, setValveState] = useState(false);
   const [motorState, setmotorState] = useState(false);
 
-  // useEffect(() => {
-  //   if (data?.msg === "open") {
-  //     setValveState(true);
-  //     setTimeout(() => {
-  //       setmotorState(true);
-  //     }, 5000);
-  //   } else if (data?.msg === "close") {
-  //     setmotorState(false);
-  //     setTimeout(() => {
-  //       setValveState(false);
-  //     }, 5000);
-  //   }
-  // }, [data]);
-
   return (
     <>
       <div className="absolute right-5 top-[20%] bg-red-400 px-3 py-1 rounded-md z-[8000]">
@@ -35,10 +21,10 @@ const Devices = (props) => {
         </span>
       </div>
 
-      <div className="w-full flex  items-center justify-evenly flex-wrap z-[500] ">
+      <div className="w-full flex  items-center justify-evenly flex-wrap z-[500] mt-[20%] ">
         {devicesList.map((item) => (
           <React.Fragment key={item._id}>
-            {item.device_type === "Valve" && (
+            {item?.devicetemplate_id?.name.includes("Valve") && (
               <div
                 className="bg-white w-1/3 flex items-center justify-center rounded-md m-2 flex-col"
                 key={item._id}
@@ -48,7 +34,7 @@ const Devices = (props) => {
                   <Valve
                     key={item._id}
                     className={`w-[40px] h-[40px] -rotate-90 ${
-                      item.status === "open" ? "valveon" : "fill-[#000]"
+                      item?.set_value == "SET" ? "valveon" : "fill-[#000]"
                     }`}
                     // newClass="animation-spin"
                     width={100}
@@ -58,7 +44,7 @@ const Devices = (props) => {
                 </>
               </div>
             )}
-            {item.device_type === "Motor_Control" && (
+            {item?.devicetemplate_id?.name.includes("Motor") && (
               <div
                 className="bg-white w-1/3 flex items-center justify-center rounded-md m-2 px-4 flex-col"
                 key={item._id}
@@ -67,7 +53,7 @@ const Devices = (props) => {
                   <p className="font-semibold text-blue-900">Motor</p>
                   <MotorNew
                     className={`w-[40px] h-[40px]  ${
-                      item.status === "open"
+                      item?.set_value === "SET"
                         ? " fill-[#D15478] animate-pulse"
                         : "fill-[#000]"
                     } `}
