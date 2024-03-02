@@ -1,0 +1,123 @@
+.pipe {
+  position: absolute;
+  width: 0.5%;
+  height: 4vh;
+  display: flex;
+  flex-direction: column-reverse; /* Stack elements in reverse order */
+  background-color: #ddd;
+}
+
+.pipe > div {
+  width: 100%;
+  border-radius: 50px;
+  animation: pipeAnimation 4s linear infinite;
+}
+
+.first-pipe {
+  height: 10%;
+  background-color: #000;
+}
+
+.second-pipe {
+  height: 20%;
+  background-color: #8edffc;
+}
+
+.fifth-pipe {
+  height: 15%;
+  background-color: #79d0ef;
+}
+
+.third-pipe {
+  height: 25%;
+  background-color: #6bc8ea;
+}
+
+.fourth-pipe {
+  height: 30%;
+  background-color: #36a3cb;
+}
+
+.sixth-pipe {
+  height: 35%;
+  background-color: #32b3e2;
+}
+
+.gap-pipe {
+  height: 5%;
+  background-color: #fff;
+}
+
+@keyframes pipeAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.pipe > div {
+  width: 100%;
+  border-radius: 50px;
+  animation: pipeAnimation 1s linear infinite; /* Decreased animation duration */
+}
+
+@keyframes pipeAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.pipe > div {
+  width: 100%;
+  border-radius: 50px;
+  animation: pipeAnimation 0.5s linear infinite; /* Decreased animation duration */
+}
+
+.first-pipe {
+  height: 10%;
+  background-color: #3498db; /* Water color */
+}
+
+.second-pipe {
+  height: 20%;
+  background-color: #3498db; /* Water color */
+}
+
+.fifth-pipe {
+  height: 15%;
+  background-color: #3498db; /* Water color */
+}
+
+.third-pipe {
+  height: 25%;
+  background-color: #3498db; /* Water color */
+}
+
+.fourth-pipe {
+  height: 30%;
+  background-color: #3498db; /* Water color */
+}
+
+.sixth-pipe {
+  height: 35%;
+  background-color: #3498db; /* Water color */
+}
+
+.gap-pipe {
+  height: 5%;
+  background-color: #fff; /* Gap color */
+}
+
+@keyframes pipeAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}

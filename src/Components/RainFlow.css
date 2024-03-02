@@ -1,0 +1,27 @@
+.rain {
+  position: absolute;
+
+  width: 5%;
+  height: 2%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.drop {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: #00f;
+  animation: rain-fall 1s linear infinite;
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(50px);
+    opacity: 1;
+  }
+}

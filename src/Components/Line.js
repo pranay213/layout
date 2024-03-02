@@ -18,9 +18,11 @@ const Liquid = styled.div`
   width: 2%;
   right: -99%;
   height: 1.5px;
+
   // background-color: (27, 158, 229, 0.75);
-  background-color: rgba(27, 158, 229, 01);
-  animation: ${(props) => (props.dripState ? "drip 1s infinite" : "")};
+  background-color: rgba(27, 158, 229, 0.5);
+  animation: ${(props) =>
+    props.dripstate === "true" ? "drip 1s infinite" : ""};
   border-radius: 10px;
 `;
 // animation: ${(props) =>
@@ -30,7 +32,7 @@ const Liquid = styled.div`
 
 const Line = (props) => {
   const { item, dripState } = props;
-  // console.log("item", item);
+
   // console.log(item?.id);
   return (
     <>
@@ -44,7 +46,11 @@ const Line = (props) => {
         }}
       >
         {/* <div className="liquid" style={{ animationDelay: "10s" }}></div> */}
-        <Liquid delay={item?.delay} dripState={dripState} />
+        <Liquid
+          delay={item?.delay}
+          dripstate={dripState.toString()}
+          className={dripState ? "" : "hidden"}
+        />
       </div>
     </>
   );

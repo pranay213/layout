@@ -27,3 +27,14 @@ code {
     fill: #00f;
   }
 }
+
+.courtyard-container {
+  height: 90vh;
+  width: 100%;
+  background-image: url("/src/images/courtyard.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+
+  align-self: center;
+}
