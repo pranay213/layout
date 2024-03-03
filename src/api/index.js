@@ -28,7 +28,7 @@ export const allDevices = async (gatewayId, token) => {
   } catch (err) {
     toast.error("Something went wrong");
 
-    return { status: "FAIL" };
+    // return { status: "FAIL" };
   }
 };
 
@@ -38,7 +38,7 @@ export const gateWays = async (userId) => {
     return res?.data;
   } catch (error) {
     toast.error("Something went wrong");
-    return { status: "FAIL" };
+    // return { status: "FAIL" };
   }
 };
 
