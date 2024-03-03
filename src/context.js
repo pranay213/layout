@@ -106,12 +106,14 @@ const UsercontextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    let Motor_device = devicesList.find((item) =>
-      item?.devicetemplate_id?.name.includes("Motor")
-    );
-    if (Motor_device?.set_value === "SET") {
-      setFlowStatus(true);
-    } else setFlowStatus(false);
+    if (devicesList && devicesList.length) {
+      let Motor_device = devicesList.find((item) =>
+        item?.devicetemplate_id?.name.includes("Motor")
+      );
+      if (Motor_device?.set_value === "SET") {
+        setFlowStatus(true);
+      } else setFlowStatus(false);
+    }
   }, [devicesList]);
 
   return (
