@@ -1768,7 +1768,7 @@ const Layout = (props) => {
           );
         }}
       </TransformWrapper>
-      <div className="w-[85%] flex flex-row absolute bottom-[5%] space-x-4 items-center justify-center z-[50] box-shadow-2">
+      <div className="w-[85%] flex flex-row absolute bottom-[2%] space-x-4 items-center justify-center z-[50] box-shadow-2">
         <button
           onClick={() => {
             ZoomingFns.zoomIn();
