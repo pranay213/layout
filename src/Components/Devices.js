@@ -62,7 +62,7 @@ const Devices = (props) => {
                   <Valve
                     key={item._id}
                     className={`w-[40px] h-[40px] -rotate-90 ${
-                      item?.set_value == "SET" ? "valveon" : "fill-[#000]"
+                      item?.set_value === "SET" ? "valveon" : "fill-[#000]"
                     }`}
                     // newClass="animation-spin"
                     width={100}

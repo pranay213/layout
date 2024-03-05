@@ -48,7 +48,7 @@ const Layout = (props) => {
       top: " 80.1%",
       right: "18.2%",
       transform: "rotate(120deg)",
-      state: true,
+      state: false,
       msgDisp: false,
     },
     {
@@ -1335,6 +1335,27 @@ const Layout = (props) => {
     setShowV3(true);
   };
 
+  useEffect(() => {
+    if (devicesList && devicesList.length) {
+      const temp = [];
+      for (const device of devicesList) {
+        const match = courtyardValves.find(
+          (d) =>
+            d.id == device.device_id &&
+            device?.devicetemplate_id?.name.includes("Valve")
+        );
+        if (match) {
+          temp.push({
+            ...match,
+            state: device?.set_value === "SET" ? true : false,
+          });
+        }
+
+        setCourtYardValves(temp);
+      }
+    }
+  }, [devicesList]);
+
   return (
     <div className="layout-container  " style={{ display: loading && "none" }}>
       <div
@@ -1500,15 +1521,14 @@ const Layout = (props) => {
                         onClick={(event) => {
                           handlerFn(event, item.id);
                         }}
-                        className={
-                          item.state === "open" ? "valve-open" : "valve-close"
-                        }
+                        className={item.state ? "valve-open" : "valve-close"}
                         // className={"valve-open"}
                       />
                     );
                   })}
 
-                {courtyYardSprinklers &&
+                {flowstatus &&
+                  courtyYardSprinklers &&
                   courtyYardSprinklers.length &&
                   courtyYardSprinklers.map((item, index) => (
                     <div key={index}>
@@ -1748,7 +1768,7 @@ const Layout = (props) => {
           );
         }}
       </TransformWrapper>
-      <div className="w-[85%] flex flex-row absolute bottom-[5%] space-x-4 items-center justify-center z-[50] box-shadow-2">
+      <div className="w-[85%] flex flex-row absolute bottom-[2%] space-x-4 items-center justify-center z-[50] box-shadow-2">
         <button
           onClick={() => {
             ZoomingFns.zoomIn();
