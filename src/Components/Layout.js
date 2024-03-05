@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import layout from "../images/courtyard3.png";
+import layout from "../images/courtyard3-min.webp";
 import "./style.scss";
 import Valve from "../svg/Valve";
 import Motor from "./Motor";

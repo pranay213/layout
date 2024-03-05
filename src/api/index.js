@@ -3,9 +3,9 @@ import { toast } from "react-toastify";
 
 // export const BaseUrl2 = "http://192.236.161.98:8085/";
 
-export const BaseUrl2 = "http://192.168.29.225:8000/api/";
+// export const BaseUrl2 = "http://192.168.29.225:8000/api/";
 
-// export const BaseUrl2 = "http://65.0.141.176:8000/api/";
+export const BaseUrl2 = "http://65.0.141.176:8000/api/";
 
 export const ApiCall = axios.create({
   baseURL: BaseUrl2,
