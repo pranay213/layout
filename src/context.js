@@ -89,6 +89,54 @@ const UsercontextProvider = ({ children }) => {
     }
   };
 
+  const toastFn = (new_event) => {
+    let event_data = new_event.data;
+    let status = event_data?.got_from_alt
+      ? "warningToast"
+      : event_data?.response_status === "Success"
+      ? "successToast"
+      : "errorToast";
+    if (new_event?.message) {
+      if (status === "successToast") {
+        toast.success(new_event?.message, {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+
+      if (status === "warningToast") {
+        toast.warn(new_event?.message, {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+      if (status === "errorToast") {
+        toast.error(new_event?.message, {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    }
+  };
+
   useEffect(() => {
     // getwaysData();
     devices();
@@ -101,6 +149,7 @@ const UsercontextProvider = ({ children }) => {
       events?.name === "GATEWAY_MODIFIED" ||
       events?.name === "DEVICE_MODIFIED"
     ) {
+      toastFn(events);
       devices();
       gatewayStatusFn();
     }
