@@ -7,8 +7,8 @@ const InfoIcon = (props) => (
     viewBox="0 0 40 40"
     enableBackground="new 0 0 32 32"
     xmlSpace="preserve"
-    width={30}
-    height={30}
+    width={25}
+    height={25}
     {...props}
   >
     <path x={15} y={14} width={2} height={8} d="M18.75 17.5h2.5v10h-2.5v-10z" />
