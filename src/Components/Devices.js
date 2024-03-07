@@ -8,6 +8,7 @@ import WaterLevel from "./WaterLevel";
 import MoistureSensor from "./MoistureSensor";
 import InfoIcon from "./InfoIcon";
 import { toast } from "react-toastify";
+import ErrorIcon from "./ErrorIcon";
 
 const Devices = (props) => {
   const { closeFn, showV } = props;
@@ -29,6 +30,19 @@ const Devices = (props) => {
     });
   };
 
+  const showToastFnInfo = (error) => {
+    toast.info(error, {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      className: "foo-bar",
+    });
+  };
   return (
     <>
       <div className="absolute right-5 top-[20%] bg-red-400 px-3 py-1 rounded-md z-[8000]">
@@ -37,7 +51,7 @@ const Devices = (props) => {
         </span>
       </div>
 
-      <div className="w-full flex  items-center justify-evenly flex-wrap z-[500] mt-[20%] ">
+      <div className="w-full  flex  items-center justify-evenly flex-wrap z-[500] mt-[30%] ">
         {devicesList.map((item) => (
           <React.Fragment key={item._id}>
             {item?.devicetemplate_id?.name.includes("Valve") && (
@@ -50,14 +64,30 @@ const Devices = (props) => {
                     <p className="font-semibold text-blue-900 flex items-center text-center ml-[20%]">
                       Valve
                     </p>
-                    {item?.response_status === "Error" && (
-                      <button
-                        className=" relative top-5 -right-[40%]"
-                        onClick={() => showToastFn(item.response_error)}
-                      >
-                        <InfoIcon fill="#f00" />
-                      </button>
-                    )}
+                    <div className="flex flex-col absolute ml-[10%]">
+                      {item?.response_status === "Error" && (
+                        <button
+                          className=" relative top-5 -right-[40%]"
+                          onClick={() => showToastFn(item.response_error)}
+                        >
+                          <ErrorIcon className="animate-pulse" />
+                        </button>
+                      )}
+                      {item?.got_from_alt && (
+                        <button
+                          className=" relative top-5 -right-[40%]"
+                          onClick={() =>
+                            showToastFnInfo(
+                              (item.response_status &&
+                                "alternative device is working") ||
+                                item.response_error
+                            )
+                          }
+                        >
+                          <InfoIcon fill="#00f" className="animate-pulse" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                   <Valve
                     key={item._id}
