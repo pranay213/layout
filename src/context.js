@@ -67,7 +67,7 @@ const UsercontextProvider = ({ children }) => {
 
   const [token, setToken] = useState(queryParameters.get("jwt-token"));
   const [gatewayStatus, setGatewayStatus] = useState(false);
-  const [flowstatus, setFlowStatus] = useState(true);
+  const [flowstatus, setFlowStatus] = useState(false);
   const [primarydevices] = useState([6001.2, 6002.1, 6003.1]);
 
   async function devices() {
