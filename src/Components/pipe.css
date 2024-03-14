@@ -1,10 +1,10 @@
 .pipe {
   position: absolute;
   width: 0.5%;
-  height: 4vh;
+  height: 3vh;
   display: flex;
   flex-direction: column-reverse; /* Stack elements in reverse order */
-  background-color: #ddd;
+  /* background-color: #ddd; */
 }
 
 .pipe > div {

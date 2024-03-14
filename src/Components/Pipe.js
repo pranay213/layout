@@ -11,11 +11,11 @@ const Pipe = (props) => {
 
       <div className="second-pipe"></div>
 
-      <div className="third-pipe"></div>
+      {/* <div className="third-pipe"></div>
 
       <div className="fourth-pipe"></div>
 
-      <div className="sixth-pipe"></div>
+      <div className="sixth-pipe"></div> */}
     </div>
   );
 };

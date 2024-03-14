@@ -2,7 +2,7 @@
   position: absolute;
 
   width: 5%;
-  height: 2%;
+  height: 1%;
   pointer-events: none;
   z-index: 1;
 }
@@ -17,11 +17,11 @@
 
 @keyframes rain-fall {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(-50%);
     opacity: 0;
   }
   100% {
-    transform: translateY(50px);
+    transform: translateY(20px);
     opacity: 1;
   }
 }
