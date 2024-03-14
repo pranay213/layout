@@ -46,7 +46,7 @@ const Layout = (props) => {
     {
       id: 6004.1,
       top: " 80.1%",
-      right: "18.2%",
+      right: "10.2%",
       transform: "rotate(120deg)",
       state: false,
       msgDisp: false,
@@ -54,7 +54,7 @@ const Layout = (props) => {
     {
       id: 6005.1,
       top: "76.1%",
-      right: "16.5%",
+      right: "9.5%",
       transform: "rotate(-165deg)",
       state: false,
       msgDisp: false,
@@ -75,8 +75,8 @@ const Layout = (props) => {
       transform: "rotate(120deg)",
       state: true,
       msgDisp: false,
-      style: { top: "56.5%", left: "53%" },
-      style2: { top: "58.4%", left: "55.2%" },
+      style: { top: "58.5%", left: "54%" },
+      style2: { top: "57.4%", left: "56.2%" },
     },
     {
       id: 6005.1,
@@ -85,8 +85,8 @@ const Layout = (props) => {
       transform: "rotate(-165deg)",
       state: false,
       msgDisp: false,
-      style: { top: "54.5%", left: "42%" },
-      style2: { top: "55.4%", left: "44.4%" },
+      style: { top: "54.5%", left: "41%" },
+      style2: { top: "53.4%", left: "43.2%" },
     },
     {
       id: 6005.1,
@@ -95,8 +95,8 @@ const Layout = (props) => {
       transform: "rotate(-165deg)",
       state: false,
       msgDisp: false,
-      style: { top: "59.5%", left: "30%" },
-      style2: { top: "60.4%", left: "32.2%" },
+      style: { top: "60.5%", left: "26%" },
+      style2: { top: "59.4%", left: "28.2%" },
     },
     {
       id: 6005.1,
@@ -105,8 +105,8 @@ const Layout = (props) => {
       transform: "rotate(-165deg)",
       state: false,
       msgDisp: false,
-      style: { top: "64.5%", left: "21.2%" },
-      style2: { top: "67.4%", left: "23.6%" },
+      style: { top: "68.5%", left: "15.2%" },
+      style2: { top: "68%", left: "17.8%" },
     },
     {
       id: 6005.1,
@@ -115,8 +115,8 @@ const Layout = (props) => {
       transform: "rotate(-165deg)",
       state: false,
       msgDisp: false,
-      style: { top: "64.5%", left: "42.2%" },
-      style2: { top: "66%", left: "44.8%" },
+      style: { top: "66.5%", left: "41.2%" },
+      style2: { top: "66.5%", left: "43.8%" },
     },
     {
       id: 6005.1,
@@ -125,8 +125,8 @@ const Layout = (props) => {
       transform: "rotate(-165deg)",
       state: false,
       msgDisp: false,
-      style: { top: "60.5%", left: "55.2%" },
-      style2: { top: "63%", left: "57.9%" },
+      style: { top: "63.5%", left: "57.2%" },
+      style2: { top: "63.5%", left: "59.8%" },
     },
     {
       id: 6005.1,
@@ -135,8 +135,8 @@ const Layout = (props) => {
       transform: "rotate(-165deg)",
       state: false,
       msgDisp: false,
-      style: { top: "65.5%", left: "59.6%" },
-      style2: { top: "67%", left: "61.6%" },
+      style: { top: "68.5%", left: "61.6%" },
+      style2: { top: "68.3%", left: "64.25%" },
     },
     {
       id: 6005.1,
@@ -145,8 +145,8 @@ const Layout = (props) => {
       transform: "rotate(-165deg)",
       state: false,
       msgDisp: false,
-      style: { top: "62.5%", left: "78.6%" },
-      style2: { top: "64%", left: "80.9%" },
+      style: { top: "64.5%", left: "85.6%" },
+      style2: { top: "64.7%", left: "87.82%" },
     },
     {
       id: 6005.1,
@@ -155,8 +155,8 @@ const Layout = (props) => {
       transform: "rotate(-165deg)",
       state: false,
       msgDisp: false,
-      style: { top: "54.5%", left: "74.6%" },
-      style2: { top: "54.5%", left: "77%" },
+      style: { top: "54%", left: "80.6%" },
+      style2: { top: "52.8%", left: "83.05%" },
     },
   ];
 
@@ -1466,23 +1466,23 @@ const Layout = (props) => {
               <TransformComponent
                 contentClass="  "
                 wrapperStyle={{
-                  height: "80vh",
-                  marginTop: "-5%",
-                  padding: "2%",
+                  height: "100vh",
+                  marginTop: "-15%",
+                  padding: "0%",
                   // border: "5px solid ",
                   alignSelf: "center",
                 }}
               >
                 <div
-                  className="border-2 rounded-xl p-4 box-shadow-2 bg-[#00f]"
+                  className="p-0  "
                   style={{
-                    width: "90%",
-                    height: "90%",
+                    width: "100%",
+                    height: "60vh",
                     flexDirection: "column",
                     display: "flex",
                     alignItems: "center",
                     justifyItems: "center",
-                    border: "10px solid tranparent",
+
                     margin: "auto",
                     marginTop: "60%",
 
@@ -1496,7 +1496,7 @@ const Layout = (props) => {
                     className=""
                     style={{
                       width: "100%",
-                      height: "100%",
+                      height: "150%",
                       opacity: 1,
                     }}
                     alt="layout"
@@ -1507,7 +1507,10 @@ const Layout = (props) => {
                     }}
                     // onResize={() => setLoading(true)}
                   />
-                  <p className="font-bold w-full  text-center p-0 text-[#125] text-lg uppercase ">
+                  <p className="font-bold w-full  text-center p-0 text-[#fff] text-lg uppercase ">
+                    Courtyard
+                  </p>
+                  <p className="absolute font-bold w-full  text-center p-0 text-[#125] text-lg uppercase ">
                     Courtyard
                   </p>
                 </div>
@@ -1774,7 +1777,7 @@ const Layout = (props) => {
           );
         }}
       </TransformWrapper>
-      <div className="w-[85%] flex flex-row absolute bottom-[2%] space-x-4 items-center justify-center z-[50] box-shadow-2">
+      <div className="w-[85%] flex flex-row absolute bottom-[0%] space-x-4 items-center justify-center z-[50] box-shadow-2">
         <button
           onClick={() => {
             ZoomingFns.zoomIn();
